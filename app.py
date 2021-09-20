@@ -20,7 +20,7 @@ app.config["DEBUG"] = True
 def articles():
   search_obj = req.conv_req_to_search_obj(request)
   return jsonify(domain_articles.get_articles(search_obj))
-
+  
 
 ###########################
 # Books endpoints
