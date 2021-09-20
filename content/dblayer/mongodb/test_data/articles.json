@@ -2,8 +2,9 @@
   {
     "article_id": "46af9515c76f3f37e4b72a725ab0a4po",
     "language": "English",
-    "publish_date": "2021.09.06 13:00:04",
+    "publish_date": "2021-09-06T13:00:04",
     "annotations": {},
+    "source": "BBC",
     "title": {
         "text": "EU nears deal on opening borders that is likely to exclude US, Russia, Brazil",
         "keywords": {
@@ -43,8 +44,9 @@
   {
     "article_id": "7a3f9515c76f3f37e4b72a725ab0a45l",
     "language": "English",
-    "publish_date": "2021.09.04 13:28:01",
+    "publish_date": "2021-09-04T13:28:01",
     "annotations": {},
+    "source": "BBC",
     "title": {
         "text": "Lille's Osimhen collects top Ligue 1 African honour",
         "keywords": {
@@ -84,8 +86,9 @@
   {
     "article_id": "6a3f9515c76f3f37e4b72a725ab0a1bc",
     "language": "English",
-    "publish_date": "2021.04.04 17:48:51",
+    "publish_date": "2021-04-04T17:48:51",
     "annotations": {},
+    "source": "Fox News",
     "title": {
         "text": "'LGBT-free zones' in Poland are 'unacceptable', says EU Commissioner for Equality ",
         "keywords": {
@@ -125,8 +128,9 @@
   {
     "article_id": "ca3f9515c76f3f37e4b72a725ab0a4aa",
     "language": "English",
-    "publish_date": "2021.04.01 11:12:51",
+    "publish_date": "2021-04-01T11:12:51",
     "annotations": {},
+    "source": "CNN",
     "title": {
         "text": "New York's Broadway closed until at least January",
         "keywords": {
@@ -166,8 +170,9 @@
   {
     "article_id": "ba3f9515c76f3f37e4b72a725ab0a221",
     "language": "English",
-    "publish_date": "2021.03.30 09:32:14",
+    "publish_date": "2021-03-30T09:32:14",
     "annotations": {},
+    "source": "Aljazeera",
     "title": {
         "text": "Macron pledges €15 billion to make France’s economy greener",
         "keywords": {
@@ -207,8 +212,9 @@
   {
     "article_id": "1a3f9515c76faf37e4b72a725ab0a333",
     "language": "English",
-    "publish_date": "2021.02.22 07:54:14",
+    "publish_date": "2021-02-22T07:54:14",
     "annotations": {},
+    "source": "Aljazeera",
     "title": {
         "text": "Anne Hidalgo, the socialist mayor of Paris who waged war against cars",
         "keywords": {
@@ -248,8 +254,9 @@
   {
     "article_id": "3a3f9515c76f3137e4b72a725ab0a4b9",
     "language": "English",
-    "publish_date": "2021.02.16 18:30:10",
+    "publish_date": "2021-02-16T18:30:10",
     "annotations": {},
+    "source": "Franceinfo",
     "title": {
         "text": "France votes in municipal elections with Paris mayoral race in the balance",
         "keywords": {
@@ -289,8 +296,9 @@
   {
     "article_id": "2a3f9515c76f3f37e4b72a725ab0a4a1",
     "language": "English",
-    "publish_date": "2021.02.01 13:10:04",
+    "publish_date": "2021-02-01T13:10:04",
     "annotations": {},
+    "source": "France24",
     "title": {
         "text": "Former French PM Fillon sentenced to jail over fake jobs scandal involving his wife",
         "keywords": {
@@ -330,7 +338,9 @@
   {
     "article_id": "2a3f9515c76f3f37e4b72a725ab0aa1m",
     "language": "French",
+    "publish_date": "2021-02-01T10:28:01",
     "annotations": {},
+    "source": "France24",
     "title": {
       "text": "Abou Walid al-Sahraoui, vétéran du jihad, était la cible n°1 de la France au Sahel",
       "keywords": {
@@ -358,7 +368,9 @@
   {
     "article_id": "2a3f951ac76f3f37e4b72a725ab0a400",
     "language": "French",
+    "publish_date": "2021-01-29T22:01:32",
     "annotations": {},
+    "source": "France24",
     "title": {
       "text": "Covid-19 : environ 3 000 suspensions de personnels de santé non vaccinés",
       "keywords": {
@@ -376,6 +388,35 @@
           "NNP": {
             "Olivier": {"s":"olivier","l":"olivier"},
             "Véran": {"s":"véran","l":"véran"}
+          }
+        }
+      }
+    }
+  },
+  {
+    "article_id": "2a3f951ac76f3f37e4b72a725aaba311",
+    "language": "Spanish",
+    "publish_date": "2021-01-18T15:23:54",
+    "annotations": {},
+    "source": "RTVE",
+    "title": {
+      "text": "Almadén, cuna de la química europea",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Almadén": {"s":"almadén","l":"almadén"}
+          }
+        }
+      }
+    },
+    "description": {
+      "text": "La Sociedad Europea de Química ha decidido otorgar a este pueblo una distinción como sitio histórico de referencia por la importancia y la repercusión de la mina de mercurio",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Sociedad": {"s":"sociedad","l":"sociedad"},
+            "Europea": {"s":"europea","l":"europea"},
+            "Química": {"s":"química","l":"química"}
           }
         }
       }
