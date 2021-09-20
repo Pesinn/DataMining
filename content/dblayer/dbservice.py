@@ -1,4 +1,4 @@
-from content.dblayer.mongodb.mongo_service import connect
+import content.dblayer.mongodb.mongo_service as mongodb
 
-def mongo():
-  connect()
+def get_articles():
+  return mongodb.get_articles()

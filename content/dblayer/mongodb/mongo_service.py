@@ -11,13 +11,6 @@ _dbList = _myclient.list_database_names()
 # Create collection and DB
 _mydb = _myclient[config.get_db_collection()]
 
-for i in _mydb.list_collection_names():
-  print(i)
-
-
-def connect():
-  print("!!connect!!", config.ENV)
-
 # Used instead of the database connection
 def load_json():
   file = open('content/dblayer/mongodb/test_data/articles.json',)
@@ -26,11 +19,28 @@ def load_json():
   return data
 
 def get_articles():
-  # Get test data from file
   if(config.get_db_collection() == "None"):
-    return load_json()
+    return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
-    return _mydb[ARTICLES].find()
+    filter = {"_id": 0}
+    return [x for x in _mydb[ARTICLES].find({
+    "$or" : 
+    [
+      {
+        "language" : { "$eq" : "English"}
+      },
+      {
+        "language" : { "$eq" : "Spanish"}
+      }
+    ]
+    }, filter)]
 
-for i in get_articles():
-  print(i)
+def create_filter():
+  x = {
+    "language": ["English", "Spanish"],
+    "dateFrom": "2020-01-01",
+    "dateTo": "2020-02-02",
+    "sources": ["BBC", "CNN"],
+    "search": ["Covid-19", "Alibaba Inc."]
+  }
+  return x

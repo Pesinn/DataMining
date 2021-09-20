@@ -4,43 +4,27 @@ from flask import request, jsonify
 from content.dblayer.dbservice import *
 
 import os
-
 import pymongo
 import config
-
+import content.factory.request as req
+import content.domain.articles.articles as domain_articles
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-mongo()
-# Create some test data for our catalog in the form of a list of dictionaries.
-books = [
-  {'id': 0,
-    'title': 'A Fire Upon the Deep',
-    'author': 'Vernor Vinge',
-    'first_sentence': 'The coldsleep itself was dreamless.',
-    'year_published': '1992'},
-  {'id': 1,
-    'title': 'The Ones Who Walk Away From Omelas',
-    'author': 'Ursula K. Le Guin',
-    'first_sentence': 'With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea.',
-    'published': '1973'},
-  {'id': 2,
-    'title': 'Dhalgren',
-    'author': 'Samuel R. Delany',
-    'first_sentence': 'to wound the autumnal city.',
-    'published': '1975'}
-]
+###########################
+# Articles endpoints
+###########################
+
+@app.route('/api/v1/articles', methods=['GET'])
+def articles():
+  dbreq = req.conv_req_to_dbreq(request)
+  return jsonify(domain_articles.get_articles(dbreq))
 
 
-
-#def test():
-#  myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-
-#  mydb = myclient["articles"]
-  
-#  dbList = myclient.list_database_names()
-#test()
+###########################
+# Books endpoints
+###########################
 
 # Example: api/v1/resources/books/all
 @app.route('/api/v1/resources/books/all', methods=['GET'])
@@ -70,6 +54,31 @@ def api_id():
   # Use the jsonify function from Flask to convert our list of
   # Python dictionaries to the JSON format.
   return jsonify(results)
+
+
+
+
+
+# Create some test data for our catalog in the form of a list of dictionaries.
+books = [
+  {'id': 0,
+    'title': 'A Fire Upon the Deep',
+    'author': 'Vernor Vinge',
+    'first_sentence': 'The coldsleep itself was dreamless.',
+    'year_published': '1992'},
+  {'id': 1,
+    'title': 'The Ones Who Walk Away From Omelas',
+    'author': 'Ursula K. Le Guin',
+    'first_sentence': 'With a clamor of bells that set the swallows soaring, the Festival of Summer came to the city Omelas, bright-towered by the sea.',
+    'published': '1973'},
+  {'id': 2,
+    'title': 'Dhalgren',
+    'author': 'Samuel R. Delany',
+    'first_sentence': 'to wound the autumnal city.',
+    'published': '1975'}
+]
+
+
 
 
 
