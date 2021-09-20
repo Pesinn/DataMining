@@ -35,6 +35,10 @@ def get_articles():
     ]
     }, filter)]
 
+
+def convert_search_obj_to_dbreq():
+  return ""
+    
 def create_filter():
   x = {
     "language": ["English", "Spanish"],

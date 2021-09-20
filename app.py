@@ -18,8 +18,8 @@ app.config["DEBUG"] = True
 
 @app.route('/api/v1/articles', methods=['GET'])
 def articles():
-  dbreq = req.conv_req_to_dbreq(request)
-  return jsonify(domain_articles.get_articles(dbreq))
+  search_obj = req.conv_req_to_search_obj(request)
+  return jsonify(domain_articles.get_articles(search_obj))
 
 
 ###########################
