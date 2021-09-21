@@ -8,6 +8,7 @@ import pymongo
 import config
 import content.factory.request as req
 import content.domain.articles.articles as domain_articles
+import content.domain.news_data.news_data as domain_news_data
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -20,7 +21,17 @@ app.config["DEBUG"] = True
 def articles():
   search_obj = req.conv_req_to_search_obj(request)
   return jsonify(domain_articles.get_articles(search_obj))
-  
+
+
+###########################
+# News data endpoints
+###########################
+
+@app.route('/api/v1/news_data', methods=['GET'])
+def news_data():
+  search_obj = req.conv_req_to_search_obj(request)
+  return jsonify(domain_news_data.get_news_data(search_obj))
+
 
 ###########################
 # Books endpoints

@@ -2,7 +2,7 @@ import pymongo
 import config
 import json
 
-ARTICLES = "articles"
+NEWS = "news_data"
 
 # Connect to the DB
 _myclient = pymongo.MongoClient('localhost', 27017)
@@ -13,17 +13,17 @@ _mydb = _myclient[config.get_db_collection()]
 
 # Used instead of the database connection
 def load_json():
-  file = open('content/dblayer/mongodb/test_data/articles.json',)
+  file = open('content/dblayer/mongodb/test_data/news_data.json',)
   data = json.load(file)
   file.close()
   return data
 
-def get_articles(search):  
+def get_news_data(search):  
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
     filter = {"_id": 0}
-    return [x for x in _mydb[ARTICLES].find(convert_search_obj_to_dbreq(search), filter)]
+    return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 def convert_search_obj_to_dbreq(search):

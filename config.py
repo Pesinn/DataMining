@@ -1,8 +1,8 @@
 ENV = "TEST"
 
 DB_COLLECTION = {}
-DB_COLLECTION["TEST"] = "articles_TEST"
-DB_COLLECTION["PROD"] = "articles"
+DB_COLLECTION["TEST"] = "news_data_TEST"
+DB_COLLECTION["PROD"] = "news_data"
 DB_COLLECTION["DEV"] = "None"
 
 def get_db_collection():

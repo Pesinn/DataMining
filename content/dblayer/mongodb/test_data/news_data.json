@@ -6,37 +6,37 @@
     "annotations": {},
     "source": "BBC",
     "title": {
-        "text": "EU nears deal on opening borders that is likely to exclude US, Russia, Brazil",
-        "keywords": {
+      "text": "EU nears deal on opening borders that is likely to exclude US, Russia, Brazil",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "European Union envoys are close to finalizing....",
-        "keywords": {
+      "text": "European Union envoys are close to finalizing....",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -48,37 +48,37 @@
     "annotations": {},
     "source": "BBC",
     "title": {
-        "text": "Lille's Osimhen collects top Ligue 1 African honour",
-        "keywords": {
+      "text": "Lille's Osimhen collects top Ligue 1 African honour",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "Lille's Osimhen collects top Ligue 1 African honour",
-        "keywords": {
+      "text": "Lille's Osimhen collects top Ligue 1 African honour",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -90,37 +90,37 @@
     "annotations": {},
     "source": "Fox News",
     "title": {
-        "text": "'LGBT-free zones' in Poland are 'unacceptable', says EU Commissioner for Equality ",
-        "keywords": {
+      "text": "'LGBT-free zones' in Poland are 'unacceptable', says EU Commissioner for Equality ",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "As the world marks “Global Pride” on June 27th, we speak to the EU’s first-ever Commissioner for Equality. Helena Dalli tells FRANCE 24 why Poland could lose some of its EU funding, if so-called “LGB…",
-        "keywords": {
+      "text": "As the world marks “Global Pride” on June 27th, we speak to the EU’s first-ever Commissioner for Equality. Helena Dalli tells FRANCE 24 why Poland could lose some of its EU funding, if so-called “LGB…",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -132,37 +132,37 @@
     "annotations": {},
     "source": "CNN",
     "title": {
-        "text": "New York's Broadway closed until at least January",
-        "keywords": {
+      "text": "New York's Broadway closed until at least January",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "New York's Broadway closed until at least January",
-        "keywords": {
+      "text": "New York's Broadway closed until at least January",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -174,37 +174,37 @@
     "annotations": {},
     "source": "Aljazeera",
     "title": {
-        "text": "Macron pledges €15 billion to make France’s economy greener",
-        "keywords": {
+      "text": "Macron pledges €15 billion to make France’s economy greener",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "French President Emmanuel Macron promised 15 billion euros of new funding on Monday to speed up the move to a greener economy, a day after the Greens trounced his party and took control of major citi…",
-        "keywords": {
+      "text": "French President Emmanuel Macron promised 15 billion euros of new funding on Monday to speed up the move to a greener economy, a day after the Greens trounced his party and took control of major citi…",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -216,37 +216,37 @@
     "annotations": {},
     "source": "Aljazeera",
     "title": {
-        "text": "Anne Hidalgo, the socialist mayor of Paris who waged war against cars",
-        "keywords": {
+      "text": "Anne Hidalgo, the socialist mayor of Paris who waged war against cars",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "Anne Hidalgo, re-elected Paris mayor on Sunday, is a Spanish-born socialist who has waged a divisive but ambitious campaign to push cars out of the centre of the French capital.",
-        "keywords": {
+      "text": "Anne Hidalgo, re-elected Paris mayor on Sunday, is a Spanish-born socialist who has waged a divisive but ambitious campaign to push cars out of the centre of the French capital.",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -258,37 +258,37 @@
     "annotations": {},
     "source": "Franceinfo",
     "title": {
-        "text": "France votes in municipal elections with Paris mayoral race in the balance",
-        "keywords": {
+      "text": "France votes in municipal elections with Paris mayoral race in the balance",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
       }
     },
     "description": {
-        "text": "Polls opened on Sunday for the second round of French municipal elections – delayed for more than three months by the coronavirus lockdown – and all eyes are on President Emmanuel Macron's La Républi…",
-        "keywords": {
+      "text": "Polls opened on Sunday for the second round of French municipal elections – delayed for more than three months by the coronavirus lockdown – and all eyes are on President Emmanuel Macron's La Républi…",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
@@ -300,37 +300,37 @@
     "annotations": {},
     "source": "France24",
     "title": {
-        "text": "Former French PM Fillon sentenced to jail over fake jobs scandal involving his wife",
-        "keywords": {
+      "text": "Former French PM Fillon sentenced to jail over fake jobs scandal involving his wife",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "EU": {"s":"eu","l":"eu"}, 
             "US": {"s":"us","l":"us"},
             "Russia": {"s":"russia","l":"russia"},
             "Brazil": {"s":"brazil","l":"brazil"}
-            },
-            "VB": {
+          },
+          "VB": {
             "Deal": {"s":"deal","l":"deal"},
             "Exclude": {"s":"exclud","l":"exclude"}
-            }
+          }
         }
-        }
+      }
     },
     "description": {
-        "text": "A French court on Monday found former Prime Minister Francois Fillon guilty of embezzlement of public funds in a fake jobs scandal that wrecked his 2017 run for president and opened the Elysée Palace…",
-        "keywords": {
+      "text": "A French court on Monday found former Prime Minister Francois Fillon guilty of embezzlement of public funds in a fake jobs scandal that wrecked his 2017 run for president and opened the Elysée Palace…",
+      "keywords": {
         "categorized": {
-            "NNP": {
+          "NNP": {
             "European": {"s":"european","l":"european"},
             "Union": {"s":"union","l":"union"}
-            },
-            "VBD": {
+          },
+          "VBD": {
             "envoys": {"s":"envoy","l":"envoys"}
-            },
-            "JJ": {
+          },
+          "JJ": {
             "close": {"s":"close","l":"close"},
             "finalizing": {"s":"final","l":"finalizing"}
-            }
+          }
         }
       }
     }
