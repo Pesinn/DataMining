@@ -28,14 +28,20 @@ def get_articles(search):
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 def convert_search_obj_to_dbreq(search):
   dbreq = {}
-
   for i in search:
     if(i == "languages"):
       dbreq["language"] = { "$in" : search[i] }
     if(i == "sources"):
       dbreq["source"] = { "$in" : search[i] }
     if(i == "date_from"):
-      dbreq["publish_date"] = { "$gt": search[i] }
+      try:
+        dbreq["publish_date"]["$gt"] = search[i]
+      except:
+        dbreq["publish_date"] = { "$gt" : search[i] }
     if(i == "date_to"):
-      dbreq["publish_date"] = { "$lt": search[i] }
-  return {"$or": [dbreq]}
+      try:
+        dbreq["publish_date"]["$lt"] = search[i]
+      except:
+        dbreq["publish_date"] = { "$lt" : search[i] }
+
+  return {"$and": [dbreq]}
