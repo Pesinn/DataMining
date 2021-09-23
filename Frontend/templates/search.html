@@ -1,0 +1,35 @@
+{% extends 'navigation.html' %}
+{% block content %}
+
+<form class="d-flex align-items-center flex-nowrap">
+  <input id="main_search_input" class="form-control" name="search" type="text" placeholder="Search" />
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<ul class="Search-filer">
+  <li>Sort</li>
+  <li>Sources</li>
+  <li>Language</li>
+  <li>Date From</li>
+  <li>Date To</li>
+</ul>
+
+<div class="Search-buttons">
+
+  <a href="{{ url_for('index') }}">
+    <button type="button" class="btn btn-primary">Articles</button>
+  </a>
+
+  <a href="{{ url_for('entities') }}">
+    <button type="button" class="btn btn-outline-primary">Entities</button>
+  </a>
+  
+  <a href="{{ url_for('sentiment') }}">
+    <button type="button" class="btn btn-outline-primary">Sentiment</button>
+  </a>
+</div>
+
+<div class="container Content-frame">
+    {% block sub_content %}{% endblock %}
+</div>
+{% endblock %}

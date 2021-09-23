@@ -1,0 +1,24 @@
+{% extends 'search.html' %}
+
+{% block sub_content %}
+<p hidden> {% block nav_title %}Articles{% endblock %}</p>
+
+<div class="container">
+  <div class="row">
+    {% for a in articles %}
+    <div class="col-md-12 col-lg-6 Articles-box">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ a.title.text }}</h5>
+          <p class="card-text">{{ a.description.text }}</p>
+          <div class="Article-footer">
+            <p class="card-link u-floatRight u-marginRight">{{ a.source }}</p>
+            <p class="card-link u-marginLeft"> {{ a.publish_date }} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

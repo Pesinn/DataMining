@@ -1,0 +1,15 @@
+.Search-buttons {
+  margin: 25px;
+}
+
+.Search-filer {
+  float: right;
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.Search-filer li {
+  display: inline-block;
+  margin-right: 10px;
+}
