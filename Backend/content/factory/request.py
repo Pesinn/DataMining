@@ -13,5 +13,5 @@ def conv_req_to_search_obj(req):
     #search_obj["sources"] = req.args.get("sources")
     search_obj["sources"] = string_utils.string_to_array(req.args.get("sources"), ",")  
   if 'search' in req.args:
-    search_obj["search"] = req.args.get("search")
+    search_obj["search"] = string_utils.string_to_array(req.args.get("search"), ",")#req.args.get("search")
   return search_obj
