@@ -9,6 +9,7 @@ import config
 import content.factory.request as req
 import content.domain.articles.articles as domain_articles
 import content.domain.news_data.news_data as domain_news_data
+import content.domain.entities.entities as domain_entities
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -31,6 +32,16 @@ def articles():
 def news_data():
   search_obj = req.conv_req_to_search_obj(request)
   return jsonify(domain_news_data.get_news_data(search_obj))
+
+###########################
+# Entities endpoints
+###########################
+
+@app.route('/api/v1/entities', methods=['GET'])
+def entities():
+  search_obj = req.conv_req_to_search_obj(request)
+  return jsonify(domain_entities.get_entities(search_obj))
+
 
 
 ###########################
