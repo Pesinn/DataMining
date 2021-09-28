@@ -18,7 +18,8 @@ def load_json():
   file.close()
   return data
 
-def get_news_data(search):  
+def get_news_data(search):
+  print("search: ", search)
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
@@ -28,6 +29,7 @@ def get_news_data(search):
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 def convert_search_obj_to_dbreq(search):
   dbreq = {}
+
   for i in search:
     if(i == "languages"):
       dbreq["language"] = { "$in" : search[i] }
@@ -43,5 +45,10 @@ def convert_search_obj_to_dbreq(search):
         dbreq["publish_date"]["$lt"] = search[i]
       except:
         dbreq["publish_date"] = { "$lt" : search[i] }
+    
+    if(i == "search"):
+      search_string = " ".join(str(x) for x in search[i])
+      if(search_string != ""):
+        dbreq["$text"] = { "$search" : search_string }
 
   return {"$and": [dbreq]}
