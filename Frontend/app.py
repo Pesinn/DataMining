@@ -12,8 +12,14 @@ app = Flask(__name__)
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
-  search_req = req.conv_req_to_query_string(request)
-  return render_template("articles.html", articles=domain_articles.get_news_data(search_req))
+
+  # No results should be provided until use has entered a search query
+  if request.args.get("search"):
+    search_req = req.conv_req_to_query_string(request)
+    art = domain_articles.get_news_data(search_req)
+  else:
+    art = []
+  return render_template("articles.html", articles = art)
 
 @app.route('/entities', methods=["GET"])
 def entities():
