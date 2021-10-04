@@ -9,10 +9,55 @@ import static.code.factory.request as req
 
 app = Flask(__name__)
 
+
+
+labels = [
+    'Very negative', 'Negative', 'Neutral', 'Very positive',
+    'Positive'
+]
+
+values = [
+    967.67, 1190.89, 1079.75, 1349.19,
+    2328.91
+]
+
+sentiment_analysis = """
+[
+  {
+    "search": "Alibaba",
+    "sentiment_analysis": {
+      "lowers": {
+        "freq": 50,
+        "ratio": 0.13
+      },
+      "low": {
+        "freq": 40,
+        "ratio": 0.1
+      },
+      "middle": {
+        "freq": 120,
+        "ratio": 0.31
+      },
+      "high": {
+        "freq": 130,
+        "ratio": 0.34
+      },
+      "highest": {
+        "freq": 45,
+        "ratio": 0.12
+      },
+      "all": {
+        "freq": 385,
+        "ratio": 100
+      }
+    }
+  }
+]
+"""
+
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
-
   # No results should be provided until use has entered a search query
   if request.args.get("search"):
     search_req = req.conv_req_to_query_string(request)
@@ -27,7 +72,10 @@ def entities():
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
-  return render_template("sentiment.html")
+  bar_labels=labels
+  bar_values=values
+  return render_template("sentiment.html", title='Bitcoin Monthly Price in USD',
+    max=17000, labels=bar_labels, values=bar_values, data=sentiment_analysis)
 
 
 #@app.route('/books/', methods=["POST", "GET"])
