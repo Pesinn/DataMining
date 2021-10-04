@@ -16,7 +16,7 @@ def index():
   # No results should be provided until use has entered a search query
   if request.args.get("search"):
     search_req = req.conv_req_to_query_string(request)
-    art = domain_articles.get_news_data(search_req)
+    art = domain_articles.get_articles(search_req)
   else:
     art = []
   return render_template("articles.html", articles = art)
