@@ -5,11 +5,10 @@ from flask import request, jsonify
 from flask import render_template
 import os
 import static.code.search as domain_articles
+import static.code.domain.sentiment.sentiment as domain_sentiment
 import static.code.factory.request as req
 
 app = Flask(__name__)
-
-
 
 labels = [
     'Very negative', 'Negative', 'Neutral', 'Very positive',
@@ -20,40 +19,6 @@ values = [
     967.67, 1190.89, 1079.75, 1349.19,
     2328.91
 ]
-
-sentiment_analysis = """
-[
-  {
-    "search": "Alibaba",
-    "sentiment_analysis": {
-      "lowers": {
-        "freq": 50,
-        "ratio": 0.13
-      },
-      "low": {
-        "freq": 40,
-        "ratio": 0.1
-      },
-      "middle": {
-        "freq": 120,
-        "ratio": 0.31
-      },
-      "high": {
-        "freq": 130,
-        "ratio": 0.34
-      },
-      "highest": {
-        "freq": 45,
-        "ratio": 0.12
-      },
-      "all": {
-        "freq": 385,
-        "ratio": 100
-      }
-    }
-  }
-]
-"""
 
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
@@ -74,8 +39,12 @@ def entities():
 def sentiment():
   bar_labels=labels
   bar_values=values
+  
+  sentiment = domain_sentiment.get_sentiment_analysis_from_file()
+  print("meh: ", sentiment[0])
+
   return render_template("sentiment.html", title='Bitcoin Monthly Price in USD',
-    max=17000, labels=bar_labels, values=bar_values, data=sentiment_analysis)
+    max=180, labels=bar_labels, values=bar_values, data=sentiment)
 
 
 #@app.route('/books/', methods=["POST", "GET"])
