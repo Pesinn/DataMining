@@ -42,69 +42,26 @@ document.getElementById("main-search-input").value = getQueryParameter("search")
 
 buttonHandler();
 
+function getQueryParameter(type) {
+  const queryString = window.location.search;
+  return new URLSearchParams(queryString).get(type);
+}
+
+// Handle class elements of the main buttons
 function buttonHandler() {
   pathname = window.document.location.pathname;
-  console.log(pathname)
-  if(pathname === "/") {
-    console.log("articles")
+  if(pathname === "/")
     modifyElementClass("articles-button", "btn-primary", "btn-outline-primary");
-  }
-  else if(pathname === "/entities") {
+  else if(pathname === "/entities")
     modifyElementClass("entities-button", "btn-primary", "btn-outline-primary");
-  }
-  else if(pathname === "/sentiment") {
+  else if(pathname === "/sentiment")
     modifyElementClass("sentiment-button", "btn-primary", "btn-outline-primary");
-  }
 }
 
 function modifyElementClass(id, addClass, removeClass) {
   var element = document.getElementById(id);
   element.classList.remove(removeClass);
   element.classList.add(addClass);
-}
-//const form = document.getElementById('search-form');
-//form.onsubmit = submit;
-
-//function submit(event) {
-//  var inputValue = document.getElementById('main-search-input').value;
-//  event.preventDefault();
-//}
-
-function getQueryParameter(type) {
-  const queryString = window.location.search;
-  return new URLSearchParams(queryString).get(type);
-}
-
-function getInputValuesFromURL(type) {
-  // Example:
-  // url = "http://192.168.8.105:5000/sentiment?source=[BBC]&search=Alibaba&languages=[French]"
-  var url = window.location.href;
-  
-  queryParam = window.document.location.search;
-  // queryParam = "source=[BBC]&search=Alibaba&languages=[French]"
-  //queryParam = url.substring(url.indexOf('?')+1, url.length);
-  //if (debug)
-  //  console.log("queryParam: ", queryParam)
-
-  // value = "search=Alibaba&languages=[French]"
-  value = queryParam.substring(queryParam.indexOf(type+"="), queryParam.length);
-  if (debug)
-    console.log("value: ", value)
-
-  if(value.includes("&")) {
-    // value = "search=Alibaba"
-    value = value.substring(0, value.indexOf("&"));
-  }
-
-  if(value.includes("=")) {
-    // value = "Alibaba"
-    value = value.substring(value.indexOf("=")+1, value.length)
-  }
-
-  if (debug)
-    console.log("Final query: ", value)
-
-  return value;
 }
 
 </script>
