@@ -1,8 +1,8 @@
 {% extends 'navigation.html' %}
 {% block content %}
 
-<form class="d-flex align-items-center flex-nowrap">
-  <input id="main_search_input" class="form-control" name="search" type="text" placeholder="Search" />
+<form class="d-flex align-items-center flex-nowrap" id="search-form">
+  <input id="main-search-input" class="form-control" name="search" type="text" placeholder="Search" />
   <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
@@ -17,19 +17,73 @@
 <div class="Search-buttons">
 
   <a href="{{ url_for('index') }}">
-    <button type="button" class="btn btn-primary">Articles</button>
+    <button id="articles-button" type="button" class="btn btn-primary">Articles</button>
   </a>
 
   <a href="{{ url_for('entities') }}">
-    <button type="button" class="btn btn-outline-primary">Entities</button>
+    <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
   </a>
   
   <a href="{{ url_for('sentiment') }}">
-    <button type="button" class="btn btn-outline-primary">Sentiment</button>
+    <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
   </a>
 </div>
 
 <div class="container Content-frame">
     {% block sub_content %}{% endblock %}
 </div>
+
+
+<script>
+var debug = false;
+document.getElementById("main-search-input").value = getQueryParameter("search");
+
+
+//const form = document.getElementById('search-form');
+//form.onsubmit = submit;
+
+//function submit(event) {
+//  var inputValue = document.getElementById('main-search-input').value;
+//  event.preventDefault();
+//}
+
+function getQueryParameter(type) {
+  const queryString = window.location.search;
+  return new URLSearchParams(queryString).get(type)
+}
+
+function getInputValuesFromURL(type) {
+  // Example:
+  // url = "http://192.168.8.105:5000/sentiment?source=[BBC]&search=Alibaba&languages=[French]"
+  var url = window.location.href;
+  
+  queryParam = window.document.location.search;
+  // queryParam = "source=[BBC]&search=Alibaba&languages=[French]"
+  //queryParam = url.substring(url.indexOf('?')+1, url.length);
+  //if (debug)
+  //  console.log("queryParam: ", queryParam)
+
+  // value = "search=Alibaba&languages=[French]"
+  value = queryParam.substring(queryParam.indexOf(type+"="), queryParam.length);
+  if (debug)
+    console.log("value: ", value)
+
+  if(value.includes("&")) {
+    // value = "search=Alibaba"
+    value = value.substring(0, value.indexOf("&"));
+  }
+
+  if(value.includes("=")) {
+    // value = "Alibaba"
+    value = value.substring(value.indexOf("=")+1, value.length)
+  }
+
+  if (debug)
+    console.log("Final query: ", value)
+
+  return value;
+}
+
+</script>
+
 {% endblock %}
