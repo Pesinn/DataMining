@@ -15,11 +15,8 @@
 </ul>
 
 <div class="Search-buttons">
-
   <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
-
   <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
-  
   <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
 </div>
 
@@ -37,6 +34,15 @@ document.getElementById("main-search-input").value = getQueryParameter("search")
 buttonOnClickHandler();
 buttonClassHandler();
 
+function convertSearchObjectToQueryString() {
+  var searchValue = document.getElementById("main-search-input").value
+  var queryString = "";
+  if(searchValue) {
+    queryString =  "?search=" + document.getElementById("main-search-input").value;
+  }
+  return queryString;
+}
+
 function getQueryParameter(type) {
   const queryString = window.location.search;
   return new URLSearchParams(queryString).get(type);
@@ -49,7 +55,6 @@ function buttonClassHandler() {
     modifyElementClass("articles-button", "btn-primary", "btn-outline-primary");
   }
   else if(pathname === "/entities") {
-  //  location.href = "https://www.javascripttutorial.net/";
     modifyElementClass("entities-button", "btn-primary", "btn-outline-primary");
   }
   if(pathname === "/sentiment") {
@@ -59,21 +64,18 @@ function buttonClassHandler() {
 
 function buttonOnClickHandler() {
   document.getElementById("articles-button").onclick = function articles() {
-    console.log("artile")
     redirectURL("/")
   }
   document.getElementById("entities-button").onclick = function entities() {
-    console.log("entities")
     redirectURL("/entities")
   }
   document.getElementById("sentiment-button").onclick = function sentiment() {
-    console.log("sentiment")
     redirectURL("/sentiment")
   }
 }
 
 function redirectURL(source) {
-  var url = window.location.origin + source;
+  var url = window.location.origin + source + convertSearchObjectToQueryString();
   window.location = url;
 }
 
@@ -82,6 +84,7 @@ function modifyElementClass(id, addClass, removeClass) {
   element.classList.remove(removeClass);
   element.classList.add(addClass);
 }
+
 
 </script>
 
