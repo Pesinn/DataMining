@@ -10,14 +10,12 @@ import static.code.factory.request as req
 
 app = Flask(__name__)
 
-labels = [
-    'Very negative', 'Negative', 'Neutral', 'Very positive',
+sentiment_labels = [
+    'Very negative',
+    'Negative',
+    'Neutral',
+    'Very positive',
     'Positive'
-]
-
-values = [
-    967.67, 1190.89, 1079.75, 1349.19,
-    2328.91
 ]
 
 @app.route('/index',  methods=["GET"])
@@ -37,14 +35,11 @@ def entities():
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
-  bar_labels=labels
-  bar_values=values
+  bar_labels=sentiment_labels
   
   sentiment = domain_sentiment.get_sentiment_analysis_from_file()
-  print("meh: ", sentiment[0])
 
-  return render_template("sentiment.html", title='Bitcoin Monthly Price in USD',
-    max=180, labels=bar_labels, values=bar_values, data=sentiment)
+  return render_template("sentiment.html", labels=bar_labels, data=sentiment)
 
 
 #@app.route('/books/', methods=["POST", "GET"])
