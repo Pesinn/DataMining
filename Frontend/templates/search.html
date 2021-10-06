@@ -16,17 +16,11 @@
 
 <div class="Search-buttons">
 
-  <a href="{{ url_for('index') }}">
-    <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
-  </a>
+  <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
 
-  <a href="{{ url_for('entities') }}">
-    <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
-  </a>
+  <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
   
-  <a href="{{ url_for('sentiment') }}">
-    <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
-  </a>
+  <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
 </div>
 
 <div class="container Content-frame">
@@ -40,7 +34,8 @@ var debug = false;
 // Assign search input values from the URL
 document.getElementById("main-search-input").value = getQueryParameter("search");
 
-buttonHandler();
+buttonOnClickHandler();
+buttonClassHandler();
 
 function getQueryParameter(type) {
   const queryString = window.location.search;
@@ -48,14 +43,38 @@ function getQueryParameter(type) {
 }
 
 // Handle class elements of the main buttons
-function buttonHandler() {
+function buttonClassHandler() {
   pathname = window.document.location.pathname;
-  if(pathname === "/")
+  if(pathname === "/") {
     modifyElementClass("articles-button", "btn-primary", "btn-outline-primary");
-  else if(pathname === "/entities")
+  }
+  else if(pathname === "/entities") {
+  //  location.href = "https://www.javascripttutorial.net/";
     modifyElementClass("entities-button", "btn-primary", "btn-outline-primary");
-  else if(pathname === "/sentiment")
+  }
+  if(pathname === "/sentiment") {
     modifyElementClass("sentiment-button", "btn-primary", "btn-outline-primary");
+  }
+}
+
+function buttonOnClickHandler() {
+  document.getElementById("articles-button").onclick = function articles() {
+    console.log("artile")
+    redirectURL("/")
+  }
+  document.getElementById("entities-button").onclick = function entities() {
+    console.log("entities")
+    redirectURL("/entities")
+  }
+  document.getElementById("sentiment-button").onclick = function sentiment() {
+    console.log("sentiment")
+    redirectURL("/sentiment")
+  }
+}
+
+function redirectURL(source) {
+  var url = window.location.origin + source;
+  window.location = url;
 }
 
 function modifyElementClass(id, addClass, removeClass) {
