@@ -14,7 +14,7 @@ sentiment_labels = [
     "Very negative, between -1 and -0.75",
     "Negative, between -0.75 and -0.25",
     "Neutral, between -0.25 and 0.25",
-    "Positive, between 0.75 and 1",
+    "Positive, between 0.75 sand 1",
     "Very positive, between 0.25 and 0.75"
 ]
 
@@ -37,7 +37,8 @@ def entities():
 def sentiment():
   bar_labels=sentiment_labels
   
-  sentiment = domain_sentiment.get_sentiment_analysis_from_file()
+  search_req = req.conv_req_to_query_string(request)
+  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
 
   return render_template("sentiment.html", labels=bar_labels, data=sentiment)
 
