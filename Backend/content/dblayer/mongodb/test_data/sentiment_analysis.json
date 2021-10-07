@@ -56,5 +56,63 @@
         "ratio": 100
       }
     }
+  },
+  {
+    "search": "Pfizer Inc.",
+    "sentiment_analysis": {
+      "lowest": {
+        "freq": 20,
+        "ratio": 0.05
+      },
+      "low": {
+        "freq": 32,
+        "ratio": 0.08
+      },
+      "middle": {
+        "freq": 160,
+        "ratio": 0.44
+      },
+      "high": {
+        "freq": 120,
+        "ratio": 0.33
+      },
+      "highest": {
+        "freq": 35,
+        "ratio": 0.1
+      },
+      "all": {
+        "freq": 367,
+        "ratio": 100
+      }
+    }
+  },
+  {
+    "search": "Evergrande Group",
+    "sentiment_analysis": {
+      "lowest": {
+        "freq": 20,
+        "ratio": 0.05
+      },
+      "low": {
+        "freq": 32,
+        "ratio": 0.08
+      },
+      "middle": {
+        "freq": 160,
+        "ratio": 0.44
+      },
+      "high": {
+        "freq": 120,
+        "ratio": 0.33
+      },
+      "highest": {
+        "freq": 35,
+        "ratio": 0.1
+      },
+      "all": {
+        "freq": 367,
+        "ratio": 100
+      }
+    }
   }
 ]

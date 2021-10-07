@@ -3,10 +3,12 @@ import config
 import json
 
 def get_sentiment_analysis(search):
-  return load_json()
-    
-
-
+  data = []
+  return_data = []
+  for i in search["search"]:
+    for a in [x for x in load_json() if x["search"] == i]:
+      return_data.append(a)
+  return return_data
 
 # Temp data
 def load_json():
