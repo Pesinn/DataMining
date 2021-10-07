@@ -3,7 +3,6 @@
 {% block sub_content %}
 <p hidden> {% block nav_title %}Sentiment analysis{% endblock %}</p>
 
-<p>Sentiment</p>
 <canvas id="chart" width="600" height="400"></canvas>
 
 <script>
@@ -51,15 +50,21 @@ var ctx = document.getElementById('chart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: _labels,
-        datasets: _datasets
+      labels: _labels,
+      datasets: _datasets
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+      scales: {
+        y: {
+          beginAtZero: true
         }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Custom Chart Title'
+        }
+      }
     }
 });
 
