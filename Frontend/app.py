@@ -11,11 +11,11 @@ import static.code.factory.request as req
 app = Flask(__name__)
 
 sentiment_labels = [
-    'Very negative',
-    'Negative',
-    'Neutral',
-    'Very positive',
-    'Positive'
+    "Very negative, between -1 and -0.75",
+    "Negative, between -0.75 and -0.25",
+    "Neutral, between -0.25 and 0.25",
+    "Positive, between 0.75 and 1",
+    "Very positive, between 0.25 and 0.75"
 ]
 
 @app.route('/index',  methods=["GET"])
