@@ -26,7 +26,6 @@ def get_articles(search):
     filter = {"_id": 0, "source": 1, "publish_date": 1, "title.text": 1, "description.text": 1}
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
-
 def get_news_data(search):
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']

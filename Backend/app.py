@@ -10,6 +10,8 @@ import content.factory.request as req
 import content.domain.articles.articles as domain_articles
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.entities.entities as domain_entities
+import content.domain.sentiment.sentiment_analysis as domain_sentiment
+
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -42,6 +44,15 @@ def entities():
   search_obj = req.conv_req_to_search_obj(request)
   return jsonify(domain_entities.get_entities(search_obj))
 
+
+###########################
+# Sentiment endpoints
+###########################
+
+@app.route('/api/v1/sentiment', methods=['GET'])
+def sentiment_analysis():
+  search_obj = req.conv_req_to_search_obj(request)
+  return jsonify(domain_sentiment.get_sentiment_analysis(search_obj))
 
 
 ###########################
