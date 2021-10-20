@@ -33,10 +33,13 @@ def get_news_data(search):
     filter = {"_id": 0}
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
+def get_sentiment_analysis(search):
+  filter = {"_id": 0, "annotations.sentiment_analysis": 1}
+  return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
+
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 def convert_search_obj_to_dbreq(search):
   dbreq = {}
-
   for i in search:
     if(i == "languages"):
       dbreq["language"] = { "$in" : search[i] }
@@ -52,10 +55,9 @@ def convert_search_obj_to_dbreq(search):
         dbreq["publish_date"]["$lt"] = search[i]
       except:
         dbreq["publish_date"] = { "$lt" : search[i] }
-    
+
     if(i == "search"):
-      search_string = " ".join(str(x) for x in search[i])
+      search_string = "".join(str(x) for x in search[i])
       if(search_string != ""):
         dbreq["$text"] = { "$search" : search_string }
-
   return {"$and": [dbreq]}

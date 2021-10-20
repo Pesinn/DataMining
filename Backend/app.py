@@ -51,8 +51,8 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
-  search_obj = req.conv_req_to_search_obj(request)
-  return jsonify(domain_sentiment.get_sentiment_analysis(search_obj))
+  search_arr = req.conv_req_to_search_array(request)
+  return jsonify(domain_sentiment.get_sentiment_analysis(search_arr))
 
 
 ###########################

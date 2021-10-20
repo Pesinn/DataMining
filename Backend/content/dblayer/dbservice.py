@@ -5,3 +5,6 @@ def get_articles(search):
 
 def get_news_data(search):
   return mongodb.get_news_data(search)
+
+def get_sentiment_analysis(search):
+  return mongodb.get_sentiment_analysis(search)

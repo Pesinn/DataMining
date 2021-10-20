@@ -3,7 +3,23 @@
     "article_id": "46af9515c76f3f37e4b72a725ab0a4po",
     "language": "English",
     "publish_date": "2021-09-06T13:00:04",
-    "annotations": {},
+    "annotations": {
+      "sentiment_analysis": {
+        "neg": 0.0,
+        "neu": 0.508,
+        "pos": 0.498,
+        "compound": 0.4404
+      },
+      "entities": {
+        "named": [
+          "EU",
+          "US",
+          "Russia",
+          "Brazil",
+          "European Union"
+        ]
+      }
+    },
     "source": "BBC",
     "title": {
       "text": "EU nears deal on opening borders that is likely to exclude US, Russia, Brazil",
@@ -417,6 +433,167 @@
             "Sociedad": {"s":"sociedad","l":"sociedad"},
             "Europea": {"s":"europea","l":"europea"},
             "Química": {"s":"química","l":"química"}
+          }
+        }
+      }
+    }
+  },
+  {
+    "article_id": "2a3f951ac76f3f37e4b721225baba311",
+    "language": "English",
+    "publish_date": "2021-10-20T14:32:29",
+    "annotations": {},
+    "source": "CNBC",
+    "title": {
+      "text": "Tesla, Elon Musk are trailing on one stock market metric investors think is important to the future",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Tesla": {"s":"tesla","l":"tesla"},
+            "Elon": {"s":"elon","l":"elon"},
+            "Musk": {"s":"musk","l":"musk"}
+          },
+          "VBG": {
+            "trailing": {"l": "trailing", "s": "trail"}
+          },
+          "CD": {
+            "one": {"l": "one", "s": "one"}
+          },
+          "NN": {
+            "stock": {"l": "stock", "s": "stock"},
+            "market": {"l": "market", "s": "market"},
+            "investor": {"l": "investor", "s": "investor"},
+            "future": {"l": "future", "s": "futur"}
+          }
+        }
+      }
+    },
+    "description": {
+      "text": "Tesla CEO Elon Musk has said the fundamental good the electric car maker does will be measured in the acceleration of the world to sustainable energy.",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Tesla": {"s":"tesla","l":"Tesla"},
+            "CEO": {"s":"CEO","l":"CEO"},
+            "Elon": {"s":"elon","l":"Elon"},
+            "Musk": {"s":"musk","l":"Musk"}
+          },
+          "NN": {
+            "energy": {"s":"energy","l":"energy"}
+          }
+        }
+      }
+    }
+  },
+  {
+    "article_id": "2a4f95bac76f3f37e4b721225baba311",
+    "language": "English",
+    "publish_date": "2021-10-20T11:05:11",
+    "annotations": {},
+    "source": "CNBC",
+    "title": {
+      "text": "Wedbush’s Joel Kulina breaks down Netflix, Tesla reports",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Wedbush": {"s":"wedbush","l":"Wedbush"},
+            "Joel": {"s":"joel","l":"Joel"},
+            "Kulina": {"s":"kulina","l":"Kulina"},
+            "Netflix": {"s":"netflix","l":"Netflix"},
+            "Tesla": {"s":"tesla","l":"Tesla"}
+          },
+          "NN": {
+            "report": {"s":"report","l":"report"},
+            "break": {"s":"break","l":"break"}
+          }
+        }
+      }
+    },
+    "description": {
+      "text": "Joel Kulina, Head of Technology/Media Trading at Wedbush Securities, joins Worldwide Exchange to discuss Netflix’s earnings report and what to expect from Tesla.",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Wedbush": {"s":"wedbush","l":"Wedbush"},
+            "Joel": {"s":"joel","l":"Joel"},
+            "Kulina": {"s":"kulina","l":"Kulina"},
+            "Netflix": {"s":"netflix","l":"Netflix"},
+            "Tesla": {"s":"tesla","l":"Tesla"}
+          },
+          "NN": {
+            "report": {"s":"report","l":"report"}
+          }
+        }
+      }
+    }
+  },
+  {
+    "article_id": "2a1f911a276f3f37e4b721225baba311",
+    "language": "English",
+    "publish_date": "2021-10-20T16:32:29",
+    "annotations": {},
+    "source": "CNBC",
+    "title": {
+      "text": "Alibaba shares surge nearly 7% after Jack Ma appears in Europe and company releases new chip",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Alibaba": {"l": "Alibaba", "s": "alibaba"},
+            "Europe": {"l": "Europe", "s": "europ"}
+          },
+          "NN": {
+            "Europe": {"l": "Europe", "s": "europ"},
+            "compapny": {"l": "company", "s": "compani"},
+            "release": {"l": "release", "s": "releas"}
+          }
+        }
+      }
+    },
+    "description": {
+      "text": "GUANGZHOU, China — Alibaba’s Hong Kong shares rallied as much as 9% on Wednesday following reports that its founder Jack Ma traveled to Europe and after the release of a new chip.",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "GUANGZHOU": {"l": "GUANGZHOU", "s": "guangzhou"},
+            "China": {"l": "China", "s": "china"},
+            "Hong":{"l": "Hong", "s": "hong"},
+            "Kong": {"l": "Kong", "s": "kong"},
+            "Wednesday":{"l": "Wednesday", "s": "wednesday"},
+            "Europe": {"l": "Europe", "s": "europ"}
+          }
+        }
+      }
+    }
+  },
+  {
+    "article_id": "2a1f911a276b3f1724b721225baba311",
+    "language": "English",
+    "publish_date": "2021-10-20T13:32:29",
+    "annotations": {},
+    "source": "CNBC",
+    "title": {
+      "text": "Alibaba expands cloud business abroad with new data centers in Asia, stepping up rivalry with Amazon",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "Alibaba": {"l": "Alibaba", "s": "alibaba"},
+            "Amazon": {"l": "Amazon", "s": "amazon"}
+          }
+        }
+      }
+    },
+    "description": {
+      "text": "GUANGZHOU, China — Alibaba plans to open its first data centers in South Korea and Thailand in 2022 as the Chinese technology giant looks to expand its cloud business further overseas.",
+      "keywords": {
+        "categorized": {
+          "NNP": {
+            "GUANGZHOU": {"l": "GUANGZHOU", "s": "guangzhou"},
+            "China": {"l": "China", "s": "china"},
+            "Alibaba": {"l": "Alibaba", "s": "alibaba"},
+            "South": {"l": "South", "s": "south"},
+            "Korea": {"l": "Korea", "s": "korea"},
+            "Thailand": {"l": "Thailand", "s": "thailand"},
+            "Chinese": {"l": "Chinese", "s": "chines"}
           }
         }
       }
