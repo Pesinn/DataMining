@@ -36,10 +36,8 @@ def entities():
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
   bar_labels=sentiment_labels
-  
   search_req = req.conv_req_to_query_string(request)
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-
   return render_template("sentiment.html", labels=bar_labels, data=sentiment)
 
 

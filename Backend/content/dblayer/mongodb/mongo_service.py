@@ -57,7 +57,7 @@ def convert_search_obj_to_dbreq(search):
         dbreq["publish_date"] = { "$lt" : search[i] }
 
     if(i == "search"):
-      search_string = "".join(str(x) for x in search[i])
+      search_string = " ".join(str(x) for x in search[i])
       if(search_string != ""):
         dbreq["$text"] = { "$search" : search_string }
   return {"$and": [dbreq]}

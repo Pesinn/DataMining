@@ -20,7 +20,7 @@ def get_sentiment_analysis_from_db(search):
   s_analysis = []
   for i in search:
     d = dbservice.get_sentiment_analysis(i)
-    s_analysis.append(factory.convert_db_data_to_domain_data_obj(d, i["search"]))
+    s_analysis.append(factory.convert_db_data_to_domain_data_obj(d, i["search"][0]))
   return s_analysis
 
 # Temp data
