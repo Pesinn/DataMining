@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import url_for
-from flask import request, jsonify
+from flask import request, jsonify, abort
 from content.dblayer.dbservice import *
 
 import os
@@ -11,7 +11,6 @@ import content.domain.articles.articles as domain_articles
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.entities.entities as domain_entities
 import content.domain.sentiment.sentiment_analysis as domain_sentiment
-
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -33,6 +32,7 @@ def articles():
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
   search_obj = req.conv_req_to_search_obj(request)
+  print("search_obj: ", search_obj)
   return jsonify(domain_news_data.get_news_data(search_obj))
 
 ###########################
@@ -51,6 +51,11 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
+  print(request.args.get("search"))
+  if(request.args.get("search") == None):
+    return jsonify({"status": "Nothing found"}), 204
+    #abort(204, description="No content found")
+#    return jsonify({"status": "Nothing found"})
   search_arr = req.conv_req_to_search_array(request)
   return jsonify(domain_sentiment.get_sentiment_analysis(search_arr))
 
@@ -89,7 +94,9 @@ def api_id():
   return jsonify(results)
 
 
-
+@app.errorhandler(404)
+def resource_not_found(e):
+    return jsonify(error=str(e)), 404
 
 
 # Create some test data for our catalog in the form of a list of dictionaries.
@@ -110,10 +117,6 @@ books = [
     'first_sentence': 'to wound the autumnal city.',
     'published': '1975'}
 ]
-
-
-
-
 
 port = int(os.environ.get('PORT', 8080))
 app.run(host='0.0.0.0', port=port)
