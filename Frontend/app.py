@@ -21,12 +21,14 @@ sentiment_labels = [
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
-  # No results should be provided until use has entered a search query
-  if request.args.get("search"):
-    search_req = req.conv_req_to_query_string(request)
-    art = domain_articles.get_articles(search_req)
-  else:
-    art = []
+  search_req = req.conv_req_to_query_string(request)
+
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html")
+  
+  art = domain_articles.get_articles(search_req)
+
   return render_template("articles.html", articles = art)
 
 @app.route('/entities', methods=["GET"])
@@ -37,9 +39,13 @@ def entities():
 def sentiment():
   bar_labels=sentiment_labels
   search_req = req.conv_req_to_query_string(request)
+  
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html")
+
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
   return render_template("sentiment.html", labels=bar_labels, data=sentiment)
-
 
 #@app.route('/books/', methods=["POST", "GET"])
 #@app.route('/books/<id>', methods=["POST", "GET"])
