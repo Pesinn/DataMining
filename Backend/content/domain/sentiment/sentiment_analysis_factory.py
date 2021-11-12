@@ -1,9 +1,8 @@
 def convert_db_data_to_domain_data_obj(db_data, search_str):
   obj = {
-    "search": search_str,
+#    "search": search_str,
     "sentiment_analysis": calculate_analysis_score(db_data)
   }
-
   add_frequency(obj["sentiment_analysis"], "lowest", "freq", 0)
   add_frequency(obj["sentiment_analysis"], "low", "freq", 0)
   add_frequency(obj["sentiment_analysis"], "middle", "freq", 0)
