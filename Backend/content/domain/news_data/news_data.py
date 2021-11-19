@@ -1,27 +1,56 @@
 import content.dblayer.dbservice as dbservice
 import content.domain.sentiment.sentiment_analysis as sentiment
 import content.domain.sentiment.sentiment_analysis_factory as sentiment_factory
+import content.domain.entities.entities_factory as entity_factory
 
-def get_news_data(search):
+"""
+filter = {
+  named_entities: true,
+  sentiment_analysis: true,
+  articles: {
+    limit: 20,
+    orderby: date
+  }
+}
+"""
+def get_news_data(search, filter):
   return_arr = []
   for i in search:
-    s_analysis = []
-    data = dbservice.get_news_data(i)
-    articles = []
-    for d in data:
-      article = {
-        "title": d["title"]["text"],
-        "description": d["description"]["text"],
-        "language": d["article_language"],
-        "source": d["source"],
-        "publish_date": d["publish_date"],
-      }
-      articles.append(article)
-    final_obj = {
-      "sentiment_analysis": sentiment_factory.convert_db_data_to_domain_data_obj(data, i["search"][0])["sentiment_analysis"],
-      "articles": articles,
-      "search": i["search"][0]
-    }
-    return_arr.append(final_obj)
-
+    return_arr.append(get_news_data_by_single_search(i, filter))
   return return_arr
+
+def get_news_data_by_single_search(s, filter):
+  data = dbservice.get_news_data(s)
+  articles = []
+  limit = 10
+  index = 0
+  sentiment = {}
+  ner = {}
+  
+  for d in data:
+    index += 1
+#    print(d["annotations"]["entities"]["named"])
+    sentiment = sentiment_factory.calculate_score(
+      sentiment, d["annotations"]["sentiment_analysis"])
+    ner = entity_factory.count_entities(
+      ner, d["annotations"]["entities"]["named"])
+    
+    if index <= limit:
+      articles.append(create_article(d))
+  
+  final_obj = {
+    "sentiment_analysis": sentiment,
+    "entities": {"named": ner },
+    "articles": articles,
+    "search": s["search"][0]
+  }
+  return final_obj
+
+def create_article(data):
+  return {
+    "title": data["title"]["text"],
+    "description": data["description"]["text"],
+    "language": data["article_language"],
+    "source": data["source"],
+    "publish_date": data["publish_date"]
+  }

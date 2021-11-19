@@ -90,11 +90,22 @@ app.config["DEBUG"] = True
 }
 """
 
+def create_filter(ner, sentiment, article_limit, order_by):
+  return {
+    "named_entities": ner,
+    "sentiment_analysis": sentiment,
+    "articles": {
+      "limit": article_limit,
+      "orderby": order_by
+    }
+  }
+
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
   search_arr = req.conv_req_to_search_array(request)
   print("search_arr: ", search_arr)
-  return jsonify(domain_news_data.get_news_data(search_arr))
+  filter = create_filter(True, True, 10, "date")
+  return jsonify(domain_news_data.get_news_data(search_arr, filter))
 
 
 @app.route('/api/v1/raw_data', methods=['GET'])

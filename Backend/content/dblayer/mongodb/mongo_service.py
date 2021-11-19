@@ -31,14 +31,37 @@ def get_raw_data(search):
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_news_data(search):
+  an = {"annorations": 1}
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
-    filter = {"_id": 0, "description.text": 1, "title.text": 1, "annotations": 1, "article_language": 1, "publish_date": 1, "source": 1 }
+    filter = {"_id": 0,
+              "description.text": 1,
+              "title.text": 1,
+              "annotations": 1,
+              "article_language": 1,
+              "publish_date": 1,
+              "source": 1 }
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_sentiment_analysis(search):
-  filter = {"_id": 0, "annotations.sentiment_analysis": 1}
+  filter = {"_id": 0,
+            "description.text": 1,
+            "title.text": 1,
+            "article_language": 1,
+            "publish_date": 1,
+            "source": 1,
+            "annotations.sentiment_analysis": 1}
+  return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
+
+def get_named_entities(search):
+  filter = {"_id": 0,
+            "description.text": 1,
+            "title.text": 1,
+            "article_language": 1,
+            "publish_date": 1,
+            "source": 1,
+            "annotations.entities.named": 1}
   return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
