@@ -29,22 +29,33 @@ def get_news_data_by_single_search(s, filter):
   
   for d in data:
     index += 1
-#    print(d["annotations"]["entities"]["named"])
-    sentiment = sentiment_factory.calculate_score(
-      sentiment, d["annotations"]["sentiment_analysis"])
-    ner = entity_factory.count_entities(
-      ner, d["annotations"]["entities"]["named"])
+    sentiment = get_sentiment_score(
+      sentiment, d["annotations"]["sentiment_analysis"], filter)
+    ner = get_named_entities(
+      ner, d["annotations"]["entities"]["named"], filter)
     
     if index <= limit:
       articles.append(create_article(d))
   
-  final_obj = {
+  final_obj = {  
     "sentiment_analysis": sentiment,
     "entities": {"named": ner },
     "articles": articles,
     "search": s["search"][0]
   }
   return final_obj
+
+def get_sentiment_score(combined, data, filter):
+  if(filter["sentiment_analysis"] ==  True):
+    return sentiment_factory.calculate_score(
+      combined, data)
+  return {}
+
+def get_named_entities(combined, data, filter):
+  if(filter["named_entities"] ==  True):
+    return entity_factory.count_entities(
+      combined, data)
+  return {}
 
 def create_article(data):
   return {
