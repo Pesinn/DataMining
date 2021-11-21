@@ -4,7 +4,7 @@ from flask import url_for
 from flask import request, jsonify
 from flask import render_template
 import os
-import static.code.search as domain_articles
+import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
 import static.code.factory.request as req
 

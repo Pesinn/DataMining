@@ -6,18 +6,22 @@
 <div class="container">
   <div class="row">
     {% for a in articles %}
-    <div class="col-md-12 col-lg-6 Articles-box">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">{{ a.title.text }}</h5>
-          <p class="card-text">{{ a.description.text }}</p>
-          <div class="Article-footer">
-            <p class="card-link u-floatRight u-marginRight">{{ a.source }}</p>
-            <p class="card-link u-marginLeft"> {{ a.publish_date }} </p>
+      {% for i in a.articles %}
+
+        <div class="col-md-12 col-lg-6 Articles-box">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.title }}</h5>
+              <p class="card-text">{{ i.description }}</p>
+              <div class="Article-footer">
+                <p class="card-link u-floatRight u-marginRight">{{ i.source }}</p>
+                <p class="card-link u-marginLeft"> {{ i.publish_date }} </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+
+      {% endfor %}
     {% endfor %}
   </div>
 </div>
