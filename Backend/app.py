@@ -103,10 +103,8 @@ def create_filter(ner, sentiment, article_limit, order_by):
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
   search_arr = req.conv_req_to_search_array(request)
-  print("search_arr: ", search_arr)
   filter = create_filter(True, True, 10, "date")
   return jsonify(domain_news_data.get_news_data(search_arr, filter))
-
 
 @app.route('/api/v1/raw_data', methods=['GET'])
 def raw_data():
@@ -124,6 +122,13 @@ def articles():
   search_obj = req.conv_req_to_search_obj(request)
   return jsonify(domain_articles.get_articles(search_obj))
 
+@app.route('/api/v2/articles', methods=['GET'])
+def articles_v2():
+  filter = create_filter(False, False, 10, "date")
+  search_arr = req.conv_req_to_search_array(request)
+  return jsonify(domain_news_data.get_news_data(search_arr, filter))
+
+
 ###########################
 # Entities endpoints
 ###########################
@@ -133,6 +138,12 @@ def entities():
   search_obj = req.conv_req_to_search_obj(request)
   return jsonify(domain_entities.get_entities(search_obj))
 
+@app.route('/api/v2/entities', methods=['GET'])
+def entities_v2():
+  search_arr = req.conv_req_to_search_array(request)
+  filter = create_filter(True, False, 10, "date")
+  return jsonify(domain_news_data.get_news_data(search_arr, filter))
+
 
 ###########################
 # Sentiment endpoints
@@ -140,13 +151,18 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
-  print(request.args.get("search"))
   if(request.args.get("search") == None):
     return jsonify({"status": "Nothing found"}), 204
-    #abort(204, description="No content found")
-#    return jsonify({"status": "Nothing found"})
   search_arr = req.conv_req_to_search_array(request)
   return jsonify(domain_sentiment.get_sentiment_analysis(search_arr))
+
+@app.route('/api/v2/sentiment', methods=['GET'])
+def sentiment_analysis_v2():
+  if(request.args.get("search") == None):
+    return jsonify({"status": "Nothing found"}), 204
+  filter = create_filter(False, True, 10, "date")
+  search_arr = req.conv_req_to_search_array(request)
+  return jsonify(domain_news_data.get_news_data(search_arr, filter))
 
 
 ###########################
