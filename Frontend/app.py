@@ -6,6 +6,7 @@ from flask import render_template
 import os
 import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
+import static.code.domain.news_data.news_data as domain_news_data
 import static.code.factory.request as req
 
 app = Flask(__name__)
@@ -27,7 +28,7 @@ def index():
   if "[]" in search_req or not search_req:
     return render_template("default.html")
   
-  art = domain_articles.get_news_data_from_file(search_req)
+  art = domain_articles.get_articles(search_req)
 
   return render_template("articles.html", articles = art)
 
