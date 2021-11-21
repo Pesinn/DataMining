@@ -100,7 +100,7 @@ def create_filter(ner, sentiment, article_limit, order_by):
     }
   }
 
-@app.route('/api/v1/news_data', methods=['GET'])
+@app.route('/api/v2/news_data', methods=['GET'])
 def news_data():
   search_arr = req.conv_req_to_search_array(request)
   filter = create_filter(True, True, 10, "date")
