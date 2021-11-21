@@ -27,7 +27,7 @@ def index():
   if "[]" in search_req or not search_req:
     return render_template("default.html")
   
-  art = domain_articles.get_articles(search_req)
+  art = domain_articles.get_news_data_from_file(search_req)
 
   return render_template("articles.html", articles = art)
 

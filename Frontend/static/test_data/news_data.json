@@ -1,0 +1,2445 @@
+[
+  {
+      "articles": [
+          {
+              "description": "The NOVID arches blast users with a fog which claims to eliminate Covid-19, flu and norovirus and if they are a success then they could be installed at football grounds, restaurants and bars",
+              "language": "en",
+              "publish_date": "2020-10-01",
+              "source": "dailystar.co.uk",
+              "title": "Walk-through booths which 'kill Covid' trialled for first time in UK this weekend - Daily Star"
+          },
+          {
+              "description": "A patient who lost their partner to Covid-19 was taken to hospital intoxicated where she swore at nurses, told one to 'f*** off' and threw a box of vomit at them",
+              "language": "en",
+              "publish_date": "2020-10-01",
+              "source": "dailystar.co.uk",
+              "title": "Drunk patient threw box of vomit at NHS nurse after losing partner to Covid - Daily Star"
+          },
+          {
+              "description": "Wondering how to get tested for coronavirus? Here's all you need to know about diagnosing COVID-19",
+              "language": "en",
+              "publish_date": "2020-03-13",
+              "source": "dailystar.co.uk",
+              "title": "How to get tested for coronavirus: What to do if you fear you have COVID-19 - Daily Star"
+          },
+          {
+              "description": "Thousands of people across the globe are infected by coronavirus, but are babies and toddlers at risk? Here is how to keep your kids safe from COVID-19",
+              "language": "en",
+              "publish_date": "2020-03-18",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus: Are babies and toddlers at risk? How to keep kids safe from COVID-19 - Daily Star"
+          },
+          {
+              "description": "Soldiers will be issued with Citriodiol and a disinfectant spray to be used as a decontaminant if they come into contact with someone who has or might have Covid-19",
+              "language": "en",
+              "publish_date": "2020-04-25",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus: UK troops given insect repellent that 'could kill Covid-19' - Daily Star"
+          },
+          {
+              "description": "As US lawmakers continue to describe COVID-19 as 'The Chinese Virus' China, Iran and Russia are all talking about coronavirus as an American bioweapon",
+              "language": "en",
+              "publish_date": "2020-03-18",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus war of words erupts as superpowers blame each other for COVID-19 'bioweapon' - Daily Star"
+          },
+          {
+              "description": "Daily Star Online takes a look into how the UK's music scene is coping with the Covid-19 pandemic and the efforts to overcome its impact",
+              "language": "en",
+              "publish_date": "2020-03-26",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus: How the UK music scene is fighting the impact of Covid-19 - and what you can do to help - Daily Star"
+          },
+          {
+              "description": "The coronavirus pandemic is taking a toll on social lives around the globe as people practice social distancing. Here we take a look at whether condoms can really protect you against COVID-19",
+              "language": "en",
+              "publish_date": "2020-03-22",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus: Can condoms really protect you and your hands from COVID-19? - Daily Star"
+          },
+          {
+              "description": "It comes after legal action launched last week which argued the Home Office hadn't done enough to prevent immigration detainees from the spread of Covid-19",
+              "language": "en",
+              "publish_date": "2020-03-22",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus: Hundreds held in immigration centres released amid Covid-19 fears - Daily Star"
+          },
+          {
+              "description": "Canadian biopharmaceutical company Medicago claims it has produced a COVID-19 vaccine less than three weeks after receiving the genetic sequence for coronavirus",
+              "language": "en",
+              "publish_date": "2020-03-13",
+              "source": "dailystar.co.uk",
+              "title": "Coronavirus cure hopes as firm claims vaccine for deadly COVID-19 ready in weeks - Daily Star"
+          }
+      ],
+      "entities": {
+          "named": {
+              "1": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "3": {
+                  "count": 3,
+                  "type": "CARDINAL"
+              },
+              "5": {
+                  "count": 2,
+                  "type": "CARDINAL"
+              },
+              "7": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "11": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "12": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "13": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "18": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "19": {
+                  "count": 2,
+                  "type": "CARDINAL"
+              },
+              "23": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "25": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "28": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "36": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "37": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "39": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "50": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "53": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "69": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "72": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "73": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "79": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "84": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "87": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "90": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "103": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "120": {
+                  "count": 1,
+                  "type": "MONEY"
+              },
+              "128": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "200": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "233": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "252": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "600": {
+                  "count": 2,
+                  "type": "CARDINAL"
+              },
+              "700": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "727": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "793": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "798": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "813": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "874": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "2012": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "2017": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "2020": {
+                  "count": 3,
+                  "type": "DATE"
+              },
+              "2021": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "' - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "'19": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "0.9": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "1,197": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "1,900": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "1.1": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "1.5": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "100,000": {
+                  "count": 1,
+                  "type": "MONEY"
+              },
+              "150,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "18-year-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "2,250": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "20,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "200,000 - Daily Star": {
+                  "count": 1,
+                  "type": "PERCENT"
+              },
+              "24 hours": {
+                  "count": 2,
+                  "type": "TIME"
+              },
+              "25 - after": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "25-year-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "27,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "28m": {
+                  "count": 1,
+                  "type": "MONEY"
+              },
+              "3,500": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "3,983": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "30 million": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "36-year-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "39,045": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "3d": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "4 months": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "4,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "4,825": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "40-litre": {
+                  "count": 1,
+                  "type": "QUANTITY"
+              },
+              "42 degrees": {
+                  "count": 1,
+                  "type": "QUANTITY"
+              },
+              "42,589": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "45-year-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "47-year-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "48-hour": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "5,683": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "50 per cent": {
+                  "count": 1,
+                  "type": "MONEY"
+              },
+              "50%": {
+                  "count": 1,
+                  "type": "PERCENT"
+              },
+              "500k": {
+                  "count": 1,
+                  "type": "MONEY"
+              },
+              "60%": {
+                  "count": 2,
+                  "type": "PERCENT"
+              },
+              "75 years": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "8-day": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "87-year-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "9-month-old": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "90%": {
+                  "count": 1,
+                  "type": "PERCENT"
+              },
+              "A Zelda Breath": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "A&E": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Aaron Wan-Bissaka": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Adele": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Aggie MacKenzie": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Aggie Mckenzie": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Alan Sugar": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Aldo": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Aldo Group": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Aledo": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Amanda Holden": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Amazon": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Amazon fortune - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "American": {
+                  "count": 3,
+                  "type": "NORP"
+              },
+              "Americans": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Andre Gray": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Angela Martinez Gómez": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Angela Merkel": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Anhui": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Ant and Dec": {
+                  "count": 1,
+                  "type": "WORK_OF_ART"
+              },
+              "Apple": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Apprentice": {
+                  "count": 1,
+                  "type": "PRODUCT"
+              },
+              "April": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "April - Daily Star": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "April 10": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Argentina": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Arteta": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Aston Villa": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Australian Melissa Inkster": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Austria": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "BBC": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Beckenham": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Belizario Roman": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Ben Wallace": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Biritain": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Bolivian": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Boris Johnson": {
+                  "count": 4,
+                  "type": "PERSON"
+              },
+              "Bosnia and Herzegovina": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Brad Hunstable": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Bradford": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Brazil": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Britain": {
+                  "count": 7,
+                  "type": "GPE"
+              },
+              "British": {
+                  "count": 2,
+                  "type": "NORP"
+              },
+              "Brits": {
+                  "count": 6,
+                  "type": "NORP"
+              },
+              "Buckingham Palace": {
+                  "count": 1,
+                  "type": "FAC"
+              },
+              "Bud Light": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Burger King": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "COVID-19": {
+                  "count": 14,
+                  "type": "ORG"
+              },
+              "COVID-19 - Daily Star": {
+                  "count": 7,
+                  "type": "ORG"
+              },
+              "COVID-19 hits - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "COVID-19 outbreak - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "COVID-19 pandemic - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "COVID-19? - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "California": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Camilla": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Canadian": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Canelo Alvarez": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Carina Lepore's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Carla": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Carlisle": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Cassian Coates": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Celeb": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Ceres": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Championship": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Charles": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Chase": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Chelsea": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "China": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "Chinese Super League": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Chiswick": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Chris Whitty": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Citriodiol": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Comedian Ricky Gervais": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Con": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Coronation Street": {
+                  "count": 1,
+                  "type": "LOC"
+              },
+              "Coronavirus": {
+                  "count": 19,
+                  "type": "ORG"
+              },
+              "Coronavirus: Fears 5G wifi networks": {
+                  "count": 1,
+                  "type": "WORK_OF_ART"
+              },
+              "Costa": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Covid": {
+                  "count": 3,
+                  "type": "PERSON"
+              },
+              "Covid - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Covid Officer'": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Covid lockdown -": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Covid-19": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Covid-19 - Daily Star": {
+                  "count": 8,
+                  "type": "ORG"
+              },
+              "Covid-19 battle - Daily Star": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Covid-19 crisis - Daily Star": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Covid-19 victim - Daily Star": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Covid-19' - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Craig Ruston": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Cristiano Ronaldo": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Crocodile Dundee": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Daily Star": {
+                  "count": 13,
+                  "type": "WORK_OF_ART"
+              },
+              "Daily Star Online": {
+                  "count": 4,
+                  "type": "WORK_OF_ART"
+              },
+              "Daren Bland": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Dawn Bilbrough": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Dean Smith's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Debora Maidana": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "December 10th": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Defence": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Derek": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Derek Draper": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Disneyland": {
+                  "count": 1,
+                  "type": "FAC"
+              },
+              "Domingos Quina": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Donald Trump": {
+                  "count": 3,
+                  "type": "PERSON"
+              },
+              "Doncaster": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Downing Street": {
+                  "count": 2,
+                  "type": "FAC"
+              },
+              "Download Festival": {
+                  "count": 1,
+                  "type": "EVENT"
+              },
+              "Dr Hilary - Daily Star": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Duran": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Duran Duran's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "EFL": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "EastEnders": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Eduardo Sequeira": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Edwin Hillier": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Elizabeth Schneider": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Emily": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "England": {
+                  "count": 6,
+                  "type": "GPE"
+              },
+              "Essex": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Ethan Hunt": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Euro 2020 - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Europe": {
+                  "count": 3,
+                  "type": "LOC"
+              },
+              "European": {
+                  "count": 3,
+                  "type": "NORP"
+              },
+              "Everton": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "F1 Australian Grand Prix - Daily Star": {
+                  "count": 1,
+                  "type": "WORK_OF_ART"
+              },
+              "Facebook": {
+                  "count": 1,
+                  "type": "WORK_OF_ART"
+              },
+              "Faye Brookes": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "February": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "First": {
+                  "count": 3,
+                  "type": "ORDINAL"
+              },
+              "France": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Frank Lampard’s": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Friday": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "GMB": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Gaga '": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Gainesville": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Gary Lenius": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Gatwick Airport": {
+                  "count": 1,
+                  "type": "FAC"
+              },
+              "Geneva Wood": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "George Smart": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "George Smart -": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "German": {
+                  "count": 2,
+                  "type": "NORP"
+              },
+              "Germany": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Global's Make Some Noise Day": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Golden Boy Promotions": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Good Morning": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Good Morning Britain": {
+                  "count": 2,
+                  "type": "LOC"
+              },
+              "Google": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Got Talent": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Gran": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Greatest Showman": {
+                  "count": 1,
+                  "type": "PRODUCT"
+              },
+              "Halloween": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Harrow": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Harvey": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "Harvey Price": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Hates Fags'": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Hayden": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Hemel Hempstead": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Hilary Jones": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Hillary Jones": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "How Arsenal": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Hundreds": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "ITV": {
+                  "count": 4,
+                  "type": "ORG"
+              },
+              "IVF": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Idris Elba": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Idris Elba's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Incoming Super Smash Bros Ultimate": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Insta post - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Institute of Virology": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Iran": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Ireland": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Ischgl": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Italian": {
+                  "count": 2,
+                  "type": "NORP"
+              },
+              "Italy": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "JD Wetherspoon": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Jack": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Jamaica": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "James Martin": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Jamie Redknapp": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "January": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "January 15 to 19": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Japan": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Japanese": {
+                  "count": 2,
+                  "type": "NORP"
+              },
+              "Jeff Bezos '": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Jennie Stejna": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "John Prine": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "John Taylor": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "John Terry": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Jonny Labey": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Jordan": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Josh Anderson": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "June 17": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "June 20": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Juventus": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "K-Pop": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Karen Hauer": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kate Garraway": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kate Garraway '": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kate Garraway'": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kate Garraway's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Katie": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Katie Price": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Katie Price's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Keala Settle": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kelly Osbourne": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kevin Clifton": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kevin Clifton's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kevin Lygo": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kim Jong-un's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Kinshasa": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Kirkland": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Lady Gaga": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Lauren Bouskila": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "League Covid": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Leon Bailey": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Leonard Whitehurst": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Lewis Capaldi": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Leyton": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Leyton Orient": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Liam Gallagher": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Life Care": {
+                  "count": 1,
+                  "type": "FAC"
+              },
+              "Linda Lusardi": {
+                  "count": 3,
+                  "type": "PERSON"
+              },
+              "Linda Lusardi '": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Lisa Appleton": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Lisa Snowdon": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Liverpool": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "London": {
+                  "count": 3,
+                  "type": "GPE"
+              },
+              "London - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "London Marathon": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Lorraine": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Lorraine Kelly": {
+                  "count": 3,
+                  "type": "PERSON"
+              },
+              "Lothian Health Board": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Louise Redknapp": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Louise Redknapp's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Love Island": {
+                  "count": 2,
+                  "type": "LOC"
+              },
+              "Luis Carmelo Roman": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "MSE": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Madeira": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Maitland Ward": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Manchester City": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "March": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "March - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "March 14": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "March 23": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Marcus Rashford": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Maria Arzamasova": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Maria Carmel Wild": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Mark Blum": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Mark Meghezzi": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Marouane Fellaini": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Martin Lewis": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Matt Hancock": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Matt Lucas": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "May": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Maya Jama": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "McDonald’s": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "McLaren": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Medicago": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Mike Ashley": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Mikel Arteta": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Millions": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "Molly-Mae": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Molly-Mae Hague": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Monday": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "Money Saving Expert": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "NHS": {
+                  "count": 6,
+                  "type": "ORG"
+              },
+              "NHS - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "NHS England": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "NOVID": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Natasha Ott's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Nathaniel Chalobah": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "New York": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Newcastle": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "Newcastle United": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Nhoa": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Niall Horan": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Nineteen": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "Nintendo": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Nintendo Direct": {
+                  "count": 1,
+                  "type": "FAC"
+              },
+              "Non-Ionizing Radiation Protection": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "North Korea '": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "North London": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "North Somerset": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Northern Ireland": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Northwick Park Hospital": {
+                  "count": 1,
+                  "type": "FAC"
+              },
+              "November": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "N’Golo Kante": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "October - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "One": {
+                  "count": 4,
+                  "type": "CARDINAL"
+              },
+              "Only 1,570": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "Only 6%": {
+                  "count": 1,
+                  "type": "PERCENT"
+              },
+              "Oxford": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Oxford University's": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "PM": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "PM - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "PPE": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Patrick Vallance": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Paul Gascoigne": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Paul Sinha": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Paul Sinha '": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Peter Andre": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Piers Morgan": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "Playwrights Horizons": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Premier League": {
+                  "count": 10,
+                  "type": "ORG"
+              },
+              "Premier League’s": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Preston": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Prince Charles": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Pyongyang": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Raheem Sterling": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "Rebecca Lobie": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Reece Jame": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Rhian Sugden": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Ricky Gervais": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Ricky Simms": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Riley Reid": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Ron Smith": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Ronaldo": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Royal Family": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Runner": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Russia": {
+                  "count": 3,
+                  "type": "GPE"
+              },
+              "Russian": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Sabrina": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Sam Kane": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Saturday": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "Scotland": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "Scottish": {
+                  "count": 2,
+                  "type": "NORP"
+              },
+              "Seattle": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Seoul": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "September": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Simple Minds": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Soft": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Sol Campbell": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "South Korean": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "South Tyneside": {
+                  "count": 1,
+                  "type": "LOC"
+              },
+              "Southampton": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Soviet": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Spain": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Spanish": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Sri Lanka": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Stansted, Southend": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Steve Irwin's": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Steven Holroyd": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Sunday": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Super Smash Bros Fighters Pass": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Surrey": {
+                  "count": 1,
+                  "type": "PRODUCT"
+              },
+              "Susanna Reid": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Tedros Adhanom Ghebreyesus": {
+                  "count": 1,
+                  "type": "PRODUCT"
+              },
+              "Texas": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "The Australian Grand Prix": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "The British Association of Otorhinolaryngology": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "The Chinese Virus' China": {
+                  "count": 1,
+                  "type": "WORK_OF_ART"
+              },
+              "The Department of Health": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "The FA Cup quarter-finals": {
+                  "count": 1,
+                  "type": "LAW"
+              },
+              "The Foreign Office": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "The Jeremy Vine Show": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "The London Airport": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "The World Health Organisation": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "The Wuhan Institute of Virology": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "This Morning": {
+                  "count": 1,
+                  "type": "WORK_OF_ART"
+              },
+              "Thousands": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "Three": {
+                  "count": 3,
+                  "type": "CARDINAL"
+              },
+              "Thursday": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Tom Cruise": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Tom Cruise '": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Tommy Fury": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Tory": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "Tottenham": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "Trump": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Tuesday": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "Twitter": {
+                  "count": 4,
+                  "type": "PRODUCT"
+              },
+              "UK": {
+                  "count": 38,
+                  "type": "GPE"
+              },
+              "UN": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "US": {
+                  "count": 9,
+                  "type": "GPE"
+              },
+              "US - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Ulrika Jonsson": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "University of Florida": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "University of Trinidad": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Usain": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Usain Bolt": {
+                  "count": 2,
+                  "type": "PERSON"
+              },
+              "VE Day": {
+                  "count": 1,
+                  "type": "EVENT"
+              },
+              "Villa": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "Wales": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "Walsall Manor Hospital": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Wanda": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Wash": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Washington": {
+                  "count": 2,
+                  "type": "GPE"
+              },
+              "Watford": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Wednesday": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "Wei Guixian": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Wendy Leech": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Westboro Baptist Church": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Winter-Rose Watson": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "World Health Organisation": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "Wuhan": {
+                  "count": 4,
+                  "type": "GPE"
+              },
+              "Zara McDermott": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "Zelda Breath": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "a few days": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "a few days'": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "a month": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "above 4,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "afternoon": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "around 25%": {
+                  "count": 1,
+                  "type": "PERCENT"
+              },
+              "as many as 25 million": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "at least 31,488": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "at least 60%": {
+                  "count": 1,
+                  "type": "PERCENT"
+              },
+              "battle - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "between June 22 and June 29": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "bin": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "boozy antics - Daily Star": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "close to 42,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "covid-19": {
+                  "count": 4,
+                  "type": "DATE"
+              },
+              "covid-19, Demi Rose": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "days": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "earlier this month": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "early September": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "eight": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "evening": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "every night": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "fifth": {
+                  "count": 1,
+                  "type": "ORDINAL"
+              },
+              "first": {
+                  "count": 12,
+                  "type": "ORDINAL"
+              },
+              "five metres": {
+                  "count": 1,
+                  "type": "QUANTITY"
+              },
+              "four-week": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "half": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "home - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "hours": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "hours - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "hundreds": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "jumpsuit - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "just an hour": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "last night": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "last week": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "last weekend": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "less than three weeks": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "lockdown house party": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "mid-March": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "millions": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "more than 2,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "more than 800": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "more than a week": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "mosquito": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "next week": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "next year": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "nine": {
+                  "count": 2,
+                  "type": "CARDINAL"
+              },
+              "nine days": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "one": {
+                  "count": 7,
+                  "type": "CARDINAL"
+              },
+              "one-day": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "outbreak - Daily Star": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "over 4,000": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "over a week": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "overnight": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "party - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "recent years": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "recovering - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "restart - Daily Star": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "season": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "second": {
+                  "count": 6,
+                  "type": "ORDINAL"
+              },
+              "seven": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "seven days": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "several days": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "six": {
+                  "count": 2,
+                  "type": "CARDINAL"
+              },
+              "superfans": {
+                  "count": 1,
+                  "type": "NORP"
+              },
+              "the 2018/19 season": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the British Veterinary Association": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the Democratic Republic of Congo": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "the Home Office": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the International Commission": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the Office for National Statistics": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the Premier League": {
+                  "count": 2,
+                  "type": "ORG"
+              },
+              "the Premier League on TV": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the University of California": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the University of Manchester": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the University of Manchester - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the Word Health Organisation -": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the World Health Organization’s": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "the age of": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the coming weeks": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the last 24 hours": {
+                  "count": 1,
+                  "type": "TIME"
+              },
+              "the last two weeks": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the past week": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the start of the year": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the weekend": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "the years": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "their worst weeks": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "third": {
+                  "count": 1,
+                  "type": "ORDINAL"
+              },
+              "this weekend": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "this year": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "three": {
+                  "count": 4,
+                  "type": "CARDINAL"
+              },
+              "three days": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "three weeks ago": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "today": {
+                  "count": 6,
+                  "type": "DATE"
+              },
+              "two": {
+                  "count": 4,
+                  "type": "CARDINAL"
+              },
+              "two weeks": {
+                  "count": 4,
+                  "type": "DATE"
+              },
+              "two-week": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "up to 12 weeks": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "up to 9 days": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "wearing bin": {
+                  "count": 1,
+                  "type": "PERSON"
+              },
+              "weekly": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "weeks": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "west London": {
+                  "count": 1,
+                  "type": "GPE"
+              },
+              "wild house party - Daily Star": {
+                  "count": 1,
+                  "type": "ORG"
+              },
+              "year": {
+                  "count": 1,
+                  "type": "DATE"
+              },
+              "yesterday": {
+                  "count": 2,
+                  "type": "DATE"
+              },
+              "zero": {
+                  "count": 1,
+                  "type": "CARDINAL"
+              },
+              "£11 million": {
+                  "count": 1,
+                  "type": "MONEY"
+              }
+          }
+      },
+      "search": "covid",
+      "sentiment_analysis": {
+          "all": {
+              "freq": 212
+          },
+          "high": {
+              "freq": 44
+          },
+          "highest": {
+              "freq": 4
+          },
+          "low": {
+              "freq": 64
+          },
+          "lowest": {
+              "freq": 8
+          },
+          "middle": {
+              "freq": 92
+          }
+      }
+  }
+]
