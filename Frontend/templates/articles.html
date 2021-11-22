@@ -6,17 +6,12 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-12 col-lg-6">
-      Bleh
-    </div>
-
     <!-- Display articles -->
-    <div class="col-md-12 col-lg-6">
       {% for a in data %}
         {% for i in a.articles %}
 
-          <div class="col-md-12 col-lg-12 Articles-box">
-            <div class="card">
+          <div class="col-md-12 col-lg-6 Article-box">
+            <div class="card Article-box-card">
               <div class="card-body">
                 <h5 class="card-title">{{ i.title }}</h5>
                 <p class="card-text">{{ i.description }}</p>
@@ -30,7 +25,6 @@
 
         {% endfor %}
       {% endfor %}
-    </div>
 
   </div>
 </div>

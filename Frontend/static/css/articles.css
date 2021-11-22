@@ -1,5 +1,9 @@
-.Articles-box {
+.Article-box {
   margin-bottom: 10px;
+}
+
+.Article-box-card {
+  background-color: rgba(75, 125, 220, 0.05)
 }
 
 .Article-footer {
