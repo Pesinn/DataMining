@@ -7,6 +7,7 @@ import os
 import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
 import static.code.domain.news_data.news_data as domain_news_data
+import static.code.domain.entities.entities as domain_entities
 import static.code.factory.request as req
 
 app = Flask(__name__)
@@ -27,20 +28,29 @@ def index():
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
-  
+
   art = domain_articles.get_articles(search_req)
 
-  return render_template("articles.html", articles = art)
+  return render_template("articles.html", data = art)
 
 @app.route('/entities', methods=["GET"])
 def entities():
-  return render_template("entities.html")
+  search_req = req.conv_req_to_query_string(request)
+
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html")
+
+  ent = domain_entities.get_entities(search_req)
+
+  return render_template("entities.html", data = ent)
+
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
   bar_labels=sentiment_labels
   search_req = req.conv_req_to_query_string(request)
-  
+
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
@@ -54,7 +64,6 @@ def sentiment():
 #    if(id!=None):
 #        return render_template("books.html", books=getBookById(id))
 #    return render_template("books.html", books=getBooks())
-
 
 #def getBookById(id):
 #    print("id: ", id)
