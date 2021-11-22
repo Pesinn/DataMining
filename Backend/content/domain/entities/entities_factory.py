@@ -22,3 +22,40 @@ def count_entities(combined, ent):
         "type": ent[e]
       }
   return combined
+
+"""
+Input:
+"Rolls Royce":
+{
+  "count": 1,
+  "type": "ORG"
+},
+"TESLA": {
+  "count": 2,
+  "type": "ORG"
+}
+
+Output:
+[
+  {
+    "count": 2,
+    "entity": "TESLA",
+    "type": "ORG"
+  },
+  {
+    "count": 1,
+    "entity": "Rolls Royce",
+    "type": "ORG"
+  }
+]
+"""
+def entity_dict_to_list(dict):
+  l = []
+  for i in dict:
+    l.append({
+      "entity": i,
+      "count": dict[i]["count"],
+      "type": dict[i]["type"]
+    })
+  
+  return sorted(l, key=lambda x: x["count"], reverse=True)
