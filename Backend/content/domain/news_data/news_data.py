@@ -46,14 +46,6 @@ def get_news_data_by_single_search(s, filter):
 
   return final_obj
 
-def test(elem):
-  print("===============")
-  print(elem)
-  return elem["count"]
-
-def take_count(elem):
-  return elem["count"]
-
 def get_sentiment_score(combined, data, filter):
   if(filter["sentiment_analysis"] ==  True):
     return sentiment_factory.calculate_score(
