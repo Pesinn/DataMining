@@ -1,3 +1,5 @@
+import math
+
 """
 combined: {
   "ENTITY": FREQUENCY
@@ -49,13 +51,29 @@ Output:
   }
 ]
 """
-def entity_dict_to_list(dict):
+def entity_dict_to_list(dict, limit):
   l = []
+  total_count = 0
   for i in dict:
     l.append({
       "entity": i,
       "count": dict[i]["count"],
       "type": dict[i]["type"]
     })
+    total_count = total_count + dict[i]["count"]
   
-  return sorted(l, key=lambda x: x["count"], reverse=True)
+  sorted_list = sorted(l, key=lambda x: x["count"], reverse=True)[:limit]
+  
+  highest_count = sorted_list[0]["count"]
+  limited_count = 0
+
+  for i in sorted_list:
+    limited_count = limited_count + i["count"]
+
+  for i in sorted_list:
+    i["total_count_ratio"] = math.trunc((i["count"] / total_count)*100)
+    i["limited_count_ratio"] = math.trunc((i["count"] / limited_count)*100)
+    i["count_ratio_normalized"] = math.trunc((i["count"] / highest_count)*100)
+
+
+  return sorted_list
