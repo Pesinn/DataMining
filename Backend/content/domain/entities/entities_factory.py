@@ -52,6 +52,9 @@ Output:
 ]
 """
 def entity_dict_to_list(dict, limit):
+  if dict == {}:
+    return {}
+  
   l = []
   total_count = 0
   for i in dict:
