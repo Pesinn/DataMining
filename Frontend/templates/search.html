@@ -15,15 +15,27 @@
 </ul>
 
 <div class="Search-buttons">
-  <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
-  <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
-  <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
+  <div style="margin-bottom: 5px">     
+    <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
+    <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
+    <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
+  </div>
+
+  <div id="search-buttons-entities" style="margin-bottom: 5px">
+    <button id="entities-filter-button" type="button" class="btn btn-outline-primary">Filter</button>
+    <button id="entities-cloud-button" type="button" class="btn btn-outline-primary">Word Cloud</button>
+  </div>
+
+  <div id="search-buttons-sentiment" style="margin-bottom: 5px">
+    <button id="sentiment-filter-button" type="button" class="btn btn-outline-primary">Filter</button>
+    <button id="sentiment-stats-button" type="button" class="btn btn-outline-primary">Something</button>
+  </div>
+
 </div>
 
 <div class="container Content-frame">
     {% block sub_content %}{% endblock %}
 </div>
-
 
 <script>
 var debug = false;
@@ -53,13 +65,43 @@ function buttonClassHandler() {
   pathname = window.document.location.pathname;
   if(pathname === "/") {
     modifyElementClass("articles-button", "btn-primary", "btn-outline-primary");
+    articles_buttons();
   }
-  else if(pathname === "/entities") {
+  if(pathname === "/entities" || pathname === "/entities-cloud") {
     modifyElementClass("entities-button", "btn-primary", "btn-outline-primary");
+    entities_buttons();
+  }
+  if(pathname === "/entities") {
+    modifyElementClass("entities-filter-button", "btn-primary", "btn-outline-primary");
+  }
+  if(pathname === "/entities-cloud") {
+    modifyElementClass("entities-cloud-button", "btn-primary", "btn-outline-primary");
+  }
+  if(pathname === "/sentiment" || pathname === "/sentiment-stats") {
+    modifyElementClass("sentiment-button", "btn-primary", "btn-outline-primary");
+    sentiment_buttons();
   }
   if(pathname === "/sentiment") {
-    modifyElementClass("sentiment-button", "btn-primary", "btn-outline-primary");
+    modifyElementClass("sentiment-filter-button", "btn-primary", "btn-outline-primary");
   }
+  if(pathname === "/sentiment-stats") {
+    modifyElementClass("sentiment-stats-button", "btn-primary", "btn-outline-primary");
+  }
+}
+
+function articles_buttons() {
+  document.getElementById("search-buttons-sentiment").style.display = "none";
+  document.getElementById("search-buttons-entities").style.display = "none";
+}
+
+function sentiment_buttons() {
+  document.getElementById("search-buttons-sentiment").style.display = "block";
+  document.getElementById("search-buttons-entities").style.display = "none";
+}
+
+function entities_buttons() {
+  document.getElementById("search-buttons-sentiment").style.display = "none";
+  document.getElementById("search-buttons-entities").style.display = "block";
 }
 
 function buttonOnClickHandler() {
@@ -69,8 +111,20 @@ function buttonOnClickHandler() {
   document.getElementById("entities-button").onclick = function entities() {
     redirectURL("/entities")
   }
+  document.getElementById("entities-filter-button").onclick = function sentiment() {
+    redirectURL("/entities")
+  }
+  document.getElementById("entities-cloud-button").onclick = function sentiment() {
+    redirectURL("/entities-cloud")
+  }
   document.getElementById("sentiment-button").onclick = function sentiment() {
     redirectURL("/sentiment")
+  }
+  document.getElementById("sentiment-filter-button").onclick = function sentiment() {
+    redirectURL("/sentiment")
+  }
+  document.getElementById("sentiment-stats-button").onclick = function sentiment() {
+    redirectURL("/sentiment-stats")
   }
 }
 

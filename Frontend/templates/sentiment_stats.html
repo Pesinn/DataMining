@@ -1,0 +1,67 @@
+{% extends 'search.html' %}
+
+{% block sub_content %}
+<p hidden> {% block nav_title %}Sentiment analysis{% endblock %}</p>
+<p>HELLO</p>
+<canvas id="chart" width="600" height="400"></canvas>
+
+<script>
+
+_datasets = []
+
+var COLORS = [
+  '#4dc9f6',
+  '#f67019',
+  '#f53794',
+  '#537bc4',
+  '#acc236',
+  '#166a8f',
+  '#00a950',
+  '#58595b',
+  '#8549ba'
+];
+
+var index = 0
+{% for s in data %}
+  new_data_set = {
+  backgroundColor: COLORS[index],
+  borderColor: COLORS[index],
+  borderWidth: 1,
+  label: "{{s.search}}",
+  data : [
+    "{{s.sentiment_analysis["lowest"]["freq"]}}",
+    "{{s.sentiment_analysis["low"]["freq"]}}",
+    "{{s.sentiment_analysis["middle"]["freq"]}}",
+    "{{s.sentiment_analysis["high"]["freq"]}}",
+    "{{s.sentiment_analysis["highest"]["freq"]}}"
+  ]}
+
+  _datasets.push(new_data_set);
+
+  index++;
+{% endfor %}
+
+_labels = []
+{% for item in labels %}
+  _labels.push("{{ item }}")
+{% endfor %}
+
+var ctx = document.getElementById('chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: _labels,
+      datasets: _datasets
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+});
+
+</script>
+
+{% endblock %}

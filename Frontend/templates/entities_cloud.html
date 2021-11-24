@@ -1,0 +1,14 @@
+{% extends 'search.html' %}
+
+{% block sub_content %}
+<p hidden> {% block nav_title %}Word Cloud{% endblock %}</p>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <img height="400px" src="{{cloud_image}}">
+    </div>
+  </div>
+</div>
+{% endblock %}
