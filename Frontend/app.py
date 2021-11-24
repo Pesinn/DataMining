@@ -134,9 +134,11 @@ def entities():
     return render_template("default.html")
 
   ent = domain_entities.get_entities(search_req)
-  cloud_image_path = create_word_cloud(ent)
 
-  return render_template("entities.html", data = ent, cloud_image = cloud_image_path)
+  if "[]" in ent:
+    return render_template("default.html")
+
+  return render_template("entities.html", data = ent[0])
 
 @app.route('/entities-cloud', methods=["GET"])
 def entities_cloud():
@@ -150,7 +152,6 @@ def entities_cloud():
   cloud_image_path = create_word_cloud(ent)
   return render_template("entities_cloud.html", cloud_image = cloud_image_path)
   
-
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
   bar_labels=sentiment_labels
