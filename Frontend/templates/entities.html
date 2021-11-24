@@ -19,8 +19,14 @@
                 <small class="text-muted">{{i.count}}</small>
               </div>
               <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 45%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: {{i.count_ratio_normalized}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{i.count_ratio_normalized}}%</div>
               </div>
+<!--              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {{i.limited_count_ratio}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{i.limited_count_ratio}}%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {{i.total_count_ratio}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{i.total_count_ratio}}%</div>
+              </div>-->
             </a>
           </div>
 
