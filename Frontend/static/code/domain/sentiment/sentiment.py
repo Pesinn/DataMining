@@ -9,4 +9,4 @@ def get_sentiment_analysis_file():
   return news_data.get_news_data_file()  
 
 def get_sentiment_analysis_service(req):
-  return requests.request("GET", f'http://192.168.8.105:8080/api/v2/sentiment?{req}').json()
+  return requests.request("GET", f'http://192.168.8.105:8080/api/v1/sentiment?{req}').json()

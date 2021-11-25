@@ -12,4 +12,4 @@ def get_news_data_file():
   return data
   
 def get_news_data_service(req):
-  return requests.request("GET", f'http://192.168.8.105:8080/api/v2/news_data?{req}').json()
+  return requests.request("GET", f'http://192.168.8.105:8080/api/v1/news_data?{req}').json()
