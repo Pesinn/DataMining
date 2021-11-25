@@ -1,5 +1,4 @@
 import content.dblayer.dbservice as dbservice
-import content.domain.sentiment.sentiment_analysis as sentiment
 import content.domain.sentiment.sentiment_analysis_factory as sentiment_factory
 import content.domain.entities.entities_factory as entity_factory
 
