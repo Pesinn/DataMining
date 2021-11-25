@@ -94,4 +94,5 @@ def create_db_filter(filter):
     db_filter["annotations.sentiment_analysis"] = 1
   if(filter["named_entities"] == True):
     db_filter["annotations.entities.named"] = 1
+
   return db_filter

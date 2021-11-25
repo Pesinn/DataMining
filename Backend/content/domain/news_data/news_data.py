@@ -61,7 +61,7 @@ def get_named_entities(combined, data, filter):
   try:
     d = data["annotations"]["entities"]["named"]
     return entity_factory.count_entities(
-      combined, data)
+      combined, d)
   except:
     return {}
 
