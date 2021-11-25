@@ -73,4 +73,9 @@ def entity_dict_to_list(dict, limit):
   for i in sorted_list:
     limited_count = limited_count + i["count"]
 
+  for i in sorted_list:
+    i["total_count_ratio"] = math.trunc((i["count"] / total_count)*100)
+    i["limited_count_ratio"] = math.trunc((i["count"] / limited_count)*100)
+    i["count_ratio_normalized"] = math.trunc((i["count"] / highest_count)*100)
+
   return sorted_list
