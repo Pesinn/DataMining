@@ -31,7 +31,7 @@ def get_raw_data(search):
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_news_data(search):
-  an = {"annorations": 1}
+  print(convert_search_obj_to_dbreq(search))
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
@@ -55,6 +55,7 @@ def get_sentiment_analysis(search):
   return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_named_entities(search):
+  print(convert_search_obj_to_dbreq(search))
   filter = {"_id": 0,
             "description.text": 1,
             "title.text": 1,

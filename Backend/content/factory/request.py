@@ -36,3 +36,14 @@ def conv_req_to_search_array(req):
     search_arr.append(search_obj)
 
   return search_arr
+
+
+def conv_req_to_search_array_2(req):
+  search_arr = []
+  for r in string_utils.string_objects_to_array(req.args.get("search")):
+    search_obj = handle_query_parameters(req)
+    search_obj["search"] = []
+    for i in r:
+      search_obj["search"].append(i)    
+    search_arr.append(search_obj)
+  return search_arr

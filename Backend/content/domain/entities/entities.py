@@ -2,13 +2,11 @@ import content.dblayer.dbservice as dbservice
 import copy
 
 def get_entities(search):
-  s = split_query_by_search_keyword(search)
-
   entities = []
-  for i in s["search"]:
+  for i in search:
     entities.append(dbservice.get_news_data(i))
 
-  return ""
+  return entities
 
 def split_query_by_search_keyword(search):
   query_list = []

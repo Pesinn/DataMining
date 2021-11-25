@@ -140,7 +140,7 @@ def entities():
 
 @app.route('/api/v2/entities', methods=['GET'])
 def entities_v2():
-  search_arr = req.conv_req_to_search_array(request)
+  search_arr = req.conv_req_to_search_array_2(request)
   filter = create_filter(True, False, 10, "date")
   return jsonify(domain_news_data.get_news_data(search_arr, filter))
 

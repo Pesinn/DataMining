@@ -9,5 +9,8 @@ def get_raw_data(search):
 def get_news_data(search):
   return mongodb.get_news_data(search)
 
+def get_entities(search):
+  return mongodb.get_named_entities(search)
+
 def get_sentiment_analysis(search):
   return mongodb.get_sentiment_analysis(search)

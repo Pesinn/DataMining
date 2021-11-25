@@ -43,7 +43,7 @@ def get_news_data_by_single_search(s, filter):
       "named": entity_factory.entity_dict_to_list(ner, 10)
     },
     "articles": articles,
-    "search": s["search"][0]
+    "search": s["search"]
   }
 
   return final_obj
