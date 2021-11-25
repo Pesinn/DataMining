@@ -85,16 +85,6 @@ app.config["DEBUG"] = True
 }
 """
 
-def create_filter(ner, sentiment, article_limit, order_by):
-  return {
-    "named_entities": ner,
-    "sentiment_analysis": sentiment,
-    "articles": {
-      "limit": article_limit,
-      "orderby": order_by
-    }
-  }
-
 
 ###########################
 # News Data endpoints
@@ -154,6 +144,15 @@ def get_news_data(request, filter):
   search_arr = req.conv_req_to_search_array(request)
   return jsonify(domain_news_data.get_news_data(search_arr, filter))
 
+def create_filter(ner, sentiment, article_limit, order_by):
+  return {
+    "named_entities": ner,
+    "sentiment_analysis": sentiment,
+    "articles": {
+      "limit": article_limit,
+      "orderby": order_by
+    }
+  }
 
 ###########################
 # Books endpoints
