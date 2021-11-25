@@ -30,19 +30,12 @@ def get_raw_data(search):
     filter = {"_id": 0}
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
-def get_news_data(search):
-  print(convert_search_obj_to_dbreq(search))
+def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
-    filter = {"_id": 0,
-              "description.text": 1,
-              "title.text": 1,
-              "annotations": 1,
-              "article_language": 1,
-              "publish_date": 1,
-              "source": 1 }
-    return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
+    db_filter = create_db_filter(filter)
+    return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), db_filter)]
 
 def get_sentiment_analysis(search):
   filter = {"_id": 0,
@@ -55,7 +48,6 @@ def get_sentiment_analysis(search):
   return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_named_entities(search):
-  print(convert_search_obj_to_dbreq(search))
   filter = {"_id": 0,
             "description.text": 1,
             "title.text": 1,
@@ -89,3 +81,17 @@ def convert_search_obj_to_dbreq(search):
       if(search_string != ""):
         dbreq["$text"] = { "$search" : search_string }
   return {"$and": [dbreq]}
+
+def create_db_filter(filter):
+  db_filter = {"_id": 0,
+            "description.text": 1,
+            "title.text": 1,
+            "article_language": 1,
+            "publish_date": 1,
+            "source": 1}
+
+  if(filter["sentiment_analysis"] == True):
+    db_filter["annotations.sentiment_analysis"] = 1
+  if(filter["named_entities"] == True):
+    db_filter["annotations.entities.named"] = 1
+  return db_filter

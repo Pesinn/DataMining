@@ -6,8 +6,8 @@ def get_articles(search):
 def get_raw_data(search):
   return mongodb.get_raw_data(search)
 
-def get_news_data(search):
-  return mongodb.get_news_data(search)
+def get_news_data(search, filter):
+  return mongodb.get_news_data(search, filter)
 
 def get_entities(search):
   return mongodb.get_named_entities(search)
