@@ -23,6 +23,7 @@ def get_raw_data(search):
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_news_data(search, filter):
+  print(convert_search_obj_to_dbreq(search))
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
@@ -34,7 +35,7 @@ def convert_search_obj_to_dbreq(search):
   dbreq = {}
   for i in search:
     if(i == "languages"):
-      dbreq["language"] = { "$in" : search[i] }
+      dbreq["article_language"] = { "$in" : search[i] }
     if(i == "sources"):
       dbreq["source"] = { "$in" : search[i] }
     if(i == "date_from"):
