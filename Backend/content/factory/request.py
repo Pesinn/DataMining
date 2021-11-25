@@ -5,7 +5,6 @@ def conv_req_to_search_obj(req):
 
   if 'search' in req.args:
     search_obj["search"] = string_utils.string_to_array(req.args.get("search"), ",")#req.args.get("search")
-    print("search_obj[search]:", search_obj["search"])
   else:
     search_obj["search"] = ""
   return search_obj

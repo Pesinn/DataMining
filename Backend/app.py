@@ -4,14 +4,9 @@ from flask import request, jsonify, abort
 from content.dblayer.dbservice import *
 
 import os
-import pymongo
-import config
 import content.factory.request as req
-import content.domain.articles.articles as domain_articles
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.raw_data.raw_data as domain_raw_data
-import content.domain.entities.entities as domain_entities
-import content.domain.sentiment.sentiment_analysis as domain_sentiment
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
