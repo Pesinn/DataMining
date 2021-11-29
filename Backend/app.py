@@ -132,7 +132,7 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
-  filter = create_filter(True, False, 10, "date")
+  filter = create_filter(False, True, 10, "date")
   return get_news_data(request, filter)
 
 
