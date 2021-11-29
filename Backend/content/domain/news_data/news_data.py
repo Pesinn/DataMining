@@ -21,7 +21,7 @@ def get_news_data(search, filter):
 def get_news_data_by_single_search(s, filter):
   data = dbservice.get_news_data(s, filter)
   articles = []
-  limit = 10
+  limit = 1900
   index = 0
   sentiment = {}
   ner = {}

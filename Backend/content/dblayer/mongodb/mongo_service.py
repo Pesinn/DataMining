@@ -23,7 +23,6 @@ def get_raw_data(search):
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
 
 def get_news_data(search, filter):
-  print(convert_search_obj_to_dbreq(search))
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
@@ -32,28 +31,31 @@ def get_news_data(search, filter):
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 def convert_search_obj_to_dbreq(search):
-  dbreq = {}
+  dbreq = []
   for i in search:
+    query_object = {}
     if(i == "languages"):
-      dbreq["article_language"] = { "$in" : search[i] }
+      query_object["article_language"] = { "$in" : search[i] }
     if(i == "sources"):
-      dbreq["source"] = { "$in" : search[i] }
+      query_object["source"] = { "$in" : search[i] }
     if(i == "date_from"):
       try:
-        dbreq["publish_date"]["$gt"] = search[i]
+        query_object["publish_date"]["$gt"] = search[i]
       except:
-        dbreq["publish_date"] = { "$gt" : search[i] }
+        query_object["publish_date"] = { "$gt" : search[i] }
     if(i == "date_to"):
       try:
-        dbreq["publish_date"]["$lt"] = search[i]
+        query_object["publish_date"]["$lt"] = search[i]
       except:
-        dbreq["publish_date"] = { "$lt" : search[i] }
+        query_object["publish_date"] = { "$lt" : search[i] }
 
     if(i == "search"):
-      search_string = " ".join(str(x) for x in search[i])
+      search_string = " ".join(str(x) for x in search[i])      
       if(search_string != ""):
-        dbreq["$text"] = { "$search" : search_string }
-  return {"$and": [dbreq]}
+        query_object["$text"] = { "$search" : search_string }
+
+    dbreq.append(query_object)
+  return {"$and": dbreq}
 
 def create_db_filter(filter):
   db_filter = {"_id": 0,
