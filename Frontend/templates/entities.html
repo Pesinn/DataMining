@@ -12,8 +12,8 @@
       <div class="row">
         {% for i in data.entities.named %}
 
-          <div class="col-sm-12 col-md-6 col-lg-4" style="margin-bottom: 10px;">
-            <a href="#" class="list-group-item list-group-item-action">
+          <div class="col-sm-12 col-md-6 col-lg-4" style="margin-bottom: 10px;" onload="bleh()">
+            <a href="#" id="{{i.id}}" onclick="append_entity_to_search({{i}})" class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{i.entity}}</h5>
                 <small class="text-muted">{{i.count}}</small>
@@ -56,4 +56,13 @@
 
   </div>
 </div>
+
+<script>
+function append_entity_to_search(obj) {
+  document.getElementById(obj["id"]).classList.add('Entity-box--picked')
+
+  append_to_search_bar(obj["entity"])
+}
+</script>
+
 {% endblock %}

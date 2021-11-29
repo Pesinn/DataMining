@@ -1,0 +1,6 @@
+
+
+.Entity-box--picked {
+  border: solid;
+  border-color: red;
+}

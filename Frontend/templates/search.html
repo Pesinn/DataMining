@@ -46,6 +46,11 @@ document.getElementById("main-search-input").value = getQueryParameter("search")
 buttonOnClickHandler();
 buttonClassHandler();
 
+//function append_to_search(str) {
+//  append_to_search_bar(str)
+//  document.getElementById("main-search-input").value = document.getElementById("main-search-input").value + obj["entity"];
+//}
+
 function convertSearchObjectToQueryString() {
   var searchValue = document.getElementById("main-search-input").value
   var queryString = "";
@@ -138,6 +143,7 @@ function modifyElementClass(id, addClass, removeClass) {
   element.classList.remove(removeClass);
   element.classList.add(addClass);
 }
+
 
 
 </script>

@@ -135,6 +135,11 @@ def entities():
 
   ent = domain_entities.get_entities(search_req)
 
+  id = 0
+  for i in ent[0]["entities"]["named"]:
+    i["id"] = f"entity_{id}"
+    id = id + 1
+  
   if "[]" in ent:
     return render_template("default.html")
 
