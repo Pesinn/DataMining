@@ -1,14 +1,5 @@
 import content.utils.string as string_utils
 
-def conv_req_to_search_obj(req):
-  search_obj = handle_query_parameters(req)
-
-  if 'search' in req.args:
-    search_obj["search"] = string_utils.string_to_array(req.args.get("search"), ",")#req.args.get("search")
-  else:
-    search_obj["search"] = ""
-  return search_obj
-
 def handle_query_parameters(req):
   search_obj = {}
   if 'languages' in req.args:
