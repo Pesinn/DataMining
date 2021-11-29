@@ -166,7 +166,7 @@ def sentiment():
     return render_template("default.html")
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  
+  print("sentiment", sentiment) 
   return render_template("sentiment.html", labels=bar_labels, data=sentiment)
 
 @app.route('/sentiment-stats', methods=["GET"])
