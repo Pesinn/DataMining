@@ -28,6 +28,6 @@ def conv_req_to_search_array(req):
     search_obj = handle_query_parameters(req)
     search_obj["search"] = []
     for i in r:
-      search_obj["search"].append(i)    
+      search_obj["search"].append(i.lower())    
     search_arr.append(search_obj)
   return search_arr
