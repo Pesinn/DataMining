@@ -9,6 +9,9 @@ def conv_req_to_query_string(req):
         query_str += ","
       else:
         first_run = False
-      query_str += i.strip()
+      query_str += add_object(i)
     query_str += "]"
   return query_str
+
+def add_object(req):
+  return "{" + req.strip() + "}"
