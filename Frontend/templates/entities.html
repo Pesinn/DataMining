@@ -52,12 +52,18 @@
         </div>
 
       {% endfor %}
+
+      <div>
+        <p id="more-articles">Button</p>
+      </div>
     </div>
 
   </div>
 </div>
 
 <script>
+entitiesButtonOnClickHandler();
+
 function append_entity_to_search(obj) {
   element = document.getElementById(obj["id"]);
   isAlreadyPicked = element.classList.contains("Entity-box--picked");
@@ -70,6 +76,16 @@ function append_entity_to_search(obj) {
     append_to_search_bar(obj["entity"]);
   }
 }
+
+function entitiesButtonOnClickHandler() {
+  document.getElementById("more-articles").onclick = function moreArticles() {
+    var filter = {
+      "articles_limit": 15
+    };
+    redirectURL("/entities", filter)
+  }
+}
+
 </script>
 
 {% endblock %}

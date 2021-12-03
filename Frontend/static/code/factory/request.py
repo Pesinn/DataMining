@@ -1,6 +1,10 @@
 def conv_req_to_query_string(req):
-  print(req)
   query_str = ""
+  query_str = search(query_str, req)
+  query_str = search_filter(query_str, req)
+  return query_str
+  
+def search(query_str, req):
   if 'search' in req.args:    
     s = req.args.get("search").split("|")
 
@@ -12,13 +16,28 @@ def conv_req_to_query_string(req):
     query_str += "search=["
     first_run = True
     for i in s:
-      print("i: ", i)
       if(first_run == False):
         query_str += ","
       else:
         first_run = False
       query_str += add_object(i)
     query_str += "]"
+  return query_str
+
+def search_filter(query_str, req):
+  articles_limit = req.args.get("articles_limit")
+  if articles_limit:
+    query_str = add_to_query_str(
+      query_str,
+      f"articles_limit={articles_limit}"
+    )
+  return query_str
+
+def add_to_query_str(query_str, query):
+  if query_str in "":
+    query_str = query
+  else:
+    query_str = query_str + "&" + query
   return query_str
 
 def add_object(req):

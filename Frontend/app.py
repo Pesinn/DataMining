@@ -131,7 +131,6 @@ def entities():
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
-
   ent = domain_entities.get_entities(search_req)
 
   id = 0
@@ -165,7 +164,6 @@ def sentiment():
     return render_template("default.html")
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  print("sentiment", sentiment) 
   return render_template("sentiment.html", labels=bar_labels, data=sentiment)
 
 @app.route('/sentiment-stats', methods=["GET"])

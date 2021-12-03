@@ -46,6 +46,9 @@ document.getElementById("main-search-input").value = getQueryParameter("search")
 buttonOnClickHandler();
 buttonClassHandler();
 
+var defaultFilter = {
+  "articles_limit": 15
+}
 //function append_to_search(str) {
 //  append_to_search_bar(str)
 //  document.getElementById("main-search-input").value = document.getElementById("main-search-input").value + obj["entity"];
@@ -56,6 +59,29 @@ function convertSearchObjectToQueryString() {
   var queryString = "";
   if(searchValue) {
     queryString =  "?search=" + document.getElementById("main-search-input").value;
+  }
+  return queryString;
+}
+
+function convertVariablesToQueryString(filter) {
+  let defaultVal = false;
+  if (filter === null) {
+    filter = defaultFilter;
+    defaultVal = true;
+  }
+
+  queryString = "";
+  if("articles_limit" in filter) {
+    if(defaultVal === true) {
+      articles_limit = parseInt(filter["articles_limit"]);
+    }
+    else if(getQueryParameter("articles_limit")) {
+      articles_limit = parseInt(getQueryParameter("articles_limit"))
+        + parseInt(filter["articles_limit"]);
+    } else {
+      articles_limit = parseInt(filter["articles_limit"]);
+    }    
+    queryString += "articles_limit="+articles_limit;
   }
   return queryString;
 }
@@ -111,30 +137,39 @@ function entities_buttons() {
 
 function buttonOnClickHandler() {
   document.getElementById("articles-button").onclick = function articles() {
-    redirectURL("/")
+    redirectURL("/", null);
   }
   document.getElementById("entities-button").onclick = function entities() {
-    redirectURL("/entities")
+    redirectURL("/entities", null);
   }
   document.getElementById("entities-filter-button").onclick = function sentiment() {
-    redirectURL("/entities")
+    redirectURL("/entities", null);
   }
   document.getElementById("entities-cloud-button").onclick = function sentiment() {
-    redirectURL("/entities-cloud")
+    redirectURL("/entities-cloud", null);
   }
   document.getElementById("sentiment-button").onclick = function sentiment() {
-    redirectURL("/sentiment")
+    redirectURL("/sentiment", null);
   }
   document.getElementById("sentiment-filter-button").onclick = function sentiment() {
-    redirectURL("/sentiment")
+    redirectURL("/sentiment", null);
   }
   document.getElementById("sentiment-stats-button").onclick = function sentiment() {
-    redirectURL("/sentiment-stats")
+    redirectURL("/sentiment-stats", null);
   }
 }
 
-function redirectURL(source) {
-  var url = window.location.origin + source + convertSearchObjectToQueryString();
+function redirectURL(source, filter) {
+  var searchStr = convertSearchObjectToQueryString();
+  var filterStr = convertVariablesToQueryString(filter);
+
+  if(searchStr) {
+    if(filterStr) {
+      filterStr = "&"+filterStr;
+    }
+  }
+
+  var url = window.location.origin + source + searchStr + filterStr;
   window.location = url;
 }
 
