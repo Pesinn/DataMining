@@ -33,7 +33,7 @@ def get_news_data_by_single_search(s, filter):
     ner = get_named_entities(
       ner, d)
 
-    if index <= limit:
+    if index <= int(filter["articles"]["limit"]):
       articles.append(create_article(d))
 
   final_obj = {

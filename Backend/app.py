@@ -92,7 +92,7 @@ app.config["DEBUG"] = True
 
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
-  filter = create_filter(True, True, 10, "date")
+  filter = create_filter(True, True, request)
   return get_news_data(request, filter)
 
 
@@ -112,7 +112,7 @@ def raw_data():
 
 @app.route('/api/v1/articles', methods=['GET'])
 def articles():
-  filter = create_filter(False, False, 10, "date")
+  filter = create_filter(False, False, request)
   return get_news_data(request, filter)
 
 
@@ -122,7 +122,7 @@ def articles():
 
 @app.route('/api/v1/entities', methods=['GET'])
 def entities():
-  filter = create_filter(True, False, 10, "date")
+  filter = create_filter(True, False, request)
   return get_news_data(request, filter)
 
 
@@ -132,7 +132,7 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
-  filter = create_filter(False, True, 10, "date")
+  filter = create_filter(False, True, request)
   return get_news_data(request, filter)
 
 
@@ -144,13 +144,17 @@ def get_news_data(request, filter):
   search_arr = req.conv_req_to_search_array(request)
   return jsonify(domain_news_data.get_news_data(search_arr, filter))
 
-def create_filter(ner, sentiment, article_limit, order_by):
+def create_filter(ner, sentiment, request):
+  article_limit = request.args.get("articles_limit")  
+  if(article_limit is None):
+    article_limit = 10
+
   return {
     "named_entities": ner,
     "sentiment_analysis": sentiment,
     "articles": {
       "limit": article_limit,
-      "orderby": order_by
+      "orderby": "date"
     }
   }
 
