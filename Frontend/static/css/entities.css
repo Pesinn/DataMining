@@ -1,6 +1,5 @@
 
 
 .Entity-box--picked {
-  border: solid;
-  border-color: red;
+  background-color: #5669f324 !important;
 }
