@@ -128,7 +128,6 @@ def create_word_cloud(ent):
 @app.route('/entities', methods=["GET"])
 def entities():
   search_req = req.conv_req_to_query_string(request)
-
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
@@ -198,5 +197,5 @@ def sentiment_stats():
 #    json_obj = response.json()
 #    return json_obj
 
-port = int(os.environ.get('PORT', 5555))
+port = int(os.environ.get('PORT', 5550))
 app.run(host='0.0.0.0', port=port)
