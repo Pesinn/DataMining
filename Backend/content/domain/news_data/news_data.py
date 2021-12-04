@@ -49,6 +49,7 @@ def get_news_data_by_single_search(s, filter):
 def get_sentiment_score(combined, data):
   try:
     d = data["annotations"]["sentiment_analysis"]
+    
     return sentiment_factory.calculate_score(
       combined, d)
   except:

@@ -1,3 +1,4 @@
+from re import search
 import content.utils.string as string_utils
 
 def handle_query_parameters(req):
