@@ -108,7 +108,7 @@ def create_word_cloud(ent):
   )
 
   wc.generate_from_frequencies(image_freq)
-  
+   
   random_str = random_string()
   wc.to_file(f"{generated_image_path}{random_str}.png")
   
@@ -117,11 +117,11 @@ def create_word_cloud(ent):
 @app.route('/entities', methods=["GET"])
 def entities():
   search_req = req.conv_req_to_query_string(request)
+
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
   ent = domain_entities.get_entities(search_req)
-
   id = 0
   for i in ent[0]["entities"]["named"]:
     i["id"] = f"entity_{id}"
