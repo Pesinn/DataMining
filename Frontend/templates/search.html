@@ -47,12 +47,8 @@ buttonOnClickHandler();
 buttonClassHandler();
 
 var defaultFilter = {
-  "articles_limit": 15
+  "articles_limit": 10
 }
-//function append_to_search(str) {
-//  append_to_search_bar(str)
-//  document.getElementById("main-search-input").value = document.getElementById("main-search-input").value + obj["entity"];
-//}
 
 function convertSearchObjectToQueryString() {
   var searchValue = document.getElementById("main-search-input").value
@@ -73,13 +69,13 @@ function convertVariablesToQueryString(filter) {
   queryString = "";
   if("articles_limit" in filter) {
     if(defaultVal === true) {
-      articles_limit = parseInt(filter["articles_limit"]);
+      return ""
     }
     else if(getQueryParameter("articles_limit")) {
       articles_limit = parseInt(getQueryParameter("articles_limit"))
         + parseInt(filter["articles_limit"]);
     } else {
-      articles_limit = parseInt(filter["articles_limit"]);
+      articles_limit = parseInt(filter["articles_limit"] * 2);
     }    
     queryString += "articles_limit="+articles_limit;
   }

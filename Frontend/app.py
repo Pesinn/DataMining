@@ -8,13 +8,11 @@ import multidict as multidict
 from PIL import Image
 import random
 import numpy as np
-import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
 import os
 import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
-import static.code.domain.news_data.news_data as domain_news_data
 import static.code.domain.entities.entities as domain_entities
 import static.code.factory.request as req
 
