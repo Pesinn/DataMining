@@ -6,15 +6,11 @@ from flask import render_template
 
 import multidict as multidict
 from PIL import Image
-import timeit
-import re
 import random
 import numpy as np
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 
-import io
-import base64
 import os
 import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
@@ -33,8 +29,6 @@ sentiment_labels = [
     "Positive, between 0.75 sand 1",
     "Very positive, between 0.25 and 0.75"
 ]
-#t1 = timeit.Timer("''.join(random.choice('0123456789abcdef') for n in xrange(30))", "import random")
-
 
 """
 [
@@ -106,8 +100,6 @@ def index():
 def create_word_cloud(ent):
   x, y = np.ogrid[:300, :300]
 
-  #mask = (x - 150) ** 2 + (y - 150) ** 2 > 130 ** 2
-  #mask = 255 * mask.astype(int)
   cloud_mask = np.array(Image.open("static/images/cloud3.png"))
 
   image_freq = getFrequencyDictForText(ent[0]["entities"]["named"])
@@ -123,7 +115,6 @@ def create_word_cloud(ent):
   wc.to_file(f"{generated_image_path}{random_str}.png")
   
   return f"{generated_image_path}{random_str}.png"
-
 
 @app.route('/entities', methods=["GET"])
 def entities():
@@ -177,23 +168,6 @@ def sentiment_stats():
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
   return render_template("sentiment_stats.html", labels=bar_labels, data=sentiment)
-
-#@app.route('/books/', methods=["POST", "GET"])
-#@app.route('/books/<id>', methods=["POST", "GET"])
-#def books(id=None):
-#    if(id!=None):
-#        return render_template("books.html", books=getBookById(id))
-#    return render_template("books.html", books=getBooks())
-
-#def getBookById(id):
-#    print("id: ", id)
-#    response = requests.request("GET", f'http://192.168.8.105:8080/api/v1/resources/books?id={id}')
-#    return response.json()
-
-#def getBooks():
-#    response = requests.request("GET", 'http://192.168.8.105:8080/api/v1/resources/books/all')
-#    json_obj = response.json()
-#    return json_obj
 
 port = int(os.environ.get('PORT', 5550))
 app.run(host='0.0.0.0', port=port)
