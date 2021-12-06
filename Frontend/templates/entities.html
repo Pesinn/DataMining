@@ -36,6 +36,15 @@
 
     <!-- Display articles -->
     <div class="col-md-12 col-lg-4">
+
+      <div>
+        {% for i in data.article_pages.pages %}
+          {% if i.visible %}
+            <p onclick="pagination({{i}})">{{i.page}}</p>
+          {% endif %}
+        {% endfor %}
+      </div>
+
       {% for i in data.articles %}
 
         <div class="col-md-12 col-lg-12 Article-box">
@@ -63,6 +72,14 @@
 
 <script>
 entitiesButtonOnClickHandler();
+
+function pagination(item) {
+  var filter = {
+    "articles_range": item["from"] + "," + item["to"],
+    "page": item["page"]
+  }
+  redirectURL("/entities", filter)
+}
 
 function append_entity_to_search(obj) {
   element = document.getElementById(obj["id"]);

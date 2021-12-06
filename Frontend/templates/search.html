@@ -76,10 +76,18 @@ function convertVariablesToQueryString(filter) {
         + parseInt(filter["articles_limit"]);
     } else {
       articles_limit = parseInt(filter["articles_limit"] * 2);
-    }    
+    }
     queryString += "articles_limit="+articles_limit;
   }
   return queryString;
+}
+
+function setArticleRange(filter) {
+  return "articles_range=" + filter["articles_range"]
+}
+
+function setCurrentPage(filter) {
+  return "current_page=" + filter["page"]
 }
 
 function getQueryParameter(type) {
@@ -157,11 +165,18 @@ function buttonOnClickHandler() {
 
 function redirectURL(source, filter) {
   var searchStr = convertSearchObjectToQueryString();
-  var filterStr = convertVariablesToQueryString(filter);
+  var filterStr = setArticleRange(filter);
 
   if(searchStr) {
     if(filterStr) {
       filterStr = "&"+filterStr;
+    }
+  }
+  
+  var pageStr = setCurrentPage(filter)
+  if(searchStr) {
+    if(pageStr) {
+      filterStr = filterStr+"&"+pageStr;
     }
   }
 

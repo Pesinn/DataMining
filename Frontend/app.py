@@ -4,6 +4,7 @@ from flask import url_for
 from flask import request, jsonify
 from flask import render_template
 
+import math
 import multidict as multidict
 from PIL import Image
 import random
@@ -122,15 +123,73 @@ def entities():
   if "[]" in search_req or not search_req:
     return render_template("default.html")
   ent = domain_entities.get_entities(search_req)
+
   id = 0
   for i in ent[0]["entities"]["named"]:
     i["id"] = f"entity_{id}"
     id = id + 1
+ 
+  ent[0]["article_pages"] = article_pagination(ent[0], request)
   
   if "[]" in ent:
     return render_template("default.html")
-
   return render_template("entities.html", data = ent[0])
+
+def article_pagination(response, request):
+  current_page = request.args.get("current_page")
+
+  per_age = 10
+  article_count = response["articles_count_total"]
+#  article_count = 27
+  pages = math.ceil(article_count / per_age)
+  
+  r = {
+    "pages_count": pages,
+    "pages": [
+    ]
+  }
+    
+  pagination_visible = get_pagination_to_display(int(current_page), int(pages))
+  
+  for i in range(pages):
+    if(i == 0):
+      _from = 1
+    else:
+      _from = (i*10) + 1
+    
+    to = 10*(i+1)
+    if(to > article_count):
+      to = article_count
+
+    number = i+1
+    
+    visible = 0
+    if (i in pagination_visible):
+      visible = 1
+    
+    r["pages"].append({
+        "page": number,
+        "from": _from,
+        "to": to,
+        "visible": visible
+      })
+
+  return r
+
+def get_pagination_to_display(current, pages):
+  if(pages < 6 or current > pages or current < 0):
+    return [i for i in range(pages)]
+  
+  pagination = []
+  
+  for i in range(pages):
+    if i > (current - 3) and i < (current + 3):
+      pagination.append(i)
+
+  return pagination    
+
+
+    
 
 @app.route('/entities-cloud', methods=["GET"])
 def entities_cloud():
