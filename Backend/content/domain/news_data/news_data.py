@@ -57,14 +57,19 @@ def get_sentiment_score(combined, data):
 def get_named_entities(combined, data, search_arr):
   try:
     d = data["annotations"]["entities"]["named"]
+    # Copy is made so we can delete elements from 'd_copy'
+    # while iteration though 'd'
+    d_copy = dict(d)
     for i in d:
       # Remove named entities that are already in
       # the search string
       if(i in search_arr):
-        d.remove(i)
+        del d_copy[i]
+
     return entity_factory.count_entities(
-      combined, d)
-  except:
+      combined, d_copy)
+  except Exception as error:
+    print("Error:", str(error))
     return {}
 
 def create_article(data):

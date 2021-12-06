@@ -141,6 +141,7 @@ def sentiment_analysis():
 
 def get_news_data(request, filter):
   search_arr = req.conv_req_to_search_array(request)
+  print("search: ", search_arr)
   return jsonify(domain_news_data.get_news_data(search_arr, filter))
 
 def create_filter(ner, sentiment, request):
