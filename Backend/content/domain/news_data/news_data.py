@@ -24,6 +24,7 @@ def get_news_data_by_single_search(s, filter):
   index = 0
   sentiment = {}
   ner = {}
+  display_article_counter = 0
   
   for d in data:
     index += 1
@@ -32,7 +33,9 @@ def get_news_data_by_single_search(s, filter):
     ner = get_named_entities(
       ner, d, s["search"])
 
-    if index <= int(filter["articles"]["limit"]):
+    if index in range(filter["articles"]["range"]["from"],
+                  filter["articles"]["range"]["to"]+1, 1):
+      display_article_counter += 1
       articles.append(create_article(d))
 
   final_obj = {
@@ -41,7 +44,12 @@ def get_news_data_by_single_search(s, filter):
       "named": entity_factory.entity_dict_to_list(ner, 10, s["search"])
     },
     "articles": articles,
-    "search": s["search"]
+    "search": s["search"],
+    "articles_count_total": index,
+    "articles_range": {
+      "from": filter["articles"]["range"]["from"],
+      "to": filter["articles"]["range"]["from"] + display_article_counter
+    }
   }
 
   return final_obj

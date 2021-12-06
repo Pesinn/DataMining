@@ -1,4 +1,5 @@
 from re import search
+from flask import abort
 import content.utils.string as string_utils
 
 def handle_query_parameters(req):
@@ -23,3 +24,29 @@ def conv_req_to_search_array(req):
       search_obj["search"].append(i.lower().strip())
     search_arr.append(search_obj)
   return search_arr
+
+def create_filter(ner, sentiment, request):
+  article_range = request.args.get("articles_range")
+
+  try:
+    if(article_range is None):
+      article_range = [1,10]
+    else:
+      article_range = article_range.split(",")
+      article_range[0] = int(article_range[0])
+      article_range[1] = int(article_range[1])
+  except:
+    abort(400, description="article_range should "+
+          "contain two numbers with a comma between")
+
+  return {
+    "named_entities": ner,
+    "sentiment_analysis": sentiment,
+    "articles": {
+      "range": {
+        "from": article_range[0],
+        "to": article_range[1]
+      },
+      "orderby": "date"
+    }
+  }
