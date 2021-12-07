@@ -47,7 +47,7 @@ def article_pagination(response, request):
   return r
 
 def get_pagination_to_display(current, pages):
-  if(pages < 6 or current > pages or current < 0):
+  if(pages < 7 or current > pages or current < 0):
     return [i for i in range(pages)]
 
   pagination = [current]
@@ -65,7 +65,7 @@ def get_pagination_to_display(current, pages):
       pagination.append(right)
     index += 1
     
-    if(len(pagination) >= 6):
+    if(len(pagination) >= 7):
       pagination_cap = True
  
   return np.sort(np.array(pagination))
