@@ -25,13 +25,13 @@ def get_news_data_by_single_search(s, filter):
   sentiment = {}
   ner = {}
   display_article_counter = 0
-  
+
+  filter["articles"]["range"] = set_article_count(filter["articles"]["range"], data)
+
   for d in data:
     index += 1
-    sentiment = get_sentiment_score(
-      sentiment, d)
-    ner = get_named_entities(
-      ner, d, s["search"])
+    sentiment = get_sentiment_score(sentiment, d)
+    ner = get_named_entities(ner, d, s["search"])
 
     if index in range(filter["articles"]["range"]["from"],
                   filter["articles"]["range"]["to"]+1, 1):
@@ -53,6 +53,20 @@ def get_news_data_by_single_search(s, filter):
   }
 
   return final_obj
+
+# Make sure to get correct article range
+# If article_range=last, make sure to get
+# the correct range for that case
+def set_article_count(article_range, data):
+  if(article_range["to"] == "last"):
+    data_len = len(data)
+    if(data_len < article_range["default"]):
+      article_range["from"] = 0
+      article_range["to"] = data_len
+    else:
+      article_range["from"] = data_len - article_range["default"]
+      article_range["to"] = data_len
+  return article_range
 
 def get_sentiment_score(combined, data):
   try:

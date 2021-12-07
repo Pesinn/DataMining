@@ -121,6 +121,7 @@ def articles():
 
 @app.route('/api/v1/entities', methods=['GET'])
 def entities():
+  print("request: ", request)
   filter = req.create_filter(True, False, request)
   return get_news_data(request, filter)
 

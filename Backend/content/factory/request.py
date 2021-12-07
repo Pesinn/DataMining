@@ -27,10 +27,16 @@ def conv_req_to_search_array(req):
 
 def create_filter(ner, sentiment, request):
   article_range = request.args.get("articles_range")
-
+  # Default article range is 15
+  def_range = 15
+  
   try:
     if(article_range is None):
       article_range = [1,10]
+    elif(article_range == "first"):
+      article_range = [1, def_range]
+    elif(article_range == "last"):
+      article_range = ["", "last"]
     else:
       article_range = article_range.split(",")
       article_range[0] = int(article_range[0])
@@ -45,7 +51,8 @@ def create_filter(ner, sentiment, request):
     "articles": {
       "range": {
         "from": article_range[0],
-        "to": article_range[1]
+        "to": article_range[1],
+        "default": def_range
       },
       "orderby": "date"
     }
