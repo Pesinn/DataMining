@@ -1,12 +1,20 @@
 import math
 import numpy as np
 
+def get_articles_per_page():
+  return 10
+
+def get_pagination_num():
+  return 7
+
 def article_pagination(response, request):
+  per_page = get_articles_per_page()
+  max_pages = get_pagination_num()
+  
   current_page = request.args.get("current_page")
   if(current_page is None):
     current_page = 1
 
-  per_page = 10
   article_count = response["articles_count_total"]
   pages = math.ceil(article_count / per_page)
   
@@ -17,7 +25,7 @@ def article_pagination(response, request):
   }
 
   # Array of pages that should be visible in the pagination.
-  pagination_visible = get_pagination_to_display(int(current_page), int(pages))
+  pagination_visible = get_pagination_to_display(int(current_page), int(pages), max_pages)
     
   # Create object for each page, that contains all key information about
   # what should be displayed.
@@ -25,9 +33,9 @@ def article_pagination(response, request):
     if(i == 0):
       _from = 1
     else:
-      _from = (i*10) + 1
+      _from = (i*max_pages) + 1
 
-    to = 10*(i+1)
+    to = max_pages*(i+1)
     if(to > article_count):
       to = article_count
 
@@ -39,20 +47,18 @@ def article_pagination(response, request):
 
     r["pages"].append({
         "page": number,
-        "from": _from,
-        "to": to,
         "visible": visible
       })
 
   return r
 
-def get_pagination_to_display(current, pages):
-  if(pages < 7 or current > pages or current < 0):
+def get_pagination_to_display(current, pages, max_pages):
+  if(pages < max_pages or current > pages or current < 0):
     return [i for i in range(pages)]
 
   pagination = [current]
   pagination_cap = False
-    
+
   index = 1
   while not pagination_cap:
     left = current - index
@@ -64,9 +70,9 @@ def get_pagination_to_display(current, pages):
     if(right <= pages):
       pagination.append(right)
     index += 1
-    
-    if(len(pagination) >= 7):
+
+    if(len(pagination) >= max_pages):
       pagination_cap = True
- 
+
   return np.sort(np.array(pagination))
     

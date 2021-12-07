@@ -41,7 +41,7 @@
         <nav aria-label="Page navigation example">
           <ul class="pagination">
             <li class="page-item" onclick="pagination_first_page();">
-              <a class="page-link" href="#">Previous</a>
+              <a class="page-link" href="#">First</a>
             </li>
             
             {% for i in data.article_pages.pages %}
@@ -89,7 +89,6 @@ entitiesButtonOnClickHandler();
 
 function pagination_first_page() {
   var filter = {
-    "articles_range": "first",
     "page": 1
   }
   redirectURL("/entities", filter)
@@ -100,14 +99,12 @@ function pagination_last_page(items) {
 
   if(items.length == 0) {
     filter = {
-      "articles_range": "first",
       "page": 1
     }
   }
   else {
     item = items[items.length-1]
     filter = {
-      "articles_range": item["from"] +","+ item["to"],
       "page": item["page"]
     }  
     redirectURL("/entities", filter)
@@ -116,7 +113,6 @@ function pagination_last_page(items) {
 
 function pagination(item) {
   var filter = {
-    "articles_range": item["from"] + "," + item["to"],
     "page": item["page"]
   }
   redirectURL("/entities", filter)

@@ -1,8 +1,10 @@
+import static.code.factory.pagination as pagination
+
 def conv_req_to_query_string(req):
   query_str = ""
   query_str = search(query_str, req)
   query_str = search_filter(query_str, req, "articles_limit")
-  query_str = search_filter(query_str, req, "articles_range")
+  query_str = pagination_handler(query_str, req)  
   return query_str
   
 def search(query_str, req):
@@ -43,3 +45,31 @@ def add_to_query_str(query_str, query):
 
 def add_object(req):
   return "{" + req.strip() + "}"
+
+def pagination_handler(query_str, req):
+  default = pagination.get_articles_per_page()
+  articles_page = req.args.get("current_page")
+    
+  # Page 1: 1,10
+  # Page 2: 11,20
+  # Page 3: 21,30
+  # Page 4: 31,40
+  # Page 5: 41,50
+  if articles_page:
+    articles_page = int(articles_page)
+    if articles_page < 1:
+      articles_page = 1
+      
+    if(articles_page == 1):
+      _from = 1
+      _to = default
+    else:
+      _from = default*(articles_page-1)
+      _to = default*articles_page
+      
+    query_str = add_to_query_str(
+      query_str,
+      f"articles_range={_from},{_to}"
+    )
+
+  return query_str

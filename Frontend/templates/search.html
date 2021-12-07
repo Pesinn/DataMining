@@ -173,18 +173,11 @@ function buttonOnClickHandler() {
 
 function redirectURL(source, filter) {
   var searchStr = convertSearchObjectToQueryString();
-  var filterStr = setArticleRange(filter);
+  var filterStr = setCurrentPage(filter);
 
   if(searchStr) {
     if(filterStr) {
       filterStr = "&"+filterStr;
-    }
-  }
-  
-  var pageStr = setCurrentPage(filter)
-  if(searchStr) {
-    if(pageStr) {
-      filterStr = filterStr+"&"+pageStr;
     }
   }
 
