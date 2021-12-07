@@ -83,11 +83,19 @@ function convertVariablesToQueryString(filter) {
 }
 
 function setArticleRange(filter) {
-  return "articles_range=" + filter["articles_range"]
+  if(filter != null && "articles_range" in filter) {
+    return "articles_range=" + filter["articles_range"];
+  } else {
+    return "";
+  }
 }
 
 function setCurrentPage(filter) {
-  return "current_page=" + filter["page"]
+  if(filter != null && "page" in filter) {
+    return "current_page=" + filter["page"]
+  } else {
+    return ""
+  }
 }
 
 function getQueryParameter(type) {

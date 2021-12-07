@@ -38,11 +38,13 @@
     <div class="col-md-12 col-lg-4">
 
       <div>
+        <p onclick="pagination_first_page();">First</p>
         {% for i in data.article_pages.pages %}
           {% if i.visible %}
             <p onclick="pagination({{i}})">{{i.page}}</p>
           {% endif %}
         {% endfor %}
+        <p onclick="pagination_last_page({{ data.article_pages.pages }});">Last</p>
       </div>
 
       {% for i in data.articles %}
@@ -72,6 +74,33 @@
 
 <script>
 entitiesButtonOnClickHandler();
+
+function pagination_first_page() {
+  var filter = {
+    "articles_range": "first",
+    "page": 1
+  }
+  redirectURL("/entities", filter)
+}
+
+function pagination_last_page(items) {
+  var filter = {};
+
+  if(items.length == 0) {
+    filter = {
+      "articles_range": "first",
+      "page": 1
+    }
+  }
+  else {
+    item = items[items.length-1]
+    filter = {
+      "articles_range": item["from"] +","+ item["to"],
+      "page": item["page"]
+    }  
+    redirectURL("/entities", filter)
+  }
+}
 
 function pagination(item) {
   var filter = {
