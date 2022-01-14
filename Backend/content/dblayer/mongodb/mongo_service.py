@@ -30,24 +30,18 @@ def get_news_data(search, filter):
     return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), db_filter)]
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
+
 def convert_search_obj_to_dbreq(search):
+  if(config.DB_METHOD == "TEXT_SEARCH"):
+    return text_search(search)
+  elif(config.DB_METHOD == "REGULAR_SEARCH"):
+    return regular_search(search)
+
+def text_search(search):
   dbreq = []
   for i in search:
     query_object = {}
-    if(i == "languages"):
-      query_object["article_language"] = { "$in" : search[i] }
-    if(i == "sources"):
-      query_object["source"] = { "$in" : search[i] }
-    if(i == "date_from"):
-      try:
-        query_object["publish_date"]["$gt"] = search[i]
-      except:
-        query_object["publish_date"] = { "$gt" : search[i] }
-    if(i == "date_to"):
-      try:
-        query_object["publish_date"]["$lt"] = search[i]
-      except:
-        query_object["publish_date"] = { "$lt" : search[i] }
+    query_object = query_parameter_to_search(query_object, search, i)
 
     if(i == "search"):
       search_string = " ".join(str(x) for x in search[i])      
@@ -56,6 +50,45 @@ def convert_search_obj_to_dbreq(search):
 
     dbreq.append(query_object)
   return {"$and": dbreq}
+
+def regular_search(search):
+  dbreq = []
+  for i in search:
+    query_object = {}
+    query_object = query_parameter_to_search(query_object, search, i)
+
+    if(query_object != {}):
+      dbreq.append(query_object)
+
+    if(i == "search"):
+      for a in search[i]:
+        query = {"$or":
+                  [
+                    {'title.text': {"$regex": a, "$options": "i"}},
+                    {'description.text': {"$regex": a, "$options": "i"}}
+                  ]
+                }
+        dbreq.append(query)
+    
+  print({"$and": dbreq})
+  return {"$and": dbreq}
+  
+def query_parameter_to_search(query_object, search, i):
+  if(i == "languages"):
+    query_object["article_language"] = { "$in" : search[i] }
+  if(i == "sources"):
+    query_object["source"] = { "$in" : search[i] }
+  if(i == "date_from"):
+    try:
+      query_object["publish_date"]["$gt"] = search[i]
+    except:
+      query_object["publish_date"] = { "$gt" : search[i] }
+  if(i == "date_to"):
+    try:
+      query_object["publish_date"]["$lt"] = search[i]
+    except:
+      query_object["publish_date"] = { "$lt" : search[i] }
+  return query_object
 
 def create_db_filter(filter):
   db_filter = {"_id": 0,
