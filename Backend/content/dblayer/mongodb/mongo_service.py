@@ -1,6 +1,7 @@
 import pymongo
 import config
 import json
+import copy
 
 NEWS = "news_data"
 
@@ -26,32 +27,69 @@ def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
-    db_filter = create_db_filter(filter)
-    return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), db_filter)]
+    if(config.DB_METHOD == "TEXT_SEARCH"):
+      return get_news_data_text_search(search, filter)
+    elif(config.DB_METHOD == "REGULAR_SEARCH"):
+      return get_news_data_regular_search(search, filter)
+
+def get_news_data_regular_search(search, filter):
+  db_filter = create_db_filter(filter)
+  query = regular_search_query(search)
+  return [x for x in _mydb[NEWS].find(query, db_filter)]
+
+def get_news_data_text_search(search, filter):
+  search_list = []
+  for i in search["search"]:
+    new_obj = copy.deepcopy(search)
+    new_obj["search"] = i
+    search_list.append(new_obj)
+  db_filter = create_db_filter(filter)
+
+  data = []
+  for i in search_list:
+    query = text_search_query(i)
+    print(query)
+    data.append([x for x in _mydb[NEWS].find(query, db_filter)])
+
+  return common_elements(data)
+
+def common_elements(data):
+  common_list = []
+  length = len(data)
+  for i in range(0,length):
+    if(i == 0):
+      common_list = data[i]
+    else:
+      common_list = get_common_elements(common_list, data[i])
+  return common_list
+
+def get_common_elements(list1, list2):
+  if(list1 == [] or list2 == []):
+    return []
+  return [i for i in list1 if i in list2]
+
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 
 def convert_search_obj_to_dbreq(search):
   if(config.DB_METHOD == "TEXT_SEARCH"):
-    return text_search(search)
+    return text_search_query(search)
   elif(config.DB_METHOD == "REGULAR_SEARCH"):
-    return regular_search(search)
+    return regular_search_query(search)
 
-def text_search(search):
+def text_search_query(search):
   dbreq = []
   for i in search:
     query_object = {}
     query_object = query_parameter_to_search(query_object, search, i)
-
+    
     if(i == "search"):
-      search_string = " ".join(str(x) for x in search[i])      
-      if(search_string != ""):
-        query_object["$text"] = { "$search" : search_string }
+      query_object["$text"] = { "$search" : search[i] }
 
     dbreq.append(query_object)
   return {"$and": dbreq}
 
-def regular_search(search):
+def regular_search_query(search):
   dbreq = []
   for i in search:
     query_object = {}
@@ -69,7 +107,7 @@ def regular_search(search):
                   ]
                 }
         dbreq.append(query)
-    
+
   print({"$and": dbreq})
   return {"$and": dbreq}
   
@@ -91,7 +129,7 @@ def query_parameter_to_search(query_object, search, i):
   return query_object
 
 def create_db_filter(filter):
-  db_filter = {"_id": 0,
+  db_filter = {"_id": 1,
             "description.text": 1,
             "title.text": 1,
             "article_language": 1,
