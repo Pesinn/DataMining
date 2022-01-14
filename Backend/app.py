@@ -102,7 +102,7 @@ def news_data():
 @app.route('/api/v1/raw_data', methods=['GET'])
 def raw_data():
   search_arr = req.conv_req_to_search_array(request)
-  return jsonify(domain_raw_data.get_raw_data(search_arr, filter))
+  return jsonify(domain_raw_data.get_raw_data(search_arr))
 
 
 ###########################
