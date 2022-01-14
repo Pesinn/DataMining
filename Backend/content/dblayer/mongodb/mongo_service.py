@@ -48,7 +48,6 @@ def get_news_data_text_search(search, filter):
   data = []
   for i in search_list:
     query = text_search_query(i)
-    print(query)
     data.append([x for x in _mydb[NEWS].find(query, db_filter)])
 
   return common_elements(data)
@@ -108,7 +107,6 @@ def regular_search_query(search):
                 }
         dbreq.append(query)
 
-  print({"$and": dbreq})
   return {"$and": dbreq}
   
 def query_parameter_to_search(query_object, search, i):
