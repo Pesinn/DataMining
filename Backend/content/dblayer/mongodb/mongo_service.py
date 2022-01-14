@@ -64,8 +64,8 @@ def regular_search(search):
       for a in search[i]:
         query = {"$or":
                   [
-                    {'title.text': {"$regex": a, "$options": "i"}},
-                    {'description.text': {"$regex": a, "$options": "i"}}
+                    {'title.text_processed': {"$regex": a}},
+                    {'description.text_processed': {"$regex": a}}
                   ]
                 }
         dbreq.append(query)
