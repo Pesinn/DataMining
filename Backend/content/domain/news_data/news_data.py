@@ -41,7 +41,7 @@ def get_news_data_by_single_search(s, filter):
   final_obj = {
     "sentiment_analysis": sentiment,
     "entities": {
-      "named": entity_factory.entity_dict_to_list(ner, 10, s["search"])
+      "named": entity_factory.entity_dict_to_list(ner, s["named_entities"], s["search"])
     },
     "articles": articles,
     "search": s["search"],

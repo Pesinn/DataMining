@@ -20,8 +20,14 @@ def load_json():
   return data
 
 def get_raw_data(search):
-    filter = {"_id": 0}
-    return [x for x in _mydb[NEWS].find(convert_search_obj_to_dbreq(search), filter)]
+  filter = {
+    'named_entities': True,
+    'sentiment_analysis': True,
+    'articles': {'range': {'from': 1, 'to': 10, 'default': 10},
+    'orderby': 'date'}
+  }
+
+  return get_news_data(search, filter)
 
 def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
@@ -44,8 +50,8 @@ def get_news_data_text_search(search, filter):
     new_obj["search"] = i
     search_list.append(new_obj)
   db_filter = create_db_filter(filter)
-
   data = []
+
   for i in search_list:
     query = text_search_query(i)
     data.append([x for x in _mydb[NEWS].find(query, db_filter)])
@@ -69,12 +75,6 @@ def get_common_elements(list1, list2):
 
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
-
-def convert_search_obj_to_dbreq(search):
-  if(config.DB_METHOD == "TEXT_SEARCH"):
-    return text_search_query(search)
-  elif(config.DB_METHOD == "REGULAR_SEARCH"):
-    return regular_search_query(search)
 
 def text_search_query(search):
   dbreq = []
@@ -108,7 +108,7 @@ def regular_search_query(search):
         dbreq.append(query)
 
   return {"$and": dbreq}
-  
+
 def query_parameter_to_search(query_object, search, i):
   if(i == "languages"):
     query_object["article_language"] = { "$in" : search[i] }
@@ -133,7 +133,8 @@ def create_db_filter(filter):
             "article_language": 1,
             "publish_date": 1,
             "source": 1}
-
+  if(filter == ""):
+    return db_filter
   if(filter["sentiment_analysis"] == True):
     db_filter["annotations.sentiment_analysis"] = 1
   if(filter["named_entities"] == True):

@@ -92,7 +92,7 @@ app.config["DEBUG"] = True
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
   filter = req.create_filter(True, True, request)
-  return req.get_news_data(request, filter)
+  return get_news_data(request, filter)
 
 
 ###########################

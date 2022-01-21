@@ -12,7 +12,10 @@ def handle_query_parameters(req):
     search_obj["date_to"] = req.args.get("date_to")
   if 'sources' in req.args:
     search_obj["sources"] = string_utils.string_to_array(req.args.get("sources"), ",")
-
+  if 'named_entities' in req.args:
+    search_obj["named_entities"] = int(req.args.get("named_entities"))
+  else:
+    search_obj["named_entities"] = 10
   return search_obj
 
 def conv_req_to_search_array(req):
@@ -29,7 +32,6 @@ def create_filter(ner, sentiment, request):
   article_range = request.args.get("articles_range")
   # Default article range is 10
   def_range = 10
-  
   try:
     if(article_range is None):
       article_range = [1,def_range]
