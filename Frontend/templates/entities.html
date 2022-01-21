@@ -77,7 +77,25 @@
       {% endfor %}
 
       <div>
-        <p id="more-articles">Button</p>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" onclick="pagination_first_page();">
+              <a class="page-link" href="#">First</a>
+            </li>
+            
+            {% for i in data.article_pages.pages %}
+              {% if i.visible %}
+                <li class="page-item">
+                  <a class="page-link" onclick="pagination({{i}})" href="#">{{i.page}}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="pagination_last_page({{ data.article_pages.pages }});">Last</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
 
