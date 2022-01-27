@@ -4,7 +4,8 @@ def conv_req_to_query_string(req):
   query_str = ""
   query_str = search(query_str, req)
   query_str = search_filter(query_str, req, "articles_limit")
-  query_str = pagination_handler(query_str, req)  
+  query_str = search_filter(query_str, req, "named_entities")
+  query_str = pagination_handler(query_str, req)
   return query_str
   
 def search(query_str, req):
