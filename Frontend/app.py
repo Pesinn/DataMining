@@ -59,25 +59,6 @@ def getFrequencyDictForText(sentence):
   for key in tmpDict:
     fullTermsDict.add(key, tmpDict[key])
   return fullTermsDict
-  
-
-listing = [
-  {
-    "count": 7,
-    "entity": "Daily Star",
-    "type": "WORK_OF_ART"
-  },
-  {
-    "count": 3,
-    "entity": "Elon Musk",
-    "type": "PERSON"
-  },
-  {
-    "count": 2,
-    "entity": "TESLA",
-    "type": "ORG"
-  }
-]
 
 def random_string(random_chars=12, alphabet="0123456789abcdef"):
     r = random.SystemRandom()
@@ -109,7 +90,7 @@ def create_word_cloud(ent):
   )
 
   wc.generate_from_frequencies(image_freq)
-   
+
   random_str = random_string()
   wc.to_file(f"{generated_image_path}{random_str}.png")
   
