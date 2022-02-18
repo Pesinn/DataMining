@@ -76,12 +76,45 @@ def get_common_elements(list1, list2):
 
 # https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
 
+def beautify_print(t):
+  json_str = pprint.pformat(t)
+  print(json_str)
+
+def search_query(search, type):
+  if(type == "TEXT_SEARCH"):
+    return text_search_query(search)
+  if(type == "AGGREGATION_SEARCH"):
+    return aggregation_search_query(search)
+  
+def aggregation_search_query(search):
+  return [
+    { '$match': { '$text': { '$search': search } } },
+  ]
+
+"""
+  [
+    { '$match': { '$text': { '$search': "covid" } } },
+    { $project: { _id: 1, "title.text": 1, "description.text":1, "annotations":1, "publish_date": 1, "source": 1, "article_language": 1, score: { $meta: "textScore" } } },
+    { $match: { score: { $gt: 1.0 } } },
+    { $sort: { score: { $meta: "textScore" }, posts: 1 } }
+]"""
+  
+#  dbreq = []
+#  for i in search:
+#    query_object = {}
+#    query_object = query_parameter_to_search(query_object, search, i)
+    
+#    if(i == "search"):
+#      query_object["$text"] = { "$search" : search[i] }
+
+#    dbreq.append(query_object)
+#  return {"$and": dbreq}
+
 def text_search_query(search):
   dbreq = []
   for i in search:
     query_object = {}
     query_object = query_parameter_to_search(query_object, search, i)
-    
     if(i == "search"):
       query_object["$text"] = { "$search" : search[i] }
 
@@ -99,13 +132,7 @@ def regular_search_query(search):
 
     if(i == "search"):
       for a in search[i]:
-        query = {"$or":
-                  [
-                    {'keywords': {"$regex": a}}
-                  ]
-                }
-        dbreq.append(query)
-
+        dbreq.append({'keywords': {"$regex": a}})
   return {"$and": dbreq}
 
 def query_parameter_to_search(query_object, search, i):
