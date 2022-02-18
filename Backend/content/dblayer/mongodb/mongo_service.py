@@ -35,8 +35,18 @@ def get_news_data(search, filter):
   else:
     if(config.DB_METHOD == "TEXT_SEARCH"):
       return get_news_data_text_search(search, filter)
+    elif(config.DB_METHOD == "AGGREGATION_SEARCH"):
+      return get_news_data_aggregation_search(search, filter)
     elif(config.DB_METHOD == "REGULAR_SEARCH"):
       return get_news_data_regular_search(search, filter)
+
+def get_news_data_aggregation_search(search, filter):
+  query = aggregation_search_query(search, filter)
+  data = [x for x in _mydb[NEWS].aggregate(query)]
+
+  # Filtera eftir score
+  print(data[20]["score"])
+  return data
 
 def get_news_data_regular_search(search, filter):
   db_filter = create_db_filter(filter)
@@ -55,7 +65,7 @@ def get_news_data_text_search(search, filter):
   for i in search_list:
     query = text_search_query(i)
     data.append([x for x in _mydb[NEWS].find(query, db_filter)])
-
+  
   return common_elements(data)
 
 def common_elements(data):
@@ -79,36 +89,20 @@ def get_common_elements(list1, list2):
 def beautify_print(t):
   json_str = pprint.pformat(t)
   print(json_str)
-
-def search_query(search, type):
-  if(type == "TEXT_SEARCH"):
-    return text_search_query(search)
-  if(type == "AGGREGATION_SEARCH"):
-    return aggregation_search_query(search)
   
-def aggregation_search_query(search):
-  return [
-    { '$match': { '$text': { '$search': search } } },
-  ]
+def aggregation_search_query(search, filter):
+  dbObj = []
+  search_str = ""
+  for i in search["search"]:
+    search_str += i + " "
 
-"""
-  [
-    { '$match': { '$text': { '$search': "covid" } } },
-    { $project: { _id: 1, "title.text": 1, "description.text":1, "annotations":1, "publish_date": 1, "source": 1, "article_language": 1, score: { $meta: "textScore" } } },
-    { $match: { score: { $gt: 1.0 } } },
-    { $sort: { score: { $meta: "textScore" }, posts: 1 } }
-]"""
+  dbObj.append({ "$match": { "$text": { "$search": search_str.strip() } } })
+  project = create_db_filter(filter)
+  project["score"] = {"$meta": "textScore"}
+  dbObj.append({"$project": project})
   
-#  dbreq = []
-#  for i in search:
-#    query_object = {}
-#    query_object = query_parameter_to_search(query_object, search, i)
-    
-#    if(i == "search"):
-#      query_object["$text"] = { "$search" : search[i] }
-
-#    dbreq.append(query_object)
-#  return {"$and": dbreq}
+  dbObj.append({ "$sort": { "score": { "$meta": "textScore" }, "posts": 1 } })
+  return dbObj
 
 def text_search_query(search):
   dbreq = []
