@@ -60,12 +60,11 @@ def pagination_handler(query_str, req):
     articles_page = int(articles_page)
     if articles_page < 1:
       articles_page = 1
-      
     if(articles_page == 1):
       _from = 1
       _to = default
     else:
-      _from = default*(articles_page-1)
+      _from = default*(articles_page-1) + 1
       _to = default*articles_page
       
     query_str = add_to_query_str(
