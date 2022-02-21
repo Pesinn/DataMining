@@ -50,11 +50,38 @@ def create_filter(ner, sentiment, request):
   return {
     "named_entities": ner,
     "sentiment_analysis": sentiment,
+    "_id": True,
+    "description_text": True,
+    "title_text": True,
+    "article_language": True,
+    "publish_date": True,
+    "source": True,
     "articles": {
       "range": {
         "from": article_range[0],
         "to": article_range[1],
         "default": def_range
+      },
+      "orderby": "date"
+    }
+  }
+
+def create_raw_filter():
+  return {
+    "named_entities": True,
+    "sentiment_analysis": True,
+    "keywords": True,
+    "_id": True,
+    "description_text": True,
+    "title_text": True,
+    "article_language": True,
+    "publish_date": True,
+    "source": True,
+    "articles": {
+      "range": {
+        "from": 1,
+        "to": 10,
+        "default": 10
       },
       "orderby": "date"
     }

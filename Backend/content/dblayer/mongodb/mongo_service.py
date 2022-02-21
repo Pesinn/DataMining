@@ -20,16 +20,6 @@ def load_json():
   file.close()
   return data
 
-def get_raw_data(search):
-  filter = {
-    'named_entities': True,
-    'sentiment_analysis': True,
-    'articles': {'range': {'from': 1, 'to': 10, 'default': 10},
-    'orderby': 'date'}
-  }
-
-  return get_news_data(search, filter)
-
 def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
@@ -84,13 +74,10 @@ def get_common_elements(list1, list2):
     return []
   return [i for i in list1 if i in list2]
 
-
-# https://www.analyticsvidhya.com/blog/2020/08/query-a-mongodb-database-using-pymongo/
-
 def beautify_print(t):
   json_str = pprint.pformat(t)
   print(json_str)
-  
+
 def aggregation_search_query(search, filter):
   dbObj = []
   search_str = ""
@@ -128,6 +115,7 @@ def regular_search_query(search):
     if(i == "search"):
       for a in search[i]:
         dbreq.append({'keywords': {"$regex": a}})
+  
   return {"$and": dbreq}
 
 def query_parameter_to_search(query_object, search, i):
@@ -148,17 +136,25 @@ def query_parameter_to_search(query_object, search, i):
   return query_object
 
 def create_db_filter(filter):
-  db_filter = {"_id": 1,
-            "description.text": 1,
-            "title.text": 1,
-            "article_language": 1,
-            "publish_date": 1,
-            "source": 1}
+  db_filter = {}
+
   if(filter == ""):
     return db_filter
-  if(filter["sentiment_analysis"] == True):
-    db_filter["annotations.sentiment_analysis"] = 1
-  if(filter["named_entities"] == True):
-    db_filter["annotations.entities.named"] = 1
-
+  
+  filtering(filter, "id", "_id", db_filter)
+  filtering(filter, "description_text", "description.text", db_filter)
+  filtering(filter, "title_text", "title.text", db_filter)
+  filtering(filter, "article_language", "article_language", db_filter)
+  filtering(filter, "publish_date", "publish_date", db_filter)
+  filtering(filter, "source", "source", db_filter)
+  filtering(filter, "keywords", "keywords", db_filter)
+  filtering(filter, "sentiment_analysis", "annotations.sentiment_analysis", db_filter)
+  filtering(filter, "named_entities", "annotations.entities.named", db_filter)
   return db_filter
+
+def filtering(obj, name, db_name, db_filter):
+  try:
+    if(obj[name] == True):
+      db_filter[db_name] = 1
+  except:
+    print("ignore")
