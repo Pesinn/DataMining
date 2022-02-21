@@ -91,7 +91,8 @@ def get_named_entities(combined, data, search_arr):
     return entity_factory.count_entities(
       combined, d_copy)
   except Exception as error:
-    print("Error:", str(error))
+    if(str(error) != "'entities'"):
+      print("Error:", str(error))
     return {}
 
 def create_article(data):

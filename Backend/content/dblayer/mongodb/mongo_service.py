@@ -156,5 +156,6 @@ def filtering(obj, name, db_name, db_filter):
   try:
     if(obj[name] == True):
       db_filter[db_name] = 1
-  except:
-    print("ignore")
+  except Exception as error:
+    return ""
+    
