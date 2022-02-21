@@ -68,14 +68,18 @@ def random_string(random_chars=12, alphabet="0123456789abcdef"):
 @app.route('/',  methods=["GET"])
 def index():
   search_req = req.conv_req_to_query_string(request)
-
+  print(search_req)
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
 
   art = domain_articles.get_articles(search_req)
 
-  return render_template("articles.html", data = art)
+  art[0]["article_pages"] = page.article_pagination(art[0], request)
+  
+  if "[]" in art:
+    return render_template("default.html")
+  return render_template("articles.html", data = art[0])
 
 def create_word_cloud(ent):
   x, y = np.ogrid[:300, :300]

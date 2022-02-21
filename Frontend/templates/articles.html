@@ -6,26 +6,104 @@
 <div class="container">
   <div class="row">
 
-    <!-- Display articles -->
-      {% for a in data %}
-        {% for i in a.articles %}
+    <div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" onclick="pagination_first_page_art();">
+            <a class="page-link" href="#">First</a>
+          </li>
+          
+          {% for i in data.article_pages.pages %}
+            {% if i.visible %}
+              <li class="page-item">
+                <a class="page-link" onclick="pagination_art({{i}})" href="#">{{i.page}}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          
+          <li class="page-item">
+            <a class="page-link" href="#" onclick="pagination_last_page_art({{ data.article_pages.pages }});">Last</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
-          <div class="col-md-12 col-lg-6 Article-box">
-            <div class="card Article-box-card">
-              <div class="card-body">
-                <h5 class="card-title">{{ i.title }}</h5>
-                <p class="card-text">{{ i.description }}</p>
-                <div class="Article-footer">
-                  <p class="card-link u-floatRight u-marginRight">{{ i.source }}</p>
-                  <p class="card-link u-marginLeft"> {{ i.publish_date }} </p>
-                </div>
+    <!-- Display articles -->
+      {% for i in data.articles %}
+
+        <div class="col-md-12 col-lg-6 Article-box">
+          <div class="card Article-box-card">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.title }}</h5>
+              <p class="card-text">{{ i.description }}</p>
+              <div class="Article-footer">
+                <p class="card-link u-floatRight u-marginRight">{{ i.source }}</p>
+                <p class="card-link u-marginLeft"> {{ i.publish_date }} </p>
               </div>
             </div>
           </div>
+        </div>
 
-        {% endfor %}
       {% endfor %}
+
+      <div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" onclick="pagination_first_page_art();">
+              <a class="page-link" href="#">First</a>
+            </li>
+            
+            {% for i in data.article_pages.pages %}
+              {% if i.visible %}
+                <li class="page-item">
+                  <a class="page-link" onclick="pagination_art({{i}})" href="#">{{i.page}}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            
+            <li class="page-item">
+              <a class="page-link" href="#" onclick="pagination_last_page_art({{ data.article_pages.pages }});">Last</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
 
   </div>
 </div>
+
+<script>
+
+function pagination_first_page_art() {
+  var filter = {
+    "page": 1
+  }
+  redirectURL("/", filter)
+}
+
+function pagination_last_page_art(items) {
+  var filter = {};
+
+  if(items.length == 0) {
+    filter = {
+      "page": 1
+    }
+  }
+  else {
+    item = items[items.length-1]
+    filter = {
+      "page": item["page"]
+    }  
+    redirectURL("/", filter)
+  }
+}
+
+function pagination_art(item) {
+  var filter = {
+    "page": item["page"]
+  }
+  redirectURL("/", filter)
+}
+
+</script>
+
 {% endblock %}

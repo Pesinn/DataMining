@@ -40,20 +40,20 @@
       <div>
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item" onclick="pagination_first_page();">
+            <li class="page-item" onclick="pagination_first_page_ent();">
               <a class="page-link" href="#">First</a>
             </li>
             
             {% for i in data.article_pages.pages %}
               {% if i.visible %}
                 <li class="page-item">
-                  <a class="page-link" onclick="pagination({{i}})" href="#">{{i.page}}</a>
+                  <a class="page-link" onclick="pagination_ent({{i}})" href="#">{{i.page}}</a>
                 </li>
               {% endif %}
             {% endfor %}
             
             <li class="page-item">
-              <a class="page-link" href="#" onclick="pagination_last_page({{ data.article_pages.pages }});">Last</a>
+              <a class="page-link" href="#" onclick="pagination_last_page_ent({{ data.article_pages.pages }});">Last</a>
             </li>
           </ul>
         </nav>
@@ -79,20 +79,20 @@
       <div>
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item" onclick="pagination_first_page();">
+            <li class="page-item" onclick="pagination_first_page_ent();">
               <a class="page-link" href="#">First</a>
             </li>
             
             {% for i in data.article_pages.pages %}
               {% if i.visible %}
                 <li class="page-item">
-                  <a class="page-link" onclick="pagination({{i}})" href="#">{{i.page}}</a>
+                  <a class="page-link" onclick="pagination_ent({{i}})" href="#">{{i.page}}</a>
                 </li>
               {% endif %}
             {% endfor %}
             
             <li class="page-item">
-              <a class="page-link" href="#" onclick="pagination_last_page({{ data.article_pages.pages }});">Last</a>
+              <a class="page-link" href="#" onclick="pagination_last_page_ent({{ data.article_pages.pages }});">Last</a>
             </li>
           </ul>
         </nav>
@@ -105,14 +105,14 @@
 <script>
 entitiesButtonOnClickHandler();
 
-function pagination_first_page() {
+function pagination_first_page_ent() {
   var filter = {
     "page": 1
   }
   redirectURL("/entities", filter)
 }
 
-function pagination_last_page(items) {
+function pagination_last_page_ent(items) {
   var filter = {};
 
   if(items.length == 0) {
@@ -129,7 +129,7 @@ function pagination_last_page(items) {
   }
 }
 
-function pagination(item) {
+function pagination_ent(item) {
   var filter = {
     "page": item["page"]
   }
