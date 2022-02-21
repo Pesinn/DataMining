@@ -43,10 +43,10 @@ def get_news_data(search, filter):
 def get_news_data_aggregation_search(search, filter):
   query = aggregation_search_query(search, filter)
   data = [x for x in _mydb[NEWS].aggregate(query)]
+  score_threshold = 2
 
-  # Filtera eftir score
-  print(data[20]["score"])
-  return data
+  # Filter data above the score threshold
+  return [x for x in data if x["score"] > score_threshold]
 
 def get_news_data_regular_search(search, filter):
   db_filter = create_db_filter(filter)
