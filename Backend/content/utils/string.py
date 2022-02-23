@@ -2,8 +2,12 @@ def string_to_array(string, split_by):
   string = string.replace("[", "")
   string = string.replace("]", "")
   string = string.replace("\"", "")
-
-  return string.split(split_by)
+  string = string.replace("\'", "")
+  string = string.strip()
+  split_str = []
+  for i in string.split(split_by):
+    split_str.append(i.strip())
+  return split_str
 
 """
 [{tesla,bleh}, {covid}]
