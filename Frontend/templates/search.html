@@ -7,12 +7,34 @@
 </form>
 
 <ul class="Search-filer">
-  <li>Sort</li>
-  <li>Sources</li>
-  <li>Language</li>
-  <li>Date From</li>
-  <li>Date To</li>
+  <li>Filter</li>
 </ul>
+
+<div class="Search-filtering">
+
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="sourceCheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" onclick="setSource('9news.com.au')" for="sourceCheck1">9news.com.au</label>
+  
+    <input type="checkbox" class="btn-check" id="sourceCheck2" autocomplete="off">
+    <label class="btn btn-outline-primary" onclick="setSource('france24.fr')" for="sourceCheck2">france24.fr</label>
+  
+    <input type="checkbox" class="btn-check" id="sourceCheck3" autocomplete="off">
+    <label class="btn btn-outline-primary" onclick="setSource('foxnews.com')" for="sourceCheck3">Fox News</label>
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="langCheck1" autocomplete="off">
+    <label class="btn btn-outline-primary" onclick="setLanguage('en')" for="langCheck1">English</label>
+  
+    <input type="checkbox" class="btn-check" id="langCheck2" autocomplete="off">
+    <label class="btn btn-outline-primary" onclick="setLanguage('fr')" for="langCheck2">French</label>
+  
+    <input type="checkbox" class="btn-check" id="langCheck3" autocomplete="off">
+    <label class="btn btn-outline-primary" onclick="setLanguage('es')" for="langCheck3">Spanish</label>
+  </div>
+
+</div>
 
 <div class="Search-buttons">
   <div style="margin-bottom: 5px">     
@@ -30,7 +52,6 @@
     <button id="sentiment-filter-button" type="button" class="btn btn-outline-primary">Filter</button>
     <button id="sentiment-stats-button" type="button" class="btn btn-outline-primary">Something</button>
   </div>
-
 </div>
 
 <div class="container Content-frame">
@@ -48,6 +69,48 @@ buttonClassHandler();
 
 var defaultFilter = {
   "articles_limit": 10
+}
+
+var _filter = {
+  "sources": [],
+  "languages": [],
+  "date_from": "",
+  "date_to": ""
+}
+
+function setSource(inVar) {
+  setFiltering(inVar, "sources");
+}
+
+function setLanguage(inVar) {
+  setFiltering(inVar, "languages");
+}
+
+function setDateFrom(inVar) {
+  setFiltering(inVar, "date_from");
+}
+
+function setDateTo(inVar) {
+  setFiltering(inVar, "date_to");
+}
+
+function setFiltering(element, type) {
+  var sources = _filter[type];
+  _filter[type] = upsertArray(element, sources);
+}
+
+function upsertArray(element, arr) {
+  if(arr.includes(element)) {
+    const i = arr.indexOf(element);
+    if(i > -1) {
+      // Remove single element from the list
+      // based on certain index
+      arr.splice(i, 1);
+    }
+  } else {
+    arr.push(element);
+  }
+  return arr;
 }
 
 function convertSearchObjectToQueryString() {
@@ -91,11 +154,27 @@ function setArticleRange(filter) {
 }
 
 function setCurrentPage(filter) {
-  if(filter != null && "page" in filter) {
-    return "current_page=" + filter["page"]
-  } else {
-    return ""
+  var str = "";
+
+  let f = {
+    ...filter,
+    ..._filter
   }
+
+  if(f != null && "page" in f) {
+    str += "&current_page=" + f["page"];
+  }
+  if(f != null && "languages" in f) {
+    if(f["languages"].length > 0) {
+      str += "&languages=" + f["languages"];
+    }
+  }
+  if(f != null && "sources" in f) {
+    if(f["sources"].length > 0) {
+      str += "&sources=" + f["sources"];
+    }
+  }
+  return str;
 }
 
 function getQueryParameter(type) {
@@ -172,17 +251,17 @@ function buttonOnClickHandler() {
 }
 
 function redirectURL(source, filter) {
+  console.log(source, filter, "hii")
   var searchStr = convertSearchObjectToQueryString();
   var filterStr = setCurrentPage(filter);
-
-  if(searchStr) {
-    if(filterStr) {
-      filterStr = "&"+filterStr;
-    }
+  
+  if(searchStr == "") {
+    var url = window.location.origin + source;
+    window.location = url;
+  } else {
+    var url = window.location.origin + source + searchStr + filterStr;
+    window.location = url;
   }
-
-  var url = window.location.origin + source + searchStr + filterStr;
-  window.location = url;
 }
 
 function modifyElementClass(id, addClass, removeClass) {

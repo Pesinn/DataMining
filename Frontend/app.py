@@ -68,7 +68,6 @@ def random_string(random_chars=12, alphabet="0123456789abcdef"):
 @app.route('/',  methods=["GET"])
 def index():
   search_req = req.conv_req_to_query_string(request)
-  print(search_req)
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html")
