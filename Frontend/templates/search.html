@@ -1,7 +1,7 @@
 {% extends 'navigation.html' %}
 {% block content %}
 
-<form class="d-flex align-items-center flex-nowrap" id="search-form">
+<form onsubmit="return mySubmitFunction(event)" class="d-flex align-items-center flex-nowrap" id="search-form">
   <input id="main-search-input" class="form-control" name="search" type="text" placeholder="Search" />
   <button type="submit" class="btn btn-primary">Search</button>
 </form>
@@ -11,6 +11,14 @@
 </ul>
 
 <div class="Search-filtering">
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+    {% for f, used in data.filter.languages.items() %}
+      <input type="checkbox" class="btn-check" id="langCheck_{{f}}" autocomplete="off">
+      <label class="btn btn-outline-primary" onclick="setLanguage('{{f}}')" for="langCheck_{{f}}">{{f}}</label>  
+    {% endfor %}
+
+  </div>
 
   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
     <input type="checkbox" class="btn-check" id="sourceCheck1" autocomplete="off">
@@ -250,8 +258,13 @@ function buttonOnClickHandler() {
   }
 }
 
+function mySubmitFunction(e) {
+  e.preventDefault();  
+  redirectURL(e.path[5].pathname, null);
+  return false;
+}
+
 function redirectURL(source, filter) {
-  console.log(source, filter, "hii")
   var searchStr = convertSearchObjectToQueryString();
   var filterStr = setCurrentPage(filter);
   

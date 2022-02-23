@@ -70,15 +70,42 @@ def index():
   search_req = req.conv_req_to_query_string(request)
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_template("default.html")
+    d = {
+      "filter": get_filter()
+    }
+    return render_template("default.html", data = d)
+  try:
+    art = domain_articles.get_articles(search_req)
+    
+    art[0]["filter"] = get_filter()
+    art[0]["article_pages"] = page.article_pagination(art[0], request)
+    
+    if "[]" in art:
+      return render_template("default.html")
+    return render_template("articles.html", data = art[0])
+  except Exception as error:
+    print("Error", error)
+    d = {
+      "filter": get_filter()
+    }
+    return render_template("default.html", data = d)
 
-  art = domain_articles.get_articles(search_req)
-
-  art[0]["article_pages"] = page.article_pagination(art[0], request)
+def get_filter():
+  return {
+    "languages":
+    {
+      "en": True,
+      "fr": False,
+      "es": False
+    },
+    "sources":
+    {
+      "9news.com.au": True,
+      "france24.fr": False,
+      "foxnews": False
+    }
+  }  
   
-  if "[]" in art:
-    return render_template("default.html")
-  return render_template("articles.html", data = art[0])
 
 def create_word_cloud(ent):
   x, y = np.ogrid[:300, :300]
@@ -105,7 +132,10 @@ def entities():
 
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_template("default.html")
+    d = {
+      "filter": get_filter()
+    }
+    return render_template("default.html", data = d)
   ent = domain_entities.get_entities(search_req)
 
   id = 0
@@ -114,9 +144,13 @@ def entities():
     id = id + 1
  
   ent[0]["article_pages"] = page.article_pagination(ent[0], request)
+  ent[0]["filter"] = get_filter()
   
   if "[]" in ent:
-    return render_template("default.html")
+    d = {
+      "filter": get_filter()
+    }
+    return render_template("default.html", data = d)
   return render_template("entities.html", data = ent[0])
 
 
