@@ -91,7 +91,7 @@ def get_named_entities(combined, data, search_arr):
     return entity_factory.count_entities(
       combined, d_copy)
   except Exception as error:
-    if(str(error) != "'entities'"):
+    if(str(error) != "'entities'" and str(error) != "'annotations'"):
       print("Error:", str(error))
     return {}
 
