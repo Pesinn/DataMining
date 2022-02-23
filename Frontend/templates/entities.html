@@ -103,8 +103,6 @@
 </div>
 
 <script>
-entitiesButtonOnClickHandler();
-
 function pagination_first_page_ent() {
   var filter = {
     "page": 1
@@ -146,15 +144,6 @@ function append_entity_to_search(obj) {
   } else {
     element.classList.add("Entity-box--picked");
     append_to_search_bar(obj["entity"]);
-  }
-}
-
-function entitiesButtonOnClickHandler() {
-  document.getElementById("more-articles").onclick = function moreArticles() {
-    var filter = {
-      "articles_limit": 10
-    };
-    redirectURL("/entities", filter)
   }
 }
 
