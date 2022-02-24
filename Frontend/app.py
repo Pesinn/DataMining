@@ -68,27 +68,82 @@ def random_string(random_chars=12, alphabet="0123456789abcdef"):
 @app.route('/',  methods=["GET"])
 def index():
   search_req = req.conv_req_to_query_string(request)
+  f = get_filter()
+
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    d = {
-      "filter": get_filter()
-    }
-    return render_template("default.html", data = d)
+    return render_template("default.html", filter = f)
   try:
-    art = domain_articles.get_articles(search_req)
-    
-    art[0]["filter"] = get_filter()
+    art = domain_articles.get_articles(search_req)    
     art[0]["article_pages"] = page.article_pagination(art[0], request)
-    
+
     if "[]" in art:
-      return render_template("default.html")
-    return render_template("articles.html", data = art[0])
+      print("[]")
+      return render_template("default.html", filter = f)
+    return render_template("articles.html", filter = f, data = art[0])
   except Exception as error:
     print("Error", error)
-    d = {
-      "filter": get_filter()
-    }
-    return render_template("default.html", data = d)
+    return render_template("default.html", filter = f)
+
+@app.route('/entities', methods=["GET"])
+def entities():
+  search_req = req.conv_req_to_query_string(request)
+  f = get_filter()
+  
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html", filter = f)
+  ent = domain_entities.get_entities(search_req)
+
+  id = 0
+  for i in ent[0]["entities"]["named"]:
+    i["id"] = f"entity_{id}"
+    id = id + 1
+ 
+  ent[0]["article_pages"] = page.article_pagination(ent[0], request)
+  
+  if "[]" in ent:
+    return render_template("default.html", filter = f)
+  return render_template("entities.html", filter = f, data = ent[0])
+
+@app.route('/entities-cloud', methods=["GET"])
+def entities_cloud():
+  search_req = req.conv_req_to_query_string(request)
+  f = get_filter()
+
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html", filter = f)
+
+  ent = domain_entities.get_entities(search_req)
+  cloud_image_path = create_word_cloud(ent)
+  return render_template("entities_cloud.html", filter = f, cloud_image = cloud_image_path)
+
+@app.route('/sentiment', methods=["GET"])
+def sentiment():
+  bar_labels=sentiment_labels
+  search_req = req.conv_req_to_query_string(request)
+  f = get_filter()
+
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html", filter = f)
+
+  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
+  return render_template("sentiment.html", filter = f, labels=bar_labels, data=sentiment)
+
+@app.route('/sentiment-stats', methods=["GET"])
+def sentiment_stats():
+  bar_labels=sentiment_labels
+  search_req = req.conv_req_to_query_string(request)
+  f = get_filter()
+  
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_template("default.html", filter = f)
+
+  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
+  return render_template("sentiment_stats.html", filter = f, labels=bar_labels, data=sentiment)
 
 def get_filter():
   return {
@@ -100,12 +155,13 @@ def get_filter():
     },
     "sources":
     {
-      "9news.com.au": True,
+      "9news.com.au": False,
       "france24.fr": False,
       "foxnews": False
-    }
-  }  
-  
+    },
+    "date_from": "2020-01-01",
+    "date_to": "2020-01-01",
+  }
 
 def create_word_cloud(ent):
   x, y = np.ogrid[:300, :300]
@@ -126,68 +182,5 @@ def create_word_cloud(ent):
   
   return f"{generated_image_path}{random_str}.png"
 
-@app.route('/entities', methods=["GET"])
-def entities():
-  search_req = req.conv_req_to_query_string(request)
-
-  # If no search query has been entered
-  if "[]" in search_req or not search_req:
-    d = {
-      "filter": get_filter()
-    }
-    return render_template("default.html", data = d)
-  ent = domain_entities.get_entities(search_req)
-
-  id = 0
-  for i in ent[0]["entities"]["named"]:
-    i["id"] = f"entity_{id}"
-    id = id + 1
- 
-  ent[0]["article_pages"] = page.article_pagination(ent[0], request)
-  ent[0]["filter"] = get_filter()
-  
-  if "[]" in ent:
-    d = {
-      "filter": get_filter()
-    }
-    return render_template("default.html", data = d)
-  return render_template("entities.html", data = ent[0])
-
-
-@app.route('/entities-cloud', methods=["GET"])
-def entities_cloud():
-  search_req = req.conv_req_to_query_string(request)
-
-  # If no search query has been entered
-  if "[]" in search_req or not search_req:
-    return render_template("default.html")
-
-  ent = domain_entities.get_entities(search_req)
-  cloud_image_path = create_word_cloud(ent)
-  return render_template("entities_cloud.html", cloud_image = cloud_image_path)
-
-@app.route('/sentiment', methods=["GET"])
-def sentiment():
-  bar_labels=sentiment_labels
-  search_req = req.conv_req_to_query_string(request)
-  # If no search query has been entered
-  if "[]" in search_req or not search_req:
-    return render_template("default.html")
-
-  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment.html", labels=bar_labels, data=sentiment)
-
-@app.route('/sentiment-stats', methods=["GET"])
-def sentiment_stats():
-  bar_labels=sentiment_labels
-  search_req = req.conv_req_to_query_string(request)
-
-  # If no search query has been entered
-  if "[]" in search_req or not search_req:
-    return render_template("default.html")
-
-  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment_stats.html", labels=bar_labels, data=sentiment)
-
-port = int(os.environ.get('PORT', 5550))
+port = int(os.environ.get('PORT', 5552))
 app.run(host='0.0.0.0', port=port)

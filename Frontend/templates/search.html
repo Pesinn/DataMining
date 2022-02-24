@@ -11,36 +11,46 @@
 </ul>
 
 <div class="Search-filtering">
-  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Languages
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      {% for f, used in filter.languages.items() %}
 
-    {% for f, used in data.filter.languages.items() %}
-      <input type="checkbox" class="btn-check" id="langCheck_{{f}}" autocomplete="off">
-      <label class="btn btn-outline-primary" onclick="setLanguage('{{f}}')" for="langCheck_{{f}}">{{f}}</label>  
-    {% endfor %}
+      <li>
+        <div class="form-check">
+          <input class="languageCheck_{{f}}" onclick="setLanguage('{{f}}')" type="checkbox" value="" id="languageCheck_{{f}}">
+          <label class="form-check-label" for="languageCheck_{{f}}">
+            {{f}}
+          </label>
+        </div>
+      </li>
 
+      {% endfor %}
+    </ul>
   </div>
 
-  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="sourceCheck1" autocomplete="off">
-    <label class="btn btn-outline-primary" onclick="setSource('9news.com.au')" for="sourceCheck1">9news.com.au</label>
-  
-    <input type="checkbox" class="btn-check" id="sourceCheck2" autocomplete="off">
-    <label class="btn btn-outline-primary" onclick="setSource('france24.fr')" for="sourceCheck2">france24.fr</label>
-  
-    <input type="checkbox" class="btn-check" id="sourceCheck3" autocomplete="off">
-    <label class="btn btn-outline-primary" onclick="setSource('foxnews.com')" for="sourceCheck3">Fox News</label>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      Sources
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      {% for f, used in filter.sources.items() %}
+
+      <li>
+        <div class="form-check">
+          <input class="sourceCheck_{{f}}" onclick="setSource('{{f}}')" type="checkbox" value="" id="sourceCheck_{{f}}">
+          <label class="form-check-label" for="sourceCheck_{{f}}">
+            {{f}}
+          </label>
+        </div>
+      </li>
+
+      {% endfor %}
+    </ul>
   </div>
 
-  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-    <input type="checkbox" class="btn-check" id="langCheck1" autocomplete="off">
-    <label class="btn btn-outline-primary" onclick="setLanguage('en')" for="langCheck1">English</label>
-  
-    <input type="checkbox" class="btn-check" id="langCheck2" autocomplete="off">
-    <label class="btn btn-outline-primary" onclick="setLanguage('fr')" for="langCheck2">French</label>
-  
-    <input type="checkbox" class="btn-check" id="langCheck3" autocomplete="off">
-    <label class="btn btn-outline-primary" onclick="setLanguage('es')" for="langCheck3">Spanish</label>
-  </div>
 
 </div>
 
@@ -72,18 +82,28 @@ var debug = false;
 // Assign search input values from the URL
 document.getElementById("main-search-input").value = getQueryParameter("search");
 
+_sources = {};
+_lang = {};
+{% for item, val in filter.sources.items() %}
+  _sources["{{ item }}"] = "{{ val }}";
+{% endfor %}
+
+{% for item, val in filter.languages.items() %}
+  _lang["{{ item }}"] = "{{ val }}";
+{% endfor %}
+
+var _filter = {
+  "sources": _sources,
+  "languages": _lang,
+  "date_from": JSON.parse('{{ filter.date_from | tojson}}'),
+  "date_to": JSON.parse('{{ filter.date_to | tojson}}')
+}
+
 buttonOnClickHandler();
 buttonClassHandler();
 
 var defaultFilter = {
   "articles_limit": 10
-}
-
-var _filter = {
-  "sources": [],
-  "languages": [],
-  "date_from": "",
-  "date_to": ""
 }
 
 function setSource(inVar) {
@@ -108,15 +128,10 @@ function setFiltering(element, type) {
 }
 
 function upsertArray(element, arr) {
-  if(arr.includes(element)) {
-    const i = arr.indexOf(element);
-    if(i > -1) {
-      // Remove single element from the list
-      // based on certain index
-      arr.splice(i, 1);
-    }
+  if(arr[element] == "True") {
+    arr[element] = "False";
   } else {
-    arr.push(element);
+    arr[element] = "True";
   }
   return arr;
 }
@@ -168,20 +183,32 @@ function setCurrentPage(filter) {
     ...filter,
     ..._filter
   }
-
   if(f != null && "page" in f) {
     str += "&current_page=" + f["page"];
   }
   if(f != null && "languages" in f) {
-    if(f["languages"].length > 0) {
-      str += "&languages=" + f["languages"];
-    }
+    str += appendToSearchStringFilter(f["languages"], "languages");
   }
   if(f != null && "sources" in f) {
-    if(f["sources"].length > 0) {
-      str += "&sources=" + f["sources"];
-    }
+    str += appendToSearchStringFilter(f["sources"], "sources");
   }
+  return str;
+}
+
+function appendToSearchStringFilter(dict, type) {
+  let found = false;
+  let str = "";
+  Object.entries(dict).forEach(([k,v]) => {
+    if(v == "True") {    
+      if(found == false) {
+        str += "&"+type+"=";
+        found = true;
+      } else {
+        str += ","
+      }
+      str += k;
+    }
+  });
   return str;
 }
 
@@ -267,7 +294,7 @@ function mySubmitFunction(e) {
 function redirectURL(source, filter) {
   var searchStr = convertSearchObjectToQueryString();
   var filterStr = setCurrentPage(filter);
-  
+
   if(searchStr == "") {
     var url = window.location.origin + source;
     window.location = url;
@@ -283,6 +310,21 @@ function modifyElementClass(id, addClass, removeClass) {
   element.classList.add(addClass);
 }
 
+arrangeFilter();
+function arrangeFilter() {
+  arrangeLanguages();
+}
+
+function arrangeLanguages() {
+  Object.entries(_filter["languages"]).forEach(([k,v]) => {
+    element = document.getElementById("languageCheck_"+k);
+    if(v == "False") {
+      element.checked = false;
+    } else {
+      element.checked = true;
+    }
+  });
+}
 
 
 </script>
