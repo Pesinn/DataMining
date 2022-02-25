@@ -1,13 +1,18 @@
 import static.code.factory.pagination as pagination
 
 def conv_req_to_query_string(req):
+  filter = {}
+  print(req)
   query_str = ""
   query_str = search(query_str, req)
   query_str = search_filter(query_str, req, "articles_limit")
-  query_str = search_filter_array(query_str, req, "sources")
-  query_str = search_filter_array(query_str, req, "languages")
+  query_str, filter["sources"] = search_filter_array(query_str, req, "sources")
+  query_str, filter["languages"] = search_filter_array(query_str, req, "languages")
   query_str = search_filter(query_str, req, "named_entities")
   query_str = pagination_handler(query_str, req)
+
+  print("languages", filter["languages"])
+
   return query_str
   
 def search(query_str, req):
@@ -40,15 +45,15 @@ def search_filter(query_str, req, name):
   return query_str
 
 def search_filter_array(query_str, req, name):
+  value_arr = []
   val = req.args.get(name)
   if val:
     value_arr = val.split(",")
-    print(value_arr)
     query_str = add_to_query_str(
       query_str,
       f"{name}={value_arr}"
     )
-  return query_str
+  return query_str, value_arr
 
 def add_to_query_str(query_str, query):
   if query_str in "":

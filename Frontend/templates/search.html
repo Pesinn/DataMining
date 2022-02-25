@@ -51,6 +51,8 @@
     </ul>
   </div>
 
+  <p>Date from: <input type="text" id="datepicker_date_from"></p>
+  <p>Date to: <input type="text" id="datepicker_date_to"></p>
 
 </div>
 
@@ -77,10 +79,18 @@
 </div>
 
 <script>
-var debug = false;
+$(document).ready(function () {
+  $( "#datepicker_date_from" ).datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+  $( "#datepicker_date_to" ).datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+});
 
 // Assign search input values from the URL
 document.getElementById("main-search-input").value = getQueryParameter("search");
+
 
 _sources = {};
 _lang = {};
@@ -192,6 +202,16 @@ function setCurrentPage(filter) {
   if(f != null && "sources" in f) {
     str += appendToSearchStringFilter(f["sources"], "sources");
   }
+  if(f != null && "date_from" in f) {
+    if(f["date_from"] != "" && f["date_from"] != null) {
+      str += "&date_from="+f["date_from"];
+    }
+  }
+  if(f != null && "date_to" in f) {
+    if(f["date_to"] != "" && f["date_to"] != null) {  
+      str += "&date_to="+f["date_to"];
+    }
+  }
   return str;
 }
 
@@ -292,6 +312,7 @@ function mySubmitFunction(e) {
 }
 
 function redirectURL(source, filter) {
+  setDateFilters();
   var searchStr = convertSearchObjectToQueryString();
   var filterStr = setCurrentPage(filter);
 
@@ -300,8 +321,15 @@ function redirectURL(source, filter) {
     window.location = url;
   } else {
     var url = window.location.origin + source + searchStr + filterStr;
+    console.log(url);
     window.location = url;
   }
+}
+
+
+function setDateFilters() {
+  _filter["date_from"] = document.getElementById("datepicker_date_from").value
+  _filter["date_to"] = document.getElementById("datepicker_date_to").value
 }
 
 function modifyElementClass(id, addClass, removeClass) {

@@ -69,16 +69,16 @@ def random_string(random_chars=12, alphabet="0123456789abcdef"):
 def index():
   search_req = req.conv_req_to_query_string(request)
   f = get_filter()
+  print("search req: ", search_req)
 
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_template("default.html", filter = f)
   try:
-    art = domain_articles.get_articles(search_req)    
+    art = domain_articles.get_articles(search_req)
     art[0]["article_pages"] = page.article_pagination(art[0], request)
 
     if "[]" in art:
-      print("[]")
       return render_template("default.html", filter = f)
     return render_template("articles.html", filter = f, data = art[0])
   except Exception as error:
@@ -182,5 +182,5 @@ def create_word_cloud(ent):
   
   return f"{generated_image_path}{random_str}.png"
 
-port = int(os.environ.get('PORT', 5552))
+port = int(os.environ.get('PORT', 5550))
 app.run(host='0.0.0.0', port=port)
