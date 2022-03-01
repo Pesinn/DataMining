@@ -30,6 +30,9 @@ def conv_req_to_search_array(req):
 
 def create_filter(ner, sentiment, request):
   article_range = request.args.get("articles_range")
+  article_range = article_range.replace("{", "")
+  article_range = article_range.replace("}", "")
+  
   # Default article range is 10
   def_range = 10
   try:
