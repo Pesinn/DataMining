@@ -86,6 +86,11 @@ $(document).ready(function () {
   $( "#datepicker_date_to" ).datepicker({
     dateFormat: "yy-mm-dd"
   });
+
+
+  $( "#datepicker_date_from" ).datepicker( "setDate", JSON.parse('{{ filter.date_from | tojson}}') );
+  $( "#datepicker_date_to" ).datepicker( "setDate", JSON.parse('{{ filter.date_to | tojson}}') );
+
 });
 
 // Assign search input values from the URL
