@@ -6,58 +6,75 @@
   <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
-<ul class="Search-filer">
-  <li>Filter</li>
-</ul>
+<div class="Search-filer">
+  <p onclick="triggerFilter()">Filter</p>
+</div>
 
-<div class="Search-filtering">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      Languages
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      {% for f, used in filter.languages.items() %}
+<div id="Search-filtering" class="Search-filtering">
 
-      <li>
-        <div class="form-check">
-          <input class="languageCheck_{{f}}" onclick="setLanguage('{{f}}')" type="checkbox" value="" id="languageCheck_{{f}}">
-          <label class="form-check-label" for="languageCheck_{{f}}">
-            {{f}}
-          </label>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 Search-filtering-container">
+
+        <div class="dropdown Search-filtering-datepicker-button">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Languages
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% for f, used in filter.languages.items() %}
+      
+            <li>
+              <div class="form-check">
+                <input class="languageCheck_{{f}}" onclick="setLanguage('{{f}}')" type="checkbox" value="" id="languageCheck_{{f}}">
+                <label class="form-check-label" for="languageCheck_{{f}}">
+                  {{f}}
+                </label>
+              </div>
+            </li>
+      
+            {% endfor %}
+          </ul>
         </div>
-      </li>
 
-      {% endfor %}
-    </ul>
-  </div>
+      </div>
+      <div class="col-sm-3 col-md-2 Search-filtering-container">
+        
+        <div class="dropdown Search-filtering-datepicker-button">
+          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Sources
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% for f, used in filter.sources.items() %}
 
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      Sources
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      {% for f, used in filter.sources.items() %}
+            <li>
+              <div class="form-check">
+                <input class="sourceCheck_{{f}}" onclick="setSource('{{f}}')" type="checkbox" value="" id="sourceCheck_{{f}}">
+                <label class="form-check-label" for="sourceCheck_{{f}}">
+                  {{f}}
+                </label>
+              </div>
+            </li>
 
-      <li>
-        <div class="form-check">
-          <input class="sourceCheck_{{f}}" onclick="setSource('{{f}}')" type="checkbox" value="" id="sourceCheck_{{f}}">
-          <label class="form-check-label" for="sourceCheck_{{f}}">
-            {{f}}
-          </label>
+            {% endfor %}
+          </ul>
         </div>
-      </li>
 
-      {% endfor %}
-    </ul>
+      </div>
+      <div class="col-sm-3 col-md-2 Search-filtering-container">
+        <p class="Search-filtering-datepicker-text">Date from</p>
+        <input class="Search-filtering-datepicker-input" type="text" id="datepicker_date_from">
+      </div>
+      <div class="col-sm-3 col-md-2 Search-filtering-container">
+        <p class="Search-filtering-datepicker-text">Date to</p>
+        <input class="Search-filtering-datepicker-input"type="text" id="datepicker_date_to">
+      </div>
+    </div>
   </div>
-
-  <p>Date from: <input type="text" id="datepicker_date_from"></p>
-  <p>Date to: <input type="text" id="datepicker_date_to"></p>
 
 </div>
 
 <div class="Search-buttons">
-  <div style="margin-bottom: 5px">     
+  <div style="margin-bottom: 5px">
     <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
     <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
     <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
@@ -87,15 +104,17 @@ $(document).ready(function () {
     dateFormat: "yy-mm-dd"
   });
 
-
   $( "#datepicker_date_from" ).datepicker( "setDate", JSON.parse('{{ filter.date_from | tojson}}') );
   $( "#datepicker_date_to" ).datepicker( "setDate", JSON.parse('{{ filter.date_to | tojson}}') );
-
 });
+
+
+_searchFilteringID = "#Search-filtering";
+
+//setInvisible(_searchFilteringID);
 
 // Assign search input values from the URL
 document.getElementById("main-search-input").value = getQueryParameter("search");
-
 
 _sources = {};
 _lang = {};
@@ -310,6 +329,14 @@ function buttonOnClickHandler() {
   }
 }
 
+function triggerFilter() {
+  if(isVisible(_searchFilteringID)) {
+    setInvisible_slow(_searchFilteringID);
+  } else {
+    setVisible_slow(_searchFilteringID);
+  }
+}
+
 function mySubmitFunction(e) {
   e.preventDefault();  
   redirectURL(e.path[5].pathname, null);
@@ -359,6 +386,23 @@ function arrangeLanguages() {
   });
 }
 
+function setVisible_slow(elementId) {
+  $(elementId).show( "slow", function() {
+  });
+}
+
+function setInvisible(elementId) {
+  $(elementId).hide();
+}
+
+function setInvisible_slow(elementId) {
+  $(elementId).hide( "slow", function() {
+  });
+}
+
+function isVisible(elementId) {
+  return $(elementId).is(":visible")
+}
 
 </script>
 

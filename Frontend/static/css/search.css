@@ -7,9 +7,27 @@
   margin-top: 6px;
   font-style: italic;
   font-size: 0.8em;
+  margin-right: 10px;
 }
 
-.Search-filer li {
-  display: inline-block;
-  margin-right: 10px;
+.Search-filtering {
+  margin-top: 15px;
+}
+
+.Search-filtering-datepicker-button {
+  margin-top: 15px;
+}
+
+.Search-filtering-container {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.Search-filtering-datepicker-text {
+  margin-bottom: 0px;
+}
+
+.Search-filtering-datepicker-input {
+  border: solid 1px;
+  width: 110px;
 }
