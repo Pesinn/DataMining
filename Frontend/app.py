@@ -29,25 +29,6 @@ sentiment_labels = [
     "Very positive, between 0.25 and 0.75"
 ]
 
-"""
-[
-  {
-      "count": 7,
-      "entity": "Daily Star",
-      "type": "WORK_OF_ART"
-  },
-  {
-      "count": 3,
-      "entity": "Elon Musk",
-      "type": "PERSON"
-  },
-  {
-      "count": 2,
-      "entity": "TESLA",
-      "type": "ORG"
-  }
-]
-"""
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
@@ -88,7 +69,7 @@ def entities():
   ent[0]["article_pages"] = page.article_pagination(ent[0], request)
   
   if "[]" in ent:
-    return render_default(f)
+    return render_default(domain_filter)
   return render_template("entities.html", filter = domain_filter, data = ent[0])
 
 @app.route('/entities-cloud', methods=["GET"])
@@ -135,29 +116,6 @@ def sentiment_stats():
 
 def render_default(f):
   return render_template("default.html", filter = f)
-
-def get_filter():
-  return {
-    "search": 
-    [
-      {"bleh", "blah"}    
-    ]
-    ,
-    "languages":
-    {
-      "en": False,
-      "fr": False,
-      "es": False
-    },
-    "sources":
-    {
-      "9news.com.au": False,
-      "france24.fr": False,
-      "foxnews": False
-    },
-    "date_from": "2020-01-01",
-    "date_to": "2020-01-01",
-  }
 
 def create_word_cloud(ent):
   x, y = np.ogrid[:300, :300]
