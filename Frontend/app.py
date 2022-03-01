@@ -67,23 +67,24 @@ def random_string(random_chars=12, alphabet="0123456789abcdef"):
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
-  search_req = req.conv_req_to_query_string(request)
-  f = get_filter()
-  print("search req: ", search_req)
+  print("req: ", request)
+  pre_filter = req.conv_req_to_pre_filter(request)
+  search_req = req.conv_pre_filter_to_query_string(pre_filter)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
 
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_template("default.html", filter = f)
+    return render_template("default.html", filter = domain_filter)
   try:
     art = domain_articles.get_articles(search_req)
     art[0]["article_pages"] = page.article_pagination(art[0], request)
 
     if "[]" in art:
-      return render_template("default.html", filter = f)
-    return render_template("articles.html", filter = f, data = art[0])
+      return render_template("default.html", filter = domain_filter)
+    return render_template("articles.html", filter = domain_filter, data = art[0])
   except Exception as error:
     print("Error", error)
-    return render_template("default.html", filter = f)
+    return render_template("default.html", filter = domain_filter)
 
 @app.route('/entities', methods=["GET"])
 def entities():
@@ -108,7 +109,7 @@ def entities():
 
 @app.route('/entities-cloud', methods=["GET"])
 def entities_cloud():
-  search_req = req.conv_req_to_query_string(request)
+  search_req, filter = req.conv_req_to_query_string(request)
   f = get_filter()
 
   # If no search query has been entered
@@ -147,9 +148,14 @@ def sentiment_stats():
 
 def get_filter():
   return {
+    "search": 
+    [
+      {"bleh", "blah"}    
+    ]
+    ,
     "languages":
     {
-      "en": True,
+      "en": False,
       "fr": False,
       "es": False
     },
