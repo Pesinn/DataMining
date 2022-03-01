@@ -48,22 +48,6 @@ sentiment_labels = [
   }
 ]
 """
-def getFrequencyDictForText(sentence):
-  fullTermsDict = multidict.MultiDict()
-  tmpDict = {}
-
-  # making dict for counting frequencies
-  for s in sentence:
-    val = tmpDict.get(s["entity"], s["count"])
-    tmpDict[s["entity"].lower()] = val + 1
-  for key in tmpDict:
-    fullTermsDict.add(key, tmpDict[key])
-  return fullTermsDict
-
-def random_string(random_chars=12, alphabet="0123456789abcdef"):
-    r = random.SystemRandom()
-    return ''.join([r.choice(alphabet) for i in range(random_chars)])
-
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
@@ -190,5 +174,21 @@ def create_word_cloud(ent):
   
   return f"{generated_image_path}{random_str}.png"
 
-port = int(os.environ.get('PORT', 5550))
+def getFrequencyDictForText(sentence):
+  fullTermsDict = multidict.MultiDict()
+  tmpDict = {}
+
+  # making dict for counting frequencies
+  for s in sentence:
+    val = tmpDict.get(s["entity"], s["count"])
+    tmpDict[s["entity"].lower()] = val + 1
+  for key in tmpDict:
+    fullTermsDict.add(key, tmpDict[key])
+  return fullTermsDict
+
+def random_string(random_chars=12, alphabet="0123456789abcdef"):
+    r = random.SystemRandom()
+    return ''.join([r.choice(alphabet) for i in range(random_chars)])
+
+port = int(os.environ.get('PORT', 5551))
 app.run(host='0.0.0.0', port=port)
