@@ -71,12 +71,13 @@ def index():
   
 @app.route('/entities', methods=["GET"])
 def entities():
-  search_req = req.conv_req_to_query_string(request)
-  f = get_filter()
+  pre_filter = req.conv_req_to_pre_filter(request)
+  search_req = req.conv_pre_filter_to_query_string(pre_filter)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
   
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_default(f)
+    return render_default(domain_filter)
   ent = domain_entities.get_entities(search_req)
 
   id = 0
@@ -88,46 +89,49 @@ def entities():
   
   if "[]" in ent:
     return render_default(f)
-  return render_template("entities.html", filter = f, data = ent[0])
+  return render_template("entities.html", filter = domain_filter, data = ent[0])
 
 @app.route('/entities-cloud', methods=["GET"])
 def entities_cloud():
-  search_req, filter = req.conv_req_to_query_string(request)
-  f = get_filter()
-
+  pre_filter = req.conv_req_to_pre_filter(request)
+  search_req = req.conv_pre_filter_to_query_string(pre_filter)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
+  
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_default(f)
+    return render_default(domain_filter)
 
   ent = domain_entities.get_entities(search_req)
   cloud_image_path = create_word_cloud(ent)
-  return render_template("entities_cloud.html", filter = f, cloud_image = cloud_image_path)
+  return render_template("entities_cloud.html", filter = domain_filter, cloud_image = cloud_image_path)
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
   bar_labels=sentiment_labels
-  search_req = req.conv_req_to_query_string(request)
-  f = get_filter()
+  pre_filter = req.conv_req_to_pre_filter(request)
+  search_req = req.conv_pre_filter_to_query_string(pre_filter)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
 
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_default(f)
+    return render_default(domain_filter)
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment.html", filter = f, labels=bar_labels, data=sentiment)
+  return render_template("sentiment.html", filter = domain_filter, labels=bar_labels, data=sentiment)
 
 @app.route('/sentiment-stats', methods=["GET"])
 def sentiment_stats():
   bar_labels=sentiment_labels
-  search_req = req.conv_req_to_query_string(request)
-  f = get_filter()
+  pre_filter = req.conv_req_to_pre_filter(request)
+  search_req = req.conv_pre_filter_to_query_string(pre_filter)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
   
   # If no search query has been entered
   if "[]" in search_req or not search_req:
-    return render_default(f)
+    return render_default(domain_filter)
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment_stats.html", filter = f, labels=bar_labels, data=sentiment)
+  return render_template("sentiment_stats.html", filter = domain_filter, labels=bar_labels, data=sentiment)
 
 def render_default(f):
   return render_template("default.html", filter = f)
