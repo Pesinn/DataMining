@@ -30,11 +30,6 @@ def article_pagination(response, request):
   # Create object for each page, that contains all key information about
   # what should be displayed.
   for i in range(pages):
-    if(i == 0):
-      _from = 1
-    else:
-      _from = (i*max_pages) + 1
-
     to = max_pages*(i+1)
     if(to > article_count):
       to = article_count
@@ -49,7 +44,6 @@ def article_pagination(response, request):
         "page": number,
         "visible": visible
       })
-
   return r
 
 def get_pagination_to_display(current, pages, max_pages):

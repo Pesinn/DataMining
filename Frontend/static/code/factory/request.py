@@ -33,7 +33,7 @@ def pre_filter_pagination(req, page):
       _from = default*(articles_page-1) + 1
       _to = default*articles_page
 
-    return {_to, _from}
+    return {_from, _to}
   return {}
 
 def filter_to_search(req):
