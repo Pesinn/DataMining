@@ -47,6 +47,11 @@ def create_filter(ner, sentiment, request):
       article_range = article_range.split(",")
       article_range[0] = int(article_range[0])
       article_range[1] = int(article_range[1])
+
+    if(article_range[0] > article_range[1]):
+      temp = article_range[1]
+      article_range[1] = article_range[0]
+      article_range[0] = temp
   except:
     abort(400, description="article_range should "+
           "contain two numbers with a comma between")
