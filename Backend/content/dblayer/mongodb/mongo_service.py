@@ -20,6 +20,9 @@ def load_json():
   file.close()
   return data
 
+def get_filters(name):
+  return [x for x in _mydb[NEWS].distinct(name)]
+
 def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
