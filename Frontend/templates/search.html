@@ -20,13 +20,13 @@
           <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Languages
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <ul class="dropdown-menu Search-filtering-dropdown" aria-labelledby="dropdownMenuButton1">
             {% for f, used in filter.languages.items() %}
 
             <li>
               <div class="form-check">
-                <input class="languageCheck_{{f}}" onclick="setLanguage('{{f}}')" type="checkbox" value="" id="languageCheck_{{f}}">
-                <label class="form-check-label" for="languageCheck_{{f}}">
+                <input class="languagesCheck_{{f}}" onclick="setLanguage('{{f}}')" type="checkbox" value="" id="languagesCheck_{{f}}">
+                <label class="form-check-label" for="languagesCheck_{{f}}">
                   {{f}}
                 </label>
               </div>
@@ -43,13 +43,13 @@
           <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Sources
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <ul class="dropdown-menu Search-filtering-dropdown" aria-labelledby="dropdownMenuButton1">
             {% for f, used in filter.sources.items() %}
 
             <li>
               <div class="form-check">
-                <input class="sourceCheck_{{f}}" onclick="setSource('{{f}}')" type="checkbox" value="" id="sourceCheck_{{f}}">
-                <label class="form-check-label" for="sourceCheck_{{f}}">
+                <input class="sourcesCheck_{{f}}" onclick="setSource('{{f}}')" type="checkbox" value="" id="sourcesCheck_{{f}}">
+                <label class="form-check-label" for="sourcesCheck_{{f}}">
                   {{f}}
                 </label>
               </div>
@@ -358,7 +358,6 @@ function redirectURL(source, filter) {
   }
 }
 
-
 function setDateFilters() {
   _filter["date_from"] = document.getElementById("datepicker_date_from").value
   _filter["date_to"] = document.getElementById("datepicker_date_to").value
@@ -372,12 +371,13 @@ function modifyElementClass(id, addClass, removeClass) {
 
 arrangeFilter();
 function arrangeFilter() {
-  arrangeLanguages();
+  arrangeFilterCheckbox("languages");
+  arrangeFilterCheckbox("sources");
 }
 
-function arrangeLanguages() {
-  Object.entries(_filter["languages"]).forEach(([k,v]) => {
-    element = document.getElementById("languageCheck_"+k);
+function arrangeFilterCheckbox(name) {
+  Object.entries(_filter[name]).forEach(([k,v]) => {
+    element = document.getElementById(name + "Check_"+k);
     if(v == "False") {
       element.checked = false;
     } else {

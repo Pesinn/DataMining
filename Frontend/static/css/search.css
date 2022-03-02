@@ -26,3 +26,11 @@
 .Search-filtering-datepicker-input {
   width: 110px;
 }
+
+.Search-filtering-dropdown {
+  width: 240px;
+}
+
+.Search-filtering-dropdown li:hover {
+  background-image: linear-gradient(to right, #0d6efd,  #0d6dfd2a);
+}
