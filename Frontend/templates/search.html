@@ -7,22 +7,22 @@
 </form>
 
 <div class="Search-filer">
-  <p onclick="triggerFilter()">Filter</p>
+  <button type="button" onclick="triggerFilter()" class="btn btn-outline-info">Filter</button>
 </div>
 
 <div id="Search-filtering" class="Search-filtering">
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-3 col-md-2 Search-filtering-container">
+      <div class="col-sm-3 col-md-3 col-lg-2">
 
-        <div class="dropdown Search-filtering-datepicker-button">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="dropdown Search-filtering-button">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Languages
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             {% for f, used in filter.languages.items() %}
-      
+
             <li>
               <div class="form-check">
                 <input class="languageCheck_{{f}}" onclick="setLanguage('{{f}}')" type="checkbox" value="" id="languageCheck_{{f}}">
@@ -31,16 +31,16 @@
                 </label>
               </div>
             </li>
-      
+
             {% endfor %}
           </ul>
         </div>
 
       </div>
-      <div class="col-sm-3 col-md-2 Search-filtering-container">
+      <div class="col-sm-3 col-md-3 col-lg-2">
         
-        <div class="dropdown Search-filtering-datepicker-button">
-          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="dropdown Search-filtering-button">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
             Sources
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -60,13 +60,13 @@
         </div>
 
       </div>
-      <div class="col-sm-3 col-md-2 Search-filtering-container">
-        <p class="Search-filtering-datepicker-text">Date from</p>
-        <input class="Search-filtering-datepicker-input" type="text" id="datepicker_date_from">
+      <div class="col-sm-3 col-md-3 col-lg-2 Search-filtering-datepicker">
+        <p>Date from</p>
+        <input class="form-control Search-filtering-datepicker-input" type="text" id="datepicker_date_from">
       </div>
-      <div class="col-sm-3 col-md-2 Search-filtering-container">
-        <p class="Search-filtering-datepicker-text">Date to</p>
-        <input class="Search-filtering-datepicker-input"type="text" id="datepicker_date_to">
+      <div class="col-sm-3 col-md-3 col-lg-2 Search-filtering-datepicker">
+        <p>Date to</p>
+        <input class="form-control Search-filtering-datepicker-input"type="text" id="datepicker_date_to">
       </div>
     </div>
   </div>

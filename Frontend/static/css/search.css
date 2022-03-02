@@ -1,5 +1,6 @@
 .Search-buttons {
   margin: 25px;
+  font-size: 20pt;
 }
 
 .Search-filer {
@@ -14,20 +15,14 @@
   margin-top: 15px;
 }
 
-.Search-filtering-datepicker-button {
-  margin-top: 15px;
+.Search-filtering-button {
+  margin-top: 23px;
 }
 
-.Search-filtering-container {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.Search-filtering-datepicker-text {
+.Search-filtering-datepicker p {
   margin-bottom: 0px;
 }
 
 .Search-filtering-datepicker-input {
-  border: solid 1px;
   width: 110px;
 }
