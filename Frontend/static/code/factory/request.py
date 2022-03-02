@@ -1,4 +1,5 @@
 import static.code.factory.pagination as pagination
+import static.code.domain.filter.filter as filt
 
 def conv_req_to_pre_filter(req):
   filter = {}
@@ -187,20 +188,20 @@ def activate_domain_filter_attribute(domain_filter, element, i):
       domain_filter[i][e] = True
 
 def get_default_domain_filter():
+  filter = filt.get_filter_data()
+    
+  languages = {}
+  for i in filter["languages"]:
+    languages[i] = False
+
+  sources = {}
+  for i in filter["sources"]:
+    sources[i] = False
+
   return {
     "search": [],
-    "languages":
-    {
-      "en": False,
-      "fr": False,
-      "es": False
-    },
-    "sources":
-    {
-      "9news.com.au": False,
-      "france24.fr": False,
-      "foxnews": False
-    },
+    "languages": languages,
+    "sources": sources,
     "date_from": None,
     "date_to": None,
   }
