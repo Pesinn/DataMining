@@ -3,12 +3,32 @@ import content.domain.sentiment.sentiment_analysis_factory as sentiment_factory
 import content.domain.entities.entities_factory as entity_factory
 
 """
+search = [
+  {
+    'languages': ['en', 'fr'],
+    'date_from': '2020-01-01',
+    'date_to': '2022-01-01',
+    'sources': ['abc.net.au'],
+    'named_entities': 10,
+    'search': ['tesla']
+  }
+]
 filter = {
-  named_entities: true,
-  sentiment_analysis: true,
-  articles: {
-    limit: 20,
-    orderby: date
+    'named_entities': False,
+    'sentiment_analysis': False,
+    '_id': True,
+    'description_text': True,
+    'title_text': True,
+    'article_language': True,
+    'publish_date': True,
+    'source': True,
+    'articles': {
+      'range': {
+        'from': 0,
+        'to': 11,
+        'default': 10
+      },
+    'orderby': 'date'
   }
 }
 """
