@@ -44,14 +44,15 @@ def get_news_data_by_single_search(s, filter):
   index = 0
   sentiment = {}
   ner = {}
+  filter_count = {"languages": {}, "sources": {}}
   display_article_counter = 0
-
   filter["articles"]["range"] = set_article_count(filter["articles"]["range"], data)
 
   for d in data:
     index += 1
     sentiment = get_sentiment_score(sentiment, d)
     ner = get_named_entities(ner, d, s["search"])
+    append_filter_count(d, filter_count)
 
     if index in range(filter["articles"]["range"]["from"],
                   filter["articles"]["range"]["to"]+1, 1):
@@ -65,14 +66,31 @@ def get_news_data_by_single_search(s, filter):
     },
     "articles": articles,
     "search": s["search"],
-    "articles_count_total": index,
     "articles_range": {
       "from": filter["articles"]["range"]["from"],
       "to": filter["articles"]["range"]["from"] + display_article_counter
-    }
+    },
+    "articles_count": filter_count
   }
 
   return final_obj
+
+# Count articles that belong to each filter
+def append_filter_count(article, filter_count):
+  try:
+    filter_count["total"] += 1
+  except:
+    filter_count["total"] = 1
+
+  try:
+    filter_count["languages"][article["article_language"]] += 1
+  except:
+    filter_count["languages"][article["article_language"]] = 1
+    
+  try:
+    filter_count["sources"][article["source"]] += 1
+  except:
+    filter_count["sources"][article["source"]] = 1
 
 # Make sure to get correct article range
 # If article_range=last, make sure to get
