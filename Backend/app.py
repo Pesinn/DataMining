@@ -7,6 +7,7 @@ import content.factory.request as req
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.raw_data.raw_data as domain_raw_data
 import content.domain.filters.filters as domain_filters
+import content.misc.logging as log
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -133,6 +134,7 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
+  log.log(request, "INFO")
   filter = req.create_filter(False, True, request)
   return get_news_data(request, filter)
 
@@ -143,6 +145,7 @@ def sentiment_analysis():
 
 @app.route('/api/v1/filters', methods=['GET'])
 def filters():
+  log.log("get filters", "INFO")
   return jsonify(domain_filters.get_filters())
 
 
