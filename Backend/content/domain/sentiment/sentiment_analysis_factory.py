@@ -78,11 +78,11 @@ def calculate_score(obj, data):
   comp = data["compound"]
   if(comp <= -0.75):
     res = add_frequency(obj, "lowest", "freq", 1)
-  if(comp > -0.75 and comp <= -0.25):
+  if(comp > -0.75 and comp <= -0.05):
     res = add_frequency(obj, "low", "freq", 1)
-  if(comp > -0.25 and comp < 0.25):
+  if(comp > -0.05 and comp < 0.05):
     res = add_frequency(obj, "middle", "freq", 1)
-  if(comp >= 0.25 and comp < 0.75):
+  if(comp >= 0.05 and comp < 0.75):
     res = add_frequency(obj, "high", "freq", 1)
   if(comp >= 0.75):
     res = add_frequency(obj, "highest", "freq", 1)
