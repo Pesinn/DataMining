@@ -3,11 +3,44 @@
 {% block sub_content %}
 <p hidden> {% block nav_title %}Sentiment analysis{% endblock %}</p>
 
-<canvas id="chart" width="600" height="400"></canvas>
+<div class="Sentiment-info">
+  <button style="margin-left: 12px;" type="button" onclick="triggerSentimentInfo()" class="btn btn-outline-info">Information</button>
+</div>
+
+<div id="Sentiment-infotext-percentage" class="Sentiment-infotext">
+  <p>Sentiment analysis is done using the tool Vader. To determine the sentiment of an article, a compound score is given for each article between -1 and 1, where -1 is very negative and 1 is very positive.</p>
+</div>
+
+<div class="Sentiment-Graph">
+  <p class="Sentiment-Graph-text" onclick="triggerSentimentGraphPercentageInfo()">Results are given in percetage</p>
+  <div id="Sentiment-Graph-percentage" class="Sentiment-Graph-infotext">
+    <p>The results are based on the compound score of each article related to the search:</p>
+    <ul>
+      <li>Very negative sentiment: score >= -0,75</li>
+      <li>Negative sentiment: score > -0,75 and score <= 0,05</li>
+      <li>Neutral sentiment: score > -0,05 and score < 0,05</li>
+      <li>Positive sentiment: score > 0,05 and score < 0,75</li>
+      <li>Very positive sentiment: score > 0,75</li>
+    </ul>
+  </div>
+  <canvas id="normalized" width="600" height="400"></canvas>
+</div>
+<div class="Sentiment-Graph">
+  <p class="Sentiment-Graph-text" onclick="triggerSentimentGraphFrequencyInfo()">Results are based on number of articles</p>
+  <div id="Sentiment-Graph-frequency" class="Sentiment-Graph-infotext">
+    <p>The results are based on the compound score of each article related to the search:</p>
+    <ul>
+      <li>Very negative sentiment: score >= -0,75</li>
+      <li>Negative sentiment: score > -0,75 and score <= 0,05</li>
+      <li>Neutral sentiment: score > -0,05 and score < 0,05</li>
+      <li>Positive sentiment: score > 0,05 and score < 0,75</li>
+      <li>Very positive sentiment: score > 0,75</li>
+    </ul>
+  </div>
+  <canvas id="frequency" width="600" height="400"></canvas>
+</div>
 
 <script>
-
-_datasets = []
 
 var COLORS = [
   '#4dc9f6',
@@ -21,46 +54,129 @@ var COLORS = [
   '#8549ba'
 ];
 
-var index = 0
-{% for s in data %}
-  new_data_set = {
-  backgroundColor: COLORS[index],
-  borderColor: COLORS[index],
-  borderWidth: 1,
-  label: "{{s.search[0]}}",
-  data : [
-    "{{s.sentiment_analysis["lowest"]["norm"]}}",
-    "{{s.sentiment_analysis["low"]["norm"]}}",
-    "{{s.sentiment_analysis["middle"]["norm"]}}",
-    "{{s.sentiment_analysis["high"]["norm"]}}",
-    "{{s.sentiment_analysis["highest"]["norm"]}}"
-  ]}
 
-  _datasets.push(new_data_set);
-
-  index++;
-{% endfor %}
 
 _labels = []
 {% for item in labels %}
   _labels.push("{{ item }}")
 {% endfor %}
 
-var ctx = document.getElementById('chart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: _labels,
-      datasets: _datasets
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+var sentiment_infotext_percentage = "#Sentiment-infotext-percentage";
+var sentiment_graph_percentage_info = "#Sentiment-Graph-percentage";
+var sentiment_graph_frequency_info = "#Sentiment-Graph-frequency";
+
+setInvisible(sentiment_infotext_percentage);
+setInvisible(sentiment_graph_percentage_info);
+setInvisible(sentiment_graph_frequency_info);
+
+function triggerSentimentInfo() {
+  if(isVisible(sentiment_infotext_percentage)) {
+    setInvisible_slow(sentiment_infotext_percentage);
+  } else {
+    setVisible_slow(sentiment_infotext_percentage);
+  }
+}
+
+function triggerSentimentGraphPercentageInfo() {
+  if(isVisible(sentiment_graph_percentage_info)) {
+    setInvisible_slow(sentiment_graph_percentage_info);
+  } else {
+    setVisible_slow(sentiment_graph_percentage_info);
+  }
+}
+
+function triggerSentimentGraphFrequencyInfo() {
+  if(isVisible(sentiment_graph_frequency_info)) {
+    setInvisible_slow(sentiment_graph_frequency_info);
+  } else {
+    setVisible_slow(sentiment_graph_frequency_info);
+  }
+}
+
+function createNormalizedDataset() {
+  var datasets = []
+  var index = 0
+  {% for s in data %}
+    new_data_set = {
+    backgroundColor: COLORS[index],
+    borderColor: COLORS[index],
+    borderWidth: 1,
+    label: "{{s.search[0]}}",
+    data : [
+      "{{s.sentiment_analysis["lowest"]["norm"]}}",
+      "{{s.sentiment_analysis["low"]["norm"]}}",
+      "{{s.sentiment_analysis["middle"]["norm"]}}",
+      "{{s.sentiment_analysis["high"]["norm"]}}",
+      "{{s.sentiment_analysis["highest"]["norm"]}}"
+    ]}
+  
+    datasets.push(new_data_set);
+  
+    index++;
+  {% endfor %}
+
+  return datasets
+}
+
+function createFrequencyDataset(type) {
+  var datasets = []
+  var index = 0
+  {% for s in data %}
+    new_data_set = {
+    backgroundColor: COLORS[index],
+    borderColor: COLORS[index],
+    borderWidth: 1,
+    label: "{{s.search[0]}}",
+    data : [
+      "{{s.sentiment_analysis["lowest"]["freq"]}}",
+      "{{s.sentiment_analysis["low"]["freq"]}}",
+      "{{s.sentiment_analysis["middle"]["freq"]}}",
+      "{{s.sentiment_analysis["high"]["freq"]}}",
+      "{{s.sentiment_analysis["highest"]["freq"]}}"
+    ]}
+  
+    datasets.push(new_data_set);
+  
+    index++;
+  {% endfor %}
+
+  return datasets
+}
+
+drawGraph("normalized", _labels, createNormalizedDataset());
+drawGraph("frequency", _labels, createFrequencyDataset());
+
+function drawGraph(type, lab, data) {
+  var ctx = document.getElementById(type).getContext('2d');
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: lab,
+        datasets: data
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-});
+  });
+}
+
+function setVisible_slow(elementId) {
+  $(elementId).show( "slow", function() {
+  });
+}
+
+function setInvisible(elementId) {
+  $(elementId).hide();
+}
+
+function setInvisible_slow(elementId) {
+  $(elementId).hide( "slow", function() {
+  });
+}
 
 </script>
 

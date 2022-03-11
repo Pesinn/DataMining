@@ -2,12 +2,13 @@
 
 {% block sub_content %}
 <p hidden> {% block nav_title %}Sentiment analysis{% endblock %}</p>
-<p>HELLO</p>
+
 <canvas id="chart" width="600" height="400"></canvas>
 
 <script>
 
 _datasets = []
+_datasetsFreq = []
 
 var COLORS = [
   '#4dc9f6',
@@ -27,7 +28,7 @@ var index = 0
   backgroundColor: COLORS[index],
   borderColor: COLORS[index],
   borderWidth: 1,
-  label: "{{s.search}}",
+  label: "{{s.search[0]}}",
   data : [
     "{{s.sentiment_analysis["lowest"]["freq"]}}",
     "{{s.sentiment_analysis["low"]["freq"]}}",

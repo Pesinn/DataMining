@@ -22,11 +22,11 @@ generated_image_path = "static/generated_images/"
 app = Flask(__name__)
 
 sentiment_labels = [
-    "Very negative, between -1 and -0.75",
-    "Negative, between -0.75 and -0.25",
-    "Neutral, between -0.25 and 0.25",
-    "Positive, between 0.75 sand 1",
-    "Very positive, between 0.25 and 0.75"
+    "Very negative",
+    "Negative",
+    "Neutral",
+    "Positive",
+    "Very positive"
 ]
 
 @app.route('/index',  methods=["GET"])
