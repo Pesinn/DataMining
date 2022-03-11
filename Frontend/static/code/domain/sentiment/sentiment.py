@@ -4,7 +4,6 @@ import config
 
 def get_sentiment_analysis(req):
   data = get_sentiment_analysis_service(req)
-#  print("data", data)
   data = normalize_sentiment_analysis_arr(data)
   return data
 
@@ -16,10 +15,11 @@ def get_sentiment_analysis_service(req):
 
 def normalize_sentiment_analysis_arr(data):
   for i in data:
-    normalize_sentiment_analysis_obj(i)
+    i = normalize_sentiment_analysis_obj(i)
+  return data
 
 def normalize_sentiment_analysis_obj(data):
   total = float(data["sentiment_analysis"]["all"]["freq"])
   for i in data["sentiment_analysis"]:
-    data["sentiment_analysis"][i]["norm"] = format((float(data["sentiment_analysis"][i]["freq"]) / total) * 100, ".2f")
+    data["sentiment_analysis"][i]["norm"] = round((float(data["sentiment_analysis"][i]["freq"]) / total) * 100)
   return data
