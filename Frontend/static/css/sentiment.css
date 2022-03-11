@@ -1,0 +1,39 @@
+.Sentiment-Graph {
+  margin-bottom: 50px;
+}
+
+.Sentiment-Graph p {
+  text-align: center;  
+}
+
+.Sentiment-Graph-text {
+  text-align: center;
+  background-image: linear-gradient(to right, #3f89f810, #0d6dfd42, #3f89f810);
+  border: solid 1px #8ca4e7;
+}
+
+.Sentiment-Graph-text:hover {
+  background-image: linear-gradient(to right, #0d6dfd3f, #0d6dfd7c, #0d6dfd3f);
+}
+
+.Sentiment-info {
+  margin-bottom: 10px;
+}
+
+.Sentiment-info button{
+  margin-left: 12px;
+}
+
+.Sentiment-infotext {
+  margin-left: 12px;
+}
+
+.Sentiment-Graph-infotext {
+  text-align: center;
+}
+
+.Sentiment-Graph-infotext ul {
+  display: inline-table;
+  list-style-type: none;
+}
+
