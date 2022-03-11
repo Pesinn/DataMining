@@ -15,7 +15,7 @@ def article_pagination(response, request):
   if(current_page is None):
     current_page = 1
 
-  article_count = response["articles_count_total"]
+  article_count = response["articles_count"]["total"]
   pages = math.ceil(article_count / per_page)
   
   r = {

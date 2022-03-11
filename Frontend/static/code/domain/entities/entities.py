@@ -1,5 +1,6 @@
 import requests
 import static.code.domain.news_data.news_data as news_data
+import config
 
 def get_entities(req):
   print("req: ", req)
@@ -10,4 +11,4 @@ def get_entities_file():
   return news_data.get_news_data_file()
 
 def get_entities_service(req):
-  return requests.request("GET", f'http://192.168.8.105:8080/api/v1/entities?{req}').json()
+  return requests.request("GET", f'{config.BACKEND_URL}/api/v1/entities?{req}').json()
