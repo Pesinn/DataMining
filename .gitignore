@@ -1,6 +1,10 @@
 # Directories
 Frontend/static/generated_images
 
+# Config files
+Frontend/config.py
+Backend/config.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
