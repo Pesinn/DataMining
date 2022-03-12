@@ -24,19 +24,3 @@ def normalize_sentiment_analysis_obj(data):
   for i in data["sentiment_analysis"]["compound"]:
     data["sentiment_analysis"]["compound"][i]["norm"] = nu.round((float(data["sentiment_analysis"]["compound"][i]["freq"]) / total) * 100)
   return data
-
-def get_compound_sentiment_labels():
-  return [
-    "Very negative",
-    "Negative",
-    "Neutral",
-    "Positive",
-    "Very positive"
-  ]
-
-def get_text_ratio_sentiment_labels():
-  return [
-    "Negative",
-    "Neutral",
-    "Positive",
-  ]

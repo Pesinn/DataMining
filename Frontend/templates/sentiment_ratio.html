@@ -1,0 +1,104 @@
+{% extends 'search.html' %}
+
+{% block sub_content %}
+<p hidden> {% block nav_title %}Sentiment analysis{% endblock %}</p>
+
+<div class="Sentiment-info">
+  <button style="margin-left: 12px;" type="button" onclick="triggerSentimentInfo()" class="btn btn-outline-info">Information</button>
+</div>
+
+<div id="Sentiment-ratio-infotext" class="Sentiment-infotext">
+  <p>Sentiment analysis is done using the tool Vader. Here it is possible to view the positive, neutral or negative score that represents the ratios for proportions of text that fall in each category.</p>
+</div>
+
+<div class="Sentiment-Graph">
+  <p class="Sentiment-Graph-text" onclick="triggerSentimentGraphRatioInfo()">Results for each search keyword should all be added to 1</p>
+  <div id="Sentiment-Graph-ratio-info" class="Sentiment-Graph-infotext">
+  </div>
+  <canvas id="chart" width="600" height="400"></canvas>
+</div>
+
+
+<script>
+sentiment_ratio_infotext = "#Sentiment-ratio-infotext"
+sentiment_graph_ratio_info = "#Sentiment-Graph-ratio-info"
+
+setInvisible(sentiment_ratio_infotext);
+setInvisible(sentiment_graph_ratio_info);
+
+_datasets = []
+
+var COLORS = JSON.parse('{{ colors | tojson}}');
+
+var index = 0
+{% for s in data %}
+  new_data_set = {
+  backgroundColor: COLORS[index],
+  borderColor: COLORS[index],
+  borderWidth: 1,
+  label: "{{s.search[0]}}",
+  data : [
+    "{{s.sentiment_analysis["text_ratio"]["negative"]}}",
+    "{{s.sentiment_analysis["text_ratio"]["neutral"]}}",
+    "{{s.sentiment_analysis["text_ratio"]["positive"]}}",
+  ]}
+
+  _datasets.push(new_data_set);
+
+  index++;
+{% endfor %}
+
+_labels = []
+{% for item in labels %}
+  _labels.push("{{ item }}")
+{% endfor %}
+
+var ctx = document.getElementById('chart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: _labels,
+      datasets: _datasets
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+});
+
+
+function triggerSentimentInfo() {
+  if(isVisible(sentiment_ratio_infotext)) {
+    setInvisible_slow(sentiment_ratio_infotext);
+  } else {
+    setVisible_slow(sentiment_ratio_infotext);
+  }
+}
+
+function triggerSentimentGraphRatioInfo() {
+  if(isVisible(sentiment_graph_ratio_info)) {
+    setInvisible_slow(sentiment_graph_ratio_info);
+  } else {
+    setVisible_slow(sentiment_graph_ratio_info);
+  }
+}
+
+function setVisible_slow(elementId) {
+  $(elementId).show( "slow", function() {
+  });
+}
+
+function setInvisible(elementId) {
+  $(elementId).hide();
+}
+
+function setInvisible_slow(elementId) {
+  $(elementId).hide( "slow", function() {
+  });
+}
+</script>
+
+{% endblock %}

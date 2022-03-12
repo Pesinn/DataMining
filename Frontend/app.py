@@ -16,6 +16,7 @@ import static.code.domain.sentiment.sentiment as domain_sentiment
 import static.code.domain.entities.entities as domain_entities
 import static.code.factory.request as req
 import static.code.factory.pagination as page
+import static.code.factory.sentiment_decoration as sent_d
 
 generated_image_path = "static/generated_images/"
 
@@ -78,7 +79,8 @@ def entities_cloud():
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
-  bar_labels = domain_sentiment.get_compound_sentiment_labels()
+  bar_labels = sent_d.get_compound_sentiment_labels()
+  graph_colors = sent_d.get_graph_colors()
   pre_filter = req.conv_req_to_pre_filter(request)
   search_req = req.conv_pre_filter_to_query_string(pre_filter)
   domain_filter = req.pre_filter_to_domain_filter(pre_filter)
@@ -88,11 +90,12 @@ def sentiment():
     return render_default(domain_filter)
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment.html", filter=domain_filter, labels=bar_labels, data=sentiment)
+  return render_template("sentiment.html", filter=domain_filter, labels=bar_labels, data=sentiment, colors=graph_colors)
 
-@app.route('/sentiment-stats', methods=["GET"])
-def sentiment_stats():
-  bar_labels = domain_sentiment.get_text_ratio_sentiment_labels()
+@app.route('/sentiment-ratio', methods=["GET"])
+def sentiment_ratio():
+  bar_labels = sent_d.get_text_ratio_sentiment_labels()
+  graph_colors = sent_d.get_graph_colors()
   pre_filter = req.conv_req_to_pre_filter(request)
   search_req = req.conv_pre_filter_to_query_string(pre_filter)
   domain_filter = req.pre_filter_to_domain_filter(pre_filter)
@@ -102,7 +105,7 @@ def sentiment_stats():
     return render_default(domain_filter)
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment_stats.html", filter=domain_filter, labels=bar_labels, data=sentiment)
+  return render_template("sentiment_ratio.html", filter=domain_filter, labels=bar_labels, data=sentiment, colors=graph_colors)
 
 def render_default(f):
   return render_template("default.html", filter = f)
