@@ -21,14 +21,6 @@ generated_image_path = "static/generated_images/"
 
 app = Flask(__name__)
 
-sentiment_labels = [
-    "Very negative",
-    "Negative",
-    "Neutral",
-    "Positive",
-    "Very positive"
-]
-
 @app.route('/index',  methods=["GET"])
 @app.route('/',  methods=["GET"])
 def index():
@@ -86,7 +78,7 @@ def entities_cloud():
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
-  bar_labels=sentiment_labels
+  bar_labels = domain_sentiment.get_compound_sentiment_labels()
   pre_filter = req.conv_req_to_pre_filter(request)
   search_req = req.conv_pre_filter_to_query_string(pre_filter)
   domain_filter = req.pre_filter_to_domain_filter(pre_filter)
@@ -100,7 +92,7 @@ def sentiment():
 
 @app.route('/sentiment-stats', methods=["GET"])
 def sentiment_stats():
-  bar_labels=sentiment_labels
+  bar_labels = domain_sentiment.get_text_ratio_sentiment_labels()
   pre_filter = req.conv_req_to_pre_filter(request)
   search_req = req.conv_pre_filter_to_query_string(pre_filter)
   domain_filter = req.pre_filter_to_domain_filter(pre_filter)
