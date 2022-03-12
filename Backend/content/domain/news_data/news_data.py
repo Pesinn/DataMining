@@ -43,6 +43,7 @@ def get_news_data_by_single_search(s, filter):
   articles = []
   index = 0
   sentiment = {}
+  sentiment_ratio = {}
   ner = {}
   filter_count = {"languages": {}, "sources": {}}
   display_article_counter = 0
@@ -51,6 +52,7 @@ def get_news_data_by_single_search(s, filter):
   for d in data:
     index += 1
     sentiment = get_sentiment_score(sentiment, d)
+    sentiment_ratio = get_sentiment_score_ratio(sentiment_ratio, d)
     ner = get_named_entities(ner, d, s["search"])
     append_filter_count(d, filter_count)
 
@@ -60,7 +62,10 @@ def get_news_data_by_single_search(s, filter):
       articles.append(create_article(d))
 
   final_obj = {
-    "sentiment_analysis": sentiment,
+    "sentiment_analysis": {
+      "compound": sentiment,
+      "text_ratio": round_sentiment_score_ratio(sentiment_ratio, index)
+    },
     "entities": {
       "named": entity_factory.entity_dict_to_list(ner, s["named_entities"], s["search"])
     },
@@ -113,6 +118,19 @@ def get_sentiment_score(combined, data):
       combined, d)
   except:
     return {}
+
+def get_sentiment_score_ratio(combined, data):
+  try:
+    d = data["annotations"]["sentiment_analysis"]
+    return sentiment_factory.calculate_ratio_score(
+      combined, d)
+  except:
+    return {}
+
+def round_sentiment_score_ratio(data, count):
+  # No need to round any numbers unless we have sentiment data in our query
+  if data != {}:
+    return sentiment_factory.round_sentiment_score_ratio(data, count)
 
 def get_named_entities(combined, data, search_arr):
   try:

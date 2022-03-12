@@ -1,3 +1,5 @@
+import numpy as np
+
 """
 obj : {
   "all": {
@@ -28,7 +30,7 @@ data : {
 """
 def calculate_score(obj, data):
   res = {}
-  if(obj == {}):
+  if obj == {}:
     obj = create_sentiment_domain_object()
 
   comp = data["compound"]
@@ -80,3 +82,26 @@ def create_sentiment_domain_object():
       "freq": 0
     }
   }
+  
+def calculate_ratio_score(obj, data):
+  if obj == {}:
+    obj = create_sentiment_ratio_domain_object()
+
+  obj["negative"] += data["neg"]
+  obj["neutral"] += data["neu"]
+  obj["positive"] += data["pos"]
+
+  return obj
+
+def create_sentiment_ratio_domain_object():
+  return {
+    "negative": 0.0,
+    "neutral": 0.0,
+    "positive": 0.0,
+  }
+  
+def round_sentiment_score_ratio(data, count):
+  data["negative"] = float(np.round((data["negative"]/count), 2))
+  data["neutral"] = float(np.round((data["neutral"]/count), 2))
+  data["positive"] = float(np.round((data["positive"]/count), 2))
+  return data
