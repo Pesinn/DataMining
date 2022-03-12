@@ -43,7 +43,7 @@ def index():
     art[0]["article_pages"] = page.article_pagination(art[0], request)
     if "[]" in art:
       return render_default(domain_filter)
-    return render_template("articles.html", filter = domain_filter, data = art[0])
+    return render_template("articles.html", filter=domain_filter, data=art[0])
   except Exception as error:
     print("Error in route /", error)
     return render_default(domain_filter)
@@ -68,7 +68,7 @@ def entities():
   
   if "[]" in ent:
     return render_default(domain_filter)
-  return render_template("entities.html", filter = domain_filter, data = ent[0])
+  return render_template("entities.html", filter=domain_filter, data=ent[0])
 
 @app.route('/entities-cloud', methods=["GET"])
 def entities_cloud():
@@ -82,7 +82,7 @@ def entities_cloud():
 
   ent = domain_entities.get_entities(search_req)
   cloud_image_path = create_word_cloud(ent)
-  return render_template("entities_cloud.html", filter = domain_filter, cloud_image = cloud_image_path)
+  return render_template("entities_cloud.html", filter=domain_filter, cloud_image=cloud_image_path)
 
 @app.route('/sentiment', methods=["GET"])
 def sentiment():
@@ -96,7 +96,7 @@ def sentiment():
     return render_default(domain_filter)
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment.html", filter = domain_filter, labels=bar_labels, data=sentiment)
+  return render_template("sentiment.html", filter=domain_filter, labels=bar_labels, data=sentiment)
 
 @app.route('/sentiment-stats', methods=["GET"])
 def sentiment_stats():
@@ -110,7 +110,7 @@ def sentiment_stats():
     return render_default(domain_filter)
 
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment_stats.html", filter = domain_filter, labels=bar_labels, data=sentiment)
+  return render_template("sentiment_stats.html", filter=domain_filter, labels=bar_labels, data=sentiment)
 
 def render_default(f):
   return render_template("default.html", filter = f)
