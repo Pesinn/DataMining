@@ -35,19 +35,17 @@ def index():
   pre_filter = req.conv_req_to_pre_filter(request)
   search_req = req.conv_pre_filter_to_query_string(pre_filter)
   domain_filter = req.pre_filter_to_domain_filter(pre_filter)
-
   # If no search query has been entered
   if "[]" in search_req or not search_req:
     return render_default(domain_filter)
   try:
     art = domain_articles.get_articles(search_req)
     art[0]["article_pages"] = page.article_pagination(art[0], request)
-
     if "[]" in art:
       return render_default(domain_filter)
     return render_template("articles.html", filter = domain_filter, data = art[0])
   except Exception as error:
-    print("Error", error)
+    print("Error in route /", error)
     return render_default(domain_filter)
   
 @app.route('/entities', methods=["GET"])

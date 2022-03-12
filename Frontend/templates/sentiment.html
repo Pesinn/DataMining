@@ -103,11 +103,11 @@ function createNormalizedDataset() {
     borderWidth: 1,
     label: "{{s.search[0]}}",
     data : [
-      "{{s.sentiment_analysis["lowest"]["norm"]}}",
-      "{{s.sentiment_analysis["low"]["norm"]}}",
-      "{{s.sentiment_analysis["middle"]["norm"]}}",
-      "{{s.sentiment_analysis["high"]["norm"]}}",
-      "{{s.sentiment_analysis["highest"]["norm"]}}"
+      "{{s.sentiment_analysis["compound"]["lowest"]["norm"]}}",
+      "{{s.sentiment_analysis["compound"]["low"]["norm"]}}",
+      "{{s.sentiment_analysis["compound"]["middle"]["norm"]}}",
+      "{{s.sentiment_analysis["compound"]["high"]["norm"]}}",
+      "{{s.sentiment_analysis["compound"]["highest"]["norm"]}}"
     ]}
   
     datasets.push(new_data_set);
@@ -128,11 +128,11 @@ function createFrequencyDataset(type) {
     borderWidth: 1,
     label: "{{s.search[0]}}",
     data : [
-      "{{s.sentiment_analysis["lowest"]["freq"]}}",
-      "{{s.sentiment_analysis["low"]["freq"]}}",
-      "{{s.sentiment_analysis["middle"]["freq"]}}",
-      "{{s.sentiment_analysis["high"]["freq"]}}",
-      "{{s.sentiment_analysis["highest"]["freq"]}}"
+      "{{s.sentiment_analysis["compound"]["lowest"]["freq"]}}",
+      "{{s.sentiment_analysis["compound"]["low"]["freq"]}}",
+      "{{s.sentiment_analysis["compound"]["middle"]["freq"]}}",
+      "{{s.sentiment_analysis["compound"]["high"]["freq"]}}",
+      "{{s.sentiment_analysis["compound"]["highest"]["freq"]}}"
     ]}
   
     datasets.push(new_data_set);

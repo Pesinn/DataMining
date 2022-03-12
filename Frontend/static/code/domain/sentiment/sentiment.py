@@ -1,6 +1,7 @@
 import requests
 import static.code.domain.news_data.news_data as news_data
 import config
+import numpy as nu
 
 def get_sentiment_analysis(req):
   data = get_sentiment_analysis_service(req)
@@ -19,7 +20,7 @@ def normalize_sentiment_analysis_arr(data):
   return data
 
 def normalize_sentiment_analysis_obj(data):
-  total = float(data["sentiment_analysis"]["all"]["freq"])
-  for i in data["sentiment_analysis"]:
-    data["sentiment_analysis"][i]["norm"] = round((float(data["sentiment_analysis"][i]["freq"]) / total) * 100)
+  total = float(data["sentiment_analysis"]["compound"]["all"]["freq"])
+  for i in data["sentiment_analysis"]["compound"]:
+    data["sentiment_analysis"]["compound"][i]["norm"] = nu.round((float(data["sentiment_analysis"]["compound"][i]["freq"]) / total) * 100)
   return data
