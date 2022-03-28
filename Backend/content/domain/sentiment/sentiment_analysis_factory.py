@@ -101,7 +101,12 @@ def create_sentiment_ratio_domain_object():
   }
   
 def round_sentiment_score_ratio(data, count):
-  data["negative"] = float(np.round((data["negative"]/count), 2))
-  data["neutral"] = float(np.round((data["neutral"]/count), 2))
-  data["positive"] = float(np.round((data["positive"]/count), 2))
+  data["negative"] = float(np.round((data["negative"]/count), 2)) * 100
+  data["neutral"] = float(np.round((data["neutral"]/count), 2)) * 100
+  data["positive"] = float(np.round((data["positive"]/count), 2)) * 100
+  
+  data["negative"] = int(data["negative"])
+  data["neutral"] = int(data["neutral"])
+  data["positive"] = int(data["positive"])
+  
   return data
