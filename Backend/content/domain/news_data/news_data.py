@@ -157,5 +157,6 @@ def create_article(data):
     "description": data["description"]["text"],
     "language": data["article_language"],
     "source": data["source"],
-    "publish_date": data["publish_date"]
+    "publish_date": data["publish_date"],
+    "link": data["link"]
   }

@@ -64,6 +64,7 @@ def create_filter(ner, sentiment, request):
     "title_text": True,
     "article_language": True,
     "publish_date": True,
+    "link": True,
     "source": True,
     "articles": {
       "range": {
@@ -86,6 +87,7 @@ def create_raw_filter():
     "article_language": True,
     "publish_date": True,
     "source": True,
+    "link": True,
     "articles": {
       "range": {
         "from": 1,

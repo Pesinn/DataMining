@@ -93,6 +93,7 @@ def aggregation_search_query(search, filter):
   dbObj.append({"$project": project})
   
   dbObj.append({ "$sort": { "score": { "$meta": "textScore" }, "posts": 1 } })
+
   return dbObj
 
 def text_search_query(search):
@@ -145,6 +146,7 @@ def create_db_filter(filter):
     return db_filter
   
   filtering(filter, "id", "_id", db_filter)
+  filtering(filter, "link", "link", db_filter)
   filtering(filter, "description_text", "description.text", db_filter)
   filtering(filter, "title_text", "title.text", db_filter)
   filtering(filter, "article_language", "article_language", db_filter)
