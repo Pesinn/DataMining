@@ -84,14 +84,24 @@ def beautify_print(t):
 def aggregation_search_query(search, filter):
   dbObj = []
   search_str = ""
+  search_arr = []
   for i in search["search"]:
     search_str += i + " "
 
-  dbObj.append({ "$match": { "$text": { "$search": search_str.strip() } } })
+  search_arr.append({ "$text": { "$search": search_str.strip() } })
+
+  for i in search:
+    query_object = {}
+    query_object = query_parameter_to_search(query_object, search, i)
+    if(query_object != {}):
+      search_arr.append(query_object)
+
+  dbObj.append({ "$match": { "$and": search_arr } })
+
   project = create_db_filter(filter)
   project["score"] = {"$meta": "textScore"}
+
   dbObj.append({"$project": project})
-  
   dbObj.append({ "$sort": { "score": { "$meta": "textScore" }, "posts": 1 } })
 
   return dbObj
