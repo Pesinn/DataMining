@@ -338,8 +338,9 @@ function triggerFilter() {
 }
 
 function mySubmitFunction(e) {
-  e.preventDefault();  
-  redirectURL(e.path[5].pathname, null);
+  e.preventDefault();
+  var path = event.path || (event.composedPath && event.composedPath());
+  redirectURL(path[5].pathname, null);
   return false;
 }
 
