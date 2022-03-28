@@ -73,9 +73,9 @@ def get_news_data_by_single_search(s, filter):
     "search": s["search"],
     "articles_range": {
       "from": filter["articles"]["range"]["from"],
-      "to": filter["articles"]["range"]["from"] + display_article_counter
+      "to": filter["articles"]["range"]["from"] + display_article_counter-1
     },
-    "articles_count": filter_count
+    "articles_count": filter_count,
   }
 
   return final_obj
