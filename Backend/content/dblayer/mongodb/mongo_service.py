@@ -114,7 +114,8 @@ def text_search_query(search):
     if(i == "search"):
       query_object["$text"] = { "$search" : search[i] }
 
-    dbreq.append(query_object)
+    if(query_object != {}):
+      dbreq.append(query_object)
   return {"$and": dbreq}
 
 def regular_search_query(search):
