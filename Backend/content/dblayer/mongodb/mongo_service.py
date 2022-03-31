@@ -27,9 +27,9 @@ def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
-    if(config.DB_METHOD == "TEXT_SEARCH"):
+    if(config.DB_METHOD == "CONJUNCTION_TEXT_SEARCH"):
       return get_news_data_text_search(search, filter)
-    elif(config.DB_METHOD == "AGGREGATION_SEARCH"):
+    elif(config.DB_METHOD == "AGGREGATION_TEXT_SEARCH"):
       return get_news_data_aggregation_search(search, filter)
     elif(config.DB_METHOD == "REGULAR_SEARCH"):
       return get_news_data_regular_search(search, filter)
