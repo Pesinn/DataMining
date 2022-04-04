@@ -44,7 +44,8 @@ def get_news_data_aggregation_search(search, filter):
 def get_news_data_regular_search(search, filter):
   db_filter = create_db_filter(filter)
   query = regular_search_query(search)
-  return [x for x in _mydb[NEWS].find(query, db_filter)]
+  data = [x for x in _mydb[NEWS].find(query, db_filter)]
+  return sort(data)
 
 def get_news_data_text_search(search, filter):
   search_list = []
@@ -59,7 +60,8 @@ def get_news_data_text_search(search, filter):
     query = text_search_query(i)
     data.append([x for x in _mydb[NEWS].find(query, db_filter)])
   
-  return common_elements(data)
+  c = common_elements(data)
+  return sort(c)
 
 def common_elements(data):
   common_list = []
@@ -176,3 +178,6 @@ def filtering(obj, name, db_name, db_filter):
 
 def generate_text_score_threshold(search_topics_len):
   return search_topics_len * 0.5
+
+def sort(data):
+  return sorted(data, key=lambda x: x["publish_date"], reverse=True)
