@@ -7,6 +7,8 @@ import copy
 NEWS = "news_data"
 FILTERS = "news_data_filters"
 
+CLEAR_CACHE = True
+
 # Connect to the DB
 _myclient = pymongo.MongoClient('localhost', 27017)
 _dbList = _myclient.list_database_names()
@@ -25,6 +27,11 @@ def get_filters(name):
   return [x for x in _mydb[FILTERS].distinct(name)]
 
 def get_news_data(search, filter):
+  if CLEAR_CACHE == True:
+    _mydb.command({
+      "planCacheClear": NEWS
+    })
+  
   if(config.get_db_collection() == "None"):
     return [x for x in load_json() if x['language'] == 'French' or x['language'] == 'English']
   else:
