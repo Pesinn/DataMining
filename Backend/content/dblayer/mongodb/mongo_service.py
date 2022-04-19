@@ -44,7 +44,7 @@ def get_news_data(search, filter):
 
 def get_news_data_aggregation_search(search, filter):
   query = aggregation_search_query(search, filter)
-  data = [x for x in _mydb[NEWS].aggregate(query)]
+  data = [x for x in _mydb[NEWS].aggregate(query, allowDiskUse=True)]
   score_threshold = generate_text_score_threshold(len(search["search"]))
   # Filter data above the score threshold
   return [x for x in data if x["score"] > score_threshold]
