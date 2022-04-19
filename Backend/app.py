@@ -3,6 +3,7 @@ from flask import request, jsonify, abort
 from content.dblayer.dbservice import *
 
 import os
+import time
 import content.factory.request as req
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.raw_data.raw_data as domain_raw_data
@@ -12,6 +13,7 @@ import content.misc.logging as log
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
+TIME_MEASUREMENT = True
 
 ###########################
 # News Data endpoints
@@ -19,8 +21,18 @@ app.config["DEBUG"] = True
 
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
+  if TIME_MEASUREMENT == True:
+    start = time.time()
+
   filter = req.create_filter(True, True, request)
-  return get_news_data(request, filter)
+  data = get_news_data(request, filter)
+
+  if TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print(time_elapsed)
+
+  return data
 
 
 ###########################
@@ -29,9 +41,20 @@ def news_data():
 
 @app.route('/api/v1/raw_data', methods=['GET'])
 def raw_data():
+  if TIME_MEASUREMENT == True:
+    start = time.time()
+
   search_arr = req.conv_req_to_search_array(request)
   filter = req.create_raw_filter()
-  return jsonify(domain_raw_data.get_raw_data(search_arr, filter))
+  filter = req.create_filter(True, True, request)
+  data = domain_raw_data.get_raw_data(search_arr, filter)
+
+  if TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print(time_elapsed)
+
+  return jsonify(data)
 
 
 ###########################
@@ -40,9 +63,18 @@ def raw_data():
 
 @app.route('/api/v1/articles', methods=['GET'])
 def articles():
-  filter = req.create_filter(False, False, request)
-  return get_news_data(request, filter)
+  if TIME_MEASUREMENT == True:
+    start = time.time()
 
+  filter = req.create_filter(False, False, request)
+  data = get_news_data(request, filter)
+
+  if TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print(time_elapsed)
+
+  return data
 
 ###########################
 # Entities endpoint
@@ -50,9 +82,18 @@ def articles():
 
 @app.route('/api/v1/entities', methods=['GET'])
 def entities():
-  filter = req.create_filter(True, False, request)
-  return get_news_data(request, filter)
+  if TIME_MEASUREMENT == True:
+    start = time.time()
 
+  filter = req.create_filter(True, False, request)
+  data = get_news_data(request, filter)
+
+  if TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print(time_elapsed)
+
+  return data
 
 ###########################
 # Sentiment endpoint
@@ -60,9 +101,19 @@ def entities():
 
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
-  log.log(request, "INFO")
+
+  if TIME_MEASUREMENT == True:
+    start = time.time()
+
   filter = req.create_filter(False, True, request)
-  return get_news_data(request, filter)
+  data = get_news_data(request, filter)
+
+  if TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print(time_elapsed)
+  
+  return data
 
 
 ###########################
@@ -71,8 +122,17 @@ def sentiment_analysis():
 
 @app.route('/api/v1/filters', methods=['GET'])
 def filters():
-  log.log("get filters", "INFO")
-  return jsonify(domain_filters.get_filters())
+  if TIME_MEASUREMENT == True:
+    start = time.time()
+
+  data = domain_filters.get_filters()
+
+  if TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print(time_elapsed)
+
+  return jsonify(data)
 
 
 ###########################
