@@ -5,6 +5,7 @@ import pprint
 import copy
 
 NEWS = "news_data"
+FILTERS = "news_data_filters"
 
 # Connect to the DB
 _myclient = pymongo.MongoClient('localhost', 27017)
@@ -21,7 +22,7 @@ def load_json():
   return data
 
 def get_filters(name):
-  return [x for x in _mydb[NEWS].distinct(name)]
+  return [x for x in _mydb[FILTERS].distinct(name)]
 
 def get_news_data(search, filter):
   if(config.get_db_collection() == "None"):
