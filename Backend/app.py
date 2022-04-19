@@ -4,6 +4,7 @@ from content.dblayer.dbservice import *
 
 import os
 import time
+import config
 import content.factory.request as req
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.raw_data.raw_data as domain_raw_data
@@ -13,7 +14,6 @@ import content.misc.logging as log
 app = Flask(__name__)
 app.config["DEBUG"] = True
 
-TIME_MEASUREMENT = True
 
 ###########################
 # News Data endpoints
@@ -21,16 +21,16 @@ TIME_MEASUREMENT = True
 
 @app.route('/api/v1/news_data', methods=['GET'])
 def news_data():
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     start = time.time()
 
   filter = req.create_filter(True, True, request)
   data = get_news_data(request, filter)
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     end = time.time()
     time_elapsed = end - start
-    print(time_elapsed)
+    print("API response time: ", time_elapsed)
 
   return data
 
@@ -41,7 +41,7 @@ def news_data():
 
 @app.route('/api/v1/raw_data', methods=['GET'])
 def raw_data():
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     start = time.time()
 
   search_arr = req.conv_req_to_search_array(request)
@@ -49,10 +49,10 @@ def raw_data():
   filter = req.create_filter(True, True, request)
   data = domain_raw_data.get_raw_data(search_arr, filter)
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     end = time.time()
     time_elapsed = end - start
-    print(time_elapsed)
+    print("API response time: ", time_elapsed)
 
   return jsonify(data)
 
@@ -63,16 +63,16 @@ def raw_data():
 
 @app.route('/api/v1/articles', methods=['GET'])
 def articles():
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     start = time.time()
 
   filter = req.create_filter(False, False, request)
   data = get_news_data(request, filter)
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     end = time.time()
     time_elapsed = end - start
-    print(time_elapsed)
+    print("API response time: ", time_elapsed)
 
   return data
 
@@ -82,16 +82,16 @@ def articles():
 
 @app.route('/api/v1/entities', methods=['GET'])
 def entities():
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     start = time.time()
 
   filter = req.create_filter(True, False, request)
   data = get_news_data(request, filter)
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     end = time.time()
     time_elapsed = end - start
-    print(time_elapsed)
+    print("API response time: ", time_elapsed)
 
   return data
 
@@ -102,16 +102,16 @@ def entities():
 @app.route('/api/v1/sentiment', methods=['GET'])
 def sentiment_analysis():
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     start = time.time()
 
   filter = req.create_filter(False, True, request)
   data = get_news_data(request, filter)
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     end = time.time()
     time_elapsed = end - start
-    print(time_elapsed)
+    print("API response time: ", time_elapsed)
   
   return data
 
@@ -122,15 +122,15 @@ def sentiment_analysis():
 
 @app.route('/api/v1/filters', methods=['GET'])
 def filters():
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     start = time.time()
 
   data = domain_filters.get_filters()
 
-  if TIME_MEASUREMENT == True:
+  if config.TIME_MEASUREMENT == True:
     end = time.time()
     time_elapsed = end - start
-    print(time_elapsed)
+    print("API response time: ", time_elapsed)
 
   return jsonify(data)
 
