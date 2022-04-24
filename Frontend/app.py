@@ -1,7 +1,5 @@
 from flask import Flask
-from markupsafe import escape
-from flask import url_for
-from flask import request, jsonify
+from flask import request
 from flask import render_template
 
 import multidict as multidict

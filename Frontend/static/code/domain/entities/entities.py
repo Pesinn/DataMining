@@ -3,7 +3,6 @@ import static.code.domain.news_data.news_data as news_data
 import config
 
 def get_entities(req):
-  print("req: ", req)
   data = get_entities_service(req)
   return data
 
