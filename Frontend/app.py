@@ -105,6 +105,12 @@ def sentiment_ratio():
   sentiment = domain_sentiment.get_sentiment_analysis(search_req)
   return render_template("sentiment_ratio.html", filter=domain_filter, labels=bar_labels, data=sentiment, colors=graph_colors)
 
+@app.route('/about', methods=["GET"])
+def about():
+  pre_filter = req.conv_req_to_pre_filter(request)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
+  return render_template("about.html", filter = domain_filter)
+
 def render_default(f):
   return render_template("default.html", filter = f)
 
