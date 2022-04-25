@@ -9,7 +9,6 @@ import content.factory.request as req
 import content.domain.news_data.news_data as domain_news_data
 import content.domain.raw_data.raw_data as domain_raw_data
 import content.domain.filters.filters as domain_filters
-import content.misc.logging as log
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
