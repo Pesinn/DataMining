@@ -210,15 +210,16 @@ function setArticleRange(filter) {
   }
 }
 
-function setCurrentPage(filter) {
+function setCurrentPage(source, filter) {
   var str = "";
-
   let f = {
     ...filter,
     ..._filter
   }
   if(f != null && "page" in f) {
     str += "&current_page=" + f["page"];
+  } else if(source != "/sentiment") {
+    str += "&current_page=" + 1;
   }
   if(f != null && "languages" in f) {
     str += appendToSearchStringFilter(f["languages"], "languages");
@@ -347,14 +348,13 @@ function mySubmitFunction(e) {
 function redirectURL(source, filter) {
   setDateFilters();
   var searchStr = convertSearchObjectToQueryString();
-  var filterStr = setCurrentPage(filter);
+  var filterStr = setCurrentPage(source, filter);
 
   if(searchStr == "") {
     var url = window.location.origin + source;
     window.location = url;
   } else {
     var url = window.location.origin + source + searchStr + filterStr;
-    console.log(url);
     window.location = url;
   }
 }

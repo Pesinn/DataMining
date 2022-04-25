@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 def get_articles_per_page():
-  return 10
+  return 30
 
 def get_pagination_num():
   return 7
@@ -26,7 +26,7 @@ def article_pagination(response, request):
 
   # Array of pages that should be visible in the pagination.
   pagination_visible = get_pagination_to_display(int(current_page), int(pages), max_pages)
-    
+
   # Create object for each page, that contains all key information about
   # what should be displayed.
   for i in range(pages):
