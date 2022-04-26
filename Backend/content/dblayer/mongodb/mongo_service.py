@@ -7,11 +7,10 @@ import copy
 NEWS = "news_data"
 FILTERS = "news_data_filters"
 
-CLEAR_CACHE = True
+CLEAR_CACHE = False
 
 # Connect to the DB
 _myclient = pymongo.MongoClient('localhost', 27017)
-_dbList = _myclient.list_database_names()
 
 # Create collection and DB
 _mydb = _myclient[config.get_db_collection()]
