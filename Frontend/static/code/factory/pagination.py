@@ -2,7 +2,7 @@ import math
 import numpy as np
 
 def get_articles_per_page():
-  return 30
+  return 10
 
 def get_pagination_num():
   return 7
