@@ -11,5 +11,5 @@ def get_db_collection():
 DB_HOST = "localhost"
 DB_PORT = 27017
 
-DB_METHOD = "REGULAR_SEARCH"
+DB_METHOD = "AGGREGATION_TEXT_SEARCH"
 TIME_MEASUREMENT = True
