@@ -15,7 +15,7 @@ def handle_query_parameters(req):
   if 'named_entities' in req.args:
     search_obj["named_entities"] = int(req.args.get("named_entities"))
   else:
-    search_obj["named_entities"] = 10
+    search_obj["named_entities"] = 50
   return search_obj
 
 def conv_req_to_search_array(req):
