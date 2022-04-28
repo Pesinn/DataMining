@@ -15,7 +15,7 @@ image_data = {
     'background_color': 'white',
     'contour_width': 3,
     'contour_color': 'black',
-    'ui_height': '400px'
+    'ui_height': '600px'
   },
   'alice_1':
   {
@@ -23,7 +23,7 @@ image_data = {
     'background_color': 'pink',
     'contour_width': 2,
     'contour_color': 'black',
-    'ui_height': '600px'
+    'ui_height': '800px'
   },
   'alice_2':
   {
@@ -31,7 +31,7 @@ image_data = {
     'background_color': 'white',
     'contour_width': 3,
     'contour_color': 'steelblue',
-    'ui_height': '600px'
+    'ui_height': '800px'
   },
   'alice_3':
   {
@@ -39,7 +39,7 @@ image_data = {
     'background_color': 'white',
     'contour_width': 0,
     'contour_color': 'steelblue',
-    'ui_height': '600px'
+    'ui_height': '800px'
   },
   'stormtrooper_1':
   {
@@ -47,7 +47,7 @@ image_data = {
     'background_color': 'grey',
     'contour_width': 3,
     'contour_color': 'white',
-    'ui_height': '600px'
+    'ui_height': '800px'
   },
   'stormtrooper_2':
   {
@@ -55,7 +55,7 @@ image_data = {
     'background_color': 'white',
     'contour_width': 5,
     'contour_color': 'black',
-    'ui_height': '600px'
+    'ui_height': '800px'
   },
   'stormtrooper_3':
   {
@@ -63,7 +63,7 @@ image_data = {
     'background_color': 'white',
     'contour_width': 0,
     'contour_color': 'black',
-    'ui_height': '600px'
+    'ui_height': '800px'
   }
 }
 
