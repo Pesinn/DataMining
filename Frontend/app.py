@@ -65,7 +65,7 @@ def entities_cloud():
     return render_default(domain_filter)
 
   ent = domain_entities.get_entities(search_req)
-  cloud_image_path = word_cloud.create_word_cloud(ent)
+  cloud_image_path = word_cloud.create_word_clouds(ent)
   return render_template("entities_cloud.html", filter=domain_filter, cloud_image=cloud_image_path)
 
 @app.route('/sentiment', methods=["GET"])

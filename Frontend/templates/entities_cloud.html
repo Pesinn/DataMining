@@ -6,9 +6,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <img height="400px" src="{{cloud_image}}">
+    {% for i in cloud_image %}
+    
+    <div class="col-md-12" style="margin-bottom: 75px;">
+      <img height="{{i.height}}" src="{{i.path}}">
     </div>
+    
+    {% endfor %}
   </div>
 </div>
 {% endblock %}
