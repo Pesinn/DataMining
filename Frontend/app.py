@@ -2,21 +2,14 @@ from flask import Flask
 from flask import request
 from flask import render_template
 
-import multidict as multidict
-from PIL import Image
-import random
-import numpy as np
-from wordcloud import WordCloud
-
 import os
 import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
 import static.code.domain.entities.entities as domain_entities
+import static.code.factory.word_cloud as word_cloud
 import static.code.factory.request as req
 import static.code.factory.pagination as page
 import static.code.factory.sentiment_decoration as sent_d
-
-generated_image_path = "static/generated_images/"
 
 app = Flask(__name__)
 
@@ -72,7 +65,7 @@ def entities_cloud():
     return render_default(domain_filter)
 
   ent = domain_entities.get_entities(search_req)
-  cloud_image_path = create_word_cloud(ent)
+  cloud_image_path = word_cloud.create_word_cloud(ent)
   return render_template("entities_cloud.html", filter=domain_filter, cloud_image=cloud_image_path)
 
 @app.route('/sentiment', methods=["GET"])
@@ -113,35 +106,6 @@ def about():
 
 def render_default(f):
   return render_template("default.html", filter = f)
-
-def create_word_cloud(ent):
-  x, y = np.ogrid[:300, :300]
-
-  arr = np.array(Image.open("static/images/template.png"))
-
-  image_freq = getFrequencyDictForText(ent[0]["entities"]["named"])
-
-  wc = WordCloud(
-    background_color="white",
-    mask=arr
-  )
-
-  wc.generate_from_frequencies(image_freq)
-
-  random_str = random_string()
-  wc.to_file(f"{generated_image_path}{random_str}.png")
-  
-  return f"{generated_image_path}{random_str}.png"
-
-def getFrequencyDictForText(sentence):
-  dict = multidict.MultiDict()
-  for s in sentence:
-    dict.add(s["entity"], s["count"])
-  return dict
-
-def random_string(random_chars=12, alphabet="0123456789abcdef"):
-    r = random.SystemRandom()
-    return ''.join([r.choice(alphabet) for i in range(random_chars)])
 
 port = int(os.environ.get('PORT', 5551))
 app.run(host='0.0.0.0', port=port)
