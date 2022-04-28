@@ -134,16 +134,10 @@ def create_word_cloud(ent):
   return f"{generated_image_path}{random_str}.png"
 
 def getFrequencyDictForText(sentence):
-  fullTermsDict = multidict.MultiDict()
-  tmpDict = {}
-
-  # making dict for counting frequencies
+  dict = multidict.MultiDict()
   for s in sentence:
-    val = tmpDict.get(s["entity"], s["count"])
-    tmpDict[s["entity"].lower()] = val + 1
-  for key in tmpDict:
-    fullTermsDict.add(key, tmpDict[key])
-  return fullTermsDict
+    dict.add(s["entity"], s["count"])
+  return dict
 
 def random_string(random_chars=12, alphabet="0123456789abcdef"):
     r = random.SystemRandom()
