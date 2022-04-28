@@ -117,13 +117,13 @@ def render_default(f):
 def create_word_cloud(ent):
   x, y = np.ogrid[:300, :300]
 
-  cloud_mask = np.array(Image.open("static/images/cloud3.png"))
+  arr = np.array(Image.open("static/images/template.png"))
 
   image_freq = getFrequencyDictForText(ent[0]["entities"]["named"])
 
   wc = WordCloud(
     background_color="white",
-    mask=cloud_mask
+    mask=arr
   )
 
   wc.generate_from_frequencies(image_freq)
