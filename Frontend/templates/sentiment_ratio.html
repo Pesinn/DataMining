@@ -18,6 +18,28 @@
   <canvas id="chart" width="600" height="400"></canvas>
 </div>
 
+<div class="Sentiment-Counter">
+  <ul class="list-group">
+  <h3>Articles count</h3>
+  {% for i in data %}
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">{{i.search[0]}}</div>
+      </div>
+      <span class="badge bg-primary rounded-pill">{{i.articles_count.total}}</span>
+    </li>
+  {% endfor %}
+
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">total</div>
+    </div>
+    <span class="badge bg-primary rounded-pill">{{art_count}}</span>
+  </li>
+
+  </ul>
+  
+</div>
 
 <script>
 sentiment_ratio_infotext = "#Sentiment-ratio-infotext"

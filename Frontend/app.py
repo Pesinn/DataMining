@@ -80,8 +80,8 @@ def sentiment():
   if "[]" in search_req or not search_req:
     return render_default(domain_filter)
 
-  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment.html", filter=domain_filter, labels=bar_labels, data=sentiment, colors=graph_colors)
+  sentiment, articles_count = domain_sentiment.get_sentiment_analysis(search_req)
+  return render_template("sentiment.html", filter=domain_filter, labels=bar_labels, data=sentiment, art_count=articles_count, colors=graph_colors)
 
 @app.route('/sentiment-ratio', methods=["GET"])
 def sentiment_ratio():
@@ -95,8 +95,8 @@ def sentiment_ratio():
   if "[]" in search_req or not search_req:
     return render_default(domain_filter)
 
-  sentiment = domain_sentiment.get_sentiment_analysis(search_req)
-  return render_template("sentiment_ratio.html", filter=domain_filter, labels=bar_labels, data=sentiment, colors=graph_colors)
+  sentiment, articles_count = domain_sentiment.get_sentiment_analysis(search_req)
+  return render_template("sentiment_ratio.html", filter=domain_filter, labels=bar_labels, data=sentiment, art_count=articles_count, colors=graph_colors)
 
 @app.route('/about', methods=["GET"])
 def about():
