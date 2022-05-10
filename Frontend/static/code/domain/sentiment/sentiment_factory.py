@@ -2,7 +2,8 @@ import numpy as nu
 
 def normalize_sentiment_analysis_arr(data):
   for i in data:
-    i = normalize_sentiment_analysis_obj(i)
+    if i["articles_count"]["total"] > 0:
+      i = normalize_sentiment_analysis_obj(i)
   return data
 
 def normalize_sentiment_analysis_obj(data):
