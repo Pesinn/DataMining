@@ -45,7 +45,7 @@ def get_news_data_by_single_search(s, filter):
   sentiment = {}
   sentiment_ratio = {}
   ner = {}
-  filter_count = {"languages": {}, "sources": {}}
+  filter_count = {"languages": {}, "sources": {}, "total": 0}
   display_article_counter = 0
   filter["articles"]["range"] = set_article_count(filter["articles"]["range"], data)
 
