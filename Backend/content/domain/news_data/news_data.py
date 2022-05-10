@@ -42,8 +42,8 @@ def get_news_data_by_single_search(s, filter):
   data = dbservice.get_news_data(s, filter)
   articles = []
   index = 0
-  sentiment = {}
-  sentiment_ratio = {}
+  sentiment = sentiment_factory.create_sentiment_domain_object()
+  sentiment_ratio = sentiment_factory.create_sentiment_ratio_domain_object()
   ner = {}
   filter_count = {"languages": {}, "sources": {}, "total": 0}
   display_article_counter = 0
