@@ -40,9 +40,12 @@
   <canvas id="frequency" width="600" height="400"></canvas>
 </div>
 
+
+<h3>Articles count</h3>
+<canvas id="count" width="600" height="400"></canvas>
+
 <div class="Sentiment-Counter">
   <ul class="list-group">
-  <h3>Articles count</h3>
   {% for i in data %}
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto">
@@ -67,10 +70,25 @@
 
 var COLORS = JSON.parse('{{ colors | tojson}}');
 
+function getColor(index) {
+  if(COLORS.length < index-1) {
+    // Get numbers from 1 to 10
+    return COLORS[Math.floor(Math.random() * 10) + 1];
+  } else {
+    return COLORS[index];
+  }
+}
+
 _labels = []
 {% for item in labels %}
   _labels.push("{{ item }}")
 {% endfor %}
+
+_count_labels = []
+{% for item in data %}
+  _count_labels.push("{{ item.search[0] }}")
+{% endfor %}
+
 
 var sentiment_infotext_percentage = "#Sentiment-infotext-percentage";
 var sentiment_graph_percentage_info = "#Sentiment-Graph-percentage";
@@ -109,8 +127,8 @@ function createNormalizedDataset() {
   var index = 0
   {% for s in data %}
     new_data_set = {
-    backgroundColor: COLORS[index],
-    borderColor: COLORS[index],
+    backgroundColor: getColor(index),
+    borderColor: getColor(index),
     borderWidth: 1,
     label: "{{s.search[0]}}",
     data : [
@@ -129,13 +147,13 @@ function createNormalizedDataset() {
   return datasets
 }
 
-function createFrequencyDataset(type) {
+function createFrequencyDataset() {
   var datasets = []
   var index = 0
   {% for s in data %}
     new_data_set = {
-    backgroundColor: COLORS[index],
-    borderColor: COLORS[index],
+    backgroundColor: getColor(index),
+    borderColor: getColor(index),
     borderWidth: 1,
     label: "{{s.search[0]}}",
     data : [
@@ -154,13 +172,37 @@ function createFrequencyDataset(type) {
   return datasets
 }
 
-drawGraph("normalized", _labels, createNormalizedDataset());
-drawGraph("frequency", _labels, createFrequencyDataset());
+function createCountDataset() {
+  var datasets = []
+  var col = []
+  var d = []
+  {% for s in data %}
+    d.push("{{s.articles_count["total"]}}")
+  {% endfor %}
 
-function drawGraph(type, lab, data) {
+  new_data_set = {
+    backgroundColor: COLORS,
+    borderColor: [
+      'rgb(0, 0, 0)'
+    ],
+    borderWidth: 1,
+    label: "Articles count",
+    data : d
+  }
+  datasets.push(new_data_set);
+
+  return datasets
+}
+
+drawGraph("normalized", _labels, createNormalizedDataset(), "bar");
+drawGraph("frequency", _labels, createFrequencyDataset(), "bar");
+drawGraph("count", _count_labels, createCountDataset(), "doughnut");
+
+
+function drawGraph(type, lab, data, bartype) {
   var ctx = document.getElementById(type).getContext('2d');
   var myChart = new Chart(ctx, {
-      type: 'bar',
+      type: bartype,
       data: {
         labels: lab,
         datasets: data
