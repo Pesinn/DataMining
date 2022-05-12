@@ -77,12 +77,17 @@
   <div style="margin-bottom: 5px">
     <button id="articles-button" type="button" class="btn btn-outline-primary">Articles</button>
     <button id="entities-button" type="button" class="btn btn-outline-primary">Entities</button>
+    <button id="keywords-button" type="button" class="btn btn-outline-primary">Keywords</button>
     <button id="sentiment-button" type="button" class="btn btn-outline-primary">Sentiment</button>
   </div>
 
   <div id="search-buttons-entities" style="margin-bottom: 5px">
     <button id="entities-filter-button" type="button" class="btn btn-outline-primary">Filter</button>
     <button id="entities-cloud-button" type="button" class="btn btn-outline-primary">Word Cloud</button>
+  </div>
+
+  <div id="search-buttons-keywords" style="margin-bottom: 5px">
+    <button id="keywords-all-button" type="button" class="btn btn-outline-primary">All</button>
   </div>
 
   <div id="search-buttons-sentiment" style="margin-bottom: 5px">
@@ -289,21 +294,36 @@ function buttonClassHandler() {
   if(pathname === "/sentiment-ratio") {
     modifyElementClass("sentiment-ratio-button", "btn-primary", "btn-outline-primary");
   }
+  if(pathname === "/keywords") {
+    modifyElementClass("keywords-button", "btn-primary", "btn-outline-primary");
+    modifyElementClass("keywords-all-button", "btn-primary", "btn-outline-primary");
+    keywords_buttons();
+  }
 }
 
 function articles_buttons() {
   document.getElementById("search-buttons-sentiment").style.display = "none";
   document.getElementById("search-buttons-entities").style.display = "none";
+  document.getElementById("search-buttons-keywords").style.display = "none";
+}
+
+function keywords_buttons() {
+  document.getElementById("search-buttons-sentiment").style.display = "none";
+  document.getElementById("search-buttons-entities").style.display = "none";
+  document.getElementById("search-buttons-keywords").style.display = "block";
+
 }
 
 function sentiment_buttons() {
   document.getElementById("search-buttons-sentiment").style.display = "block";
   document.getElementById("search-buttons-entities").style.display = "none";
+  document.getElementById("search-buttons-keywords").style.display = "none";
 }
 
 function entities_buttons() {
   document.getElementById("search-buttons-sentiment").style.display = "none";
   document.getElementById("search-buttons-entities").style.display = "block";
+  document.getElementById("search-buttons-keywords").style.display = "none";
 }
 
 function buttonOnClickHandler() {
@@ -327,6 +347,12 @@ function buttonOnClickHandler() {
   }
   document.getElementById("sentiment-ratio-button").onclick = function sentiment() {
     redirectURL("/sentiment-ratio", null);
+  }
+  document.getElementById("keywords-button").onclick = function sentiment() {
+    redirectURL("/keywords", null);
+  }
+  document.getElementById("keywords-all-button").onclick = function sentiment() {
+    redirectURL("/keywords", null);
   }
 }
 

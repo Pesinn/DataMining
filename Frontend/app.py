@@ -6,6 +6,7 @@ import os
 import static.code.domain.articles.articles as domain_articles
 import static.code.domain.sentiment.sentiment as domain_sentiment
 import static.code.domain.entities.entities as domain_entities
+import static.code.domain.keywords.keywords as domain_keywords
 import static.code.factory.word_cloud as word_cloud
 import static.code.factory.request as req
 import static.code.factory.pagination as page
@@ -31,7 +32,7 @@ def index():
   except Exception as error:
     print("Error in route /", error)
     return render_default(domain_filter)
-  
+
 @app.route('/entities', methods=["GET"])
 def entities():
   pre_filter = req.conv_req_to_pre_filter(request)
@@ -53,6 +54,28 @@ def entities():
   if "[]" in ent:
     return render_default(domain_filter)
   return render_template("entities.html", filter=domain_filter, data=ent[0])
+
+@app.route('/keywords', methods=["GET"])
+def keywords():
+  pre_filter = req.conv_req_to_pre_filter(request)
+  search_req = req.conv_pre_filter_to_query_string(pre_filter)
+  domain_filter = req.pre_filter_to_domain_filter(pre_filter)
+  
+  # If no search query has been entered
+  if "[]" in search_req or not search_req:
+    return render_default(domain_filter)
+  keyw = domain_keywords.get_keywords(search_req)
+
+  id = 0
+  for i in keyw[0]["keywords"]:
+    i["id"] = f"entity_{id}"
+    id = id + 1
+ 
+  keyw[0]["article_pages"] = page.article_pagination(keyw[0], request)
+  print(keyw[0])
+  if "[]" in keyw:
+    return render_default(domain_filter)
+  return render_template("keywords.html", filter=domain_filter, data=keyw[0])
 
 @app.route('/entities-cloud', methods=["GET"])
 def entities_cloud():

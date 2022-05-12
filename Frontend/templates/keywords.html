@@ -1,7 +1,7 @@
 {% extends 'search.html' %}
 
 {% block sub_content %}
-<p hidden> {% block nav_title %}Named Entities{% endblock %}</p>
+<p hidden> {% block nav_title %}Keywords{% endblock %}</p>
 
 
 <div class="container">
@@ -10,12 +10,12 @@
     <div class="col-md-12 col-lg-8">
 
       <div class="row">
-        {% for i in data.entities.named %}
+        {% for i in data.keywords %}
 
           <div class="col-sm-12 col-md-6 col-lg-4" style="margin-bottom: 10px;">
-            <a href="#" id="{{i.id}}" onclick="append_entity_to_search({{i}})" class="list-group-item list-group-item-action">
+            <a href="#" id="{{i.id}}" onclick="append_keyword_to_search({{i}})" class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{i.entity}}</h5>
+                <h5 class="mb-1">{{i.lemmatized}}</h5>
                 <small class="text-muted">{{i.count}}</small>
               </div>
               <div class="progress">
@@ -34,20 +34,20 @@
       <div>
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item" onclick="pagination_first_page_ent();">
+            <li class="page-item" onclick="keyw_pagination_first_page_ent();">
               <a class="page-link" href="#">First</a>
             </li>
             
             {% for i in data.article_pages.pages %}
               {% if i.visible %}
                 <li class="page-item">
-                  <a class="page-link" onclick="pagination_ent({{i}})" href="#">{{i.page}}</a>
+                  <a class="page-link" onclick="keyw_pagination_ent({{i}})" href="#">{{i.page}}</a>
                 </li>
               {% endif %}
             {% endfor %}
             
             <li class="page-item">
-              <a class="page-link" href="#" onclick="pagination_last_page_ent({{ data.article_pages.pages }});">Last</a>
+              <a class="page-link" href="#" onclick="keyw_pagination_last_page_ent({{ data.article_pages.pages }});">Last</a>
             </li>
           </ul>
         </nav>
@@ -73,14 +73,14 @@
       <div>
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-            <li class="page-item" onclick="pagination_first_page_ent();">
+            <li class="page-item" onclick="keyw_pagination_first_page_ent();">
               <a class="page-link" href="#">First</a>
             </li>
             
             {% for i in data.article_pages.pages %}
               {% if i.visible %}
                 <li class="page-item">
-                  <a class="page-link" onclick="pagination_ent({{i}})" href="#">{{i.page}}</a>
+                  <a class="page-link" onclick="keyw_pagination_ent({{i}})" href="#">{{i.page}}</a>
                 </li>
               {% endif %}
             {% endfor %}
@@ -97,14 +97,14 @@
 </div>
 
 <script>
-function pagination_first_page_ent() {
+function keyw_pagination_first_page_ent() {
   var filter = {
     "page": 1
   }
-  redirectURL("/entities", filter)
+  redirectURL("/keywords", filter)
 }
 
-function pagination_last_page_ent(items) {
+function keyw_pagination_last_page_ent(items) {
   var filter = {};
 
   if(items.length == 0) {
@@ -117,27 +117,27 @@ function pagination_last_page_ent(items) {
     filter = {
       "page": item["page"]
     }  
-    redirectURL("/entities", filter)
+    redirectURL("/keywords", filter)
   }
 }
 
-function pagination_ent(item) {
+function keyw_pagination_ent(item) {
   var filter = {
     "page": item["page"]
   }
-  redirectURL("/entities", filter)
+  redirectURL("/keywords", filter)
 }
 
-function append_entity_to_search(obj) {
+function append_keyword_to_search(obj) {
   element = document.getElementById(obj["id"]);
   isAlreadyPicked = element.classList.contains("Entity-box--picked");
 
   if(isAlreadyPicked) {
     element.classList.remove("Entity-box--picked");
-    remove_from_search_bar(obj["entity"]);
+    remove_from_search_bar(obj["lemmatized"]);
   } else {
     element.classList.add("Entity-box--picked");
-    append_to_search_bar(obj["entity"]);
+    append_to_search_bar(obj["lemmatized"]);
   }
 }
 

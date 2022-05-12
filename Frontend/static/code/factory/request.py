@@ -11,6 +11,7 @@ def conv_req_to_pre_filter(req):
   filter["articles_limit"] = pre_filter_string_handler(req, "articles_limit")
   filter["named_entities"] = pre_filter_string_handler(req, "named_entities")
   filter["articles_range"] = pre_filter_pagination(req, "current_page")
+  filter["keywords"] = pre_filter_string_handler(req, "keywords")
   return filter
 
 def pre_filter_pagination(req, page):
@@ -93,6 +94,7 @@ def conv_req_to_query_string(req):
   query_str = search_filter(query_str, req, "date_from")
   query_str = search_filter(query_str, req, "date_to")
   query_str = search_filter(query_str, req, "named_entities")
+  query_str = search_filter(query_str, req, "keywords")
   query_str = pagination_handler(query_str, req)
 
   return query_str
