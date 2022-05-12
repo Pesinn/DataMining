@@ -72,7 +72,6 @@ def keywords():
     id = id + 1
  
   keyw[0]["article_pages"] = page.article_pagination(keyw[0], request)
-  print(keyw[0])
   if "[]" in keyw:
     return render_default(domain_filter)
   return render_template("keywords.html", filter=domain_filter, data=keyw[0])
