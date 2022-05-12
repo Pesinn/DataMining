@@ -44,14 +44,31 @@
 <h3>Articles count</h3>
 <canvas id="count" width="600" height="400"></canvas>
 
-<div class="Sentiment-Counter">
+<div>
   <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Search keyword</div>
+      </div>
+      <span class="badge bg-danger rounded-pill u-marginRight">Very negative</span>
+      <span class="badge bg-danger rounded-pill u-marginRight">Negative</span>
+      <span class="badge bg-light text-dark rounded-pill u-marginRight">Neutral</span>
+      <span class="badge bg-success rounded-pill u-marginRight">Positive</span>
+      <span class="badge bg-success rounded-pill u-marginRight">Very positive</span>
+      <span class="badge bg-primary rounded-pill u-marginRight">Total</span>
+    </li>
+
   {% for i in data %}
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto">
-        <div class="fw-bold">{{i.search[0]}}</div>
+        <div>{{i.search[0]}}</div>
       </div>
-      <span class="badge bg-primary rounded-pill">{{i.articles_count.total}}</span>
+      <span class="badge bg-danger rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["lowest"]["freq"]}}</span>
+      <span class="badge bg-danger rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["low"]["freq"]}}</span>
+      <span class="badge bg-light text-dark rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["middle"]["freq"]}}</span>
+      <span class="badge bg-success rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["high"]["freq"]}}</span>
+      <span class="badge bg-success rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["highest"]["freq"]}}</span>
+      <span class="badge bg-primary rounded-pill u-marginRight">{{i.articles_count.total}}</span>
     </li>
   {% endfor %}
 
@@ -59,7 +76,12 @@
     <div class="ms-2 me-auto">
       <div class="fw-bold">total</div>
     </div>
-    <span class="badge bg-primary rounded-pill">{{art_count}}</span>
+    <span class="badge bg-danger rounded-pill u-marginRight">{{art_count["v_neg"]}}</span>
+    <span class="badge bg-danger rounded-pill u-marginRight">{{art_count["neg"]}}</span>
+    <span class="badge bg-light text-dark rounded-pill u-marginRight">{{art_count["neu"]}}</span>
+    <span class="badge bg-success rounded-pill u-marginRight">{{art_count["pos"]}}</span>
+    <span class="badge bg-success rounded-pill u-marginRight">{{art_count["v_pos"]}}</span>
+    <span class="badge bg-primary rounded-pill u-marginRight">{{art_count["total"]}}</span>
   </li>
 
   </ul>
