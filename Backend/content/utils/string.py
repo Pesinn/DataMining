@@ -30,4 +30,4 @@ def string_objects_to_array(in_str):
         temp_arr.append(a)
       result.append(temp_arr)
 
-  return result  
+  return result

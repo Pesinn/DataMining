@@ -15,7 +15,11 @@ def handle_query_parameters(req):
   if 'named_entities' in req.args:
     search_obj["named_entities"] = int(req.args.get("named_entities"))
   else:
-    search_obj["named_entities"] = 100
+    search_obj["named_entities"] = 100  
+  if 'keywords' in req.args:
+    search_obj["keywords"] = int(req.args.get("keywords"))
+  else:
+    search_obj["keywords"] = 100
   return search_obj
 
 def conv_req_to_search_array(req):
@@ -28,7 +32,7 @@ def conv_req_to_search_array(req):
     search_arr.append(search_obj)
   return search_arr
 
-def create_filter(ner, sentiment, request):
+def create_filter(ner, sentiment, keywords, request):
   article_range = request.args.get("articles_range")
   if article_range:
     article_range = article_range.replace("{", "")
@@ -57,6 +61,8 @@ def create_filter(ner, sentiment, request):
           "contain two numbers with a comma between")
 
   return {
+    "description_keywords": keywords,
+    "title_keywords": keywords,
     "named_entities": ner,
     "sentiment_analysis": sentiment,
     "_id": True,

@@ -23,7 +23,7 @@ def news_data():
   if config.TIME_MEASUREMENT == True:
     start = time.time()
 
-  filter = req.create_filter(True, True, request)
+  filter = req.create_filter(True, True, True, request)
   data = get_news_data(request, filter)
 
   if config.TIME_MEASUREMENT == True:
@@ -45,7 +45,7 @@ def raw_data():
 
   search_arr = req.conv_req_to_search_array(request)
   filter = req.create_raw_filter()
-  filter = req.create_filter(True, True, request)
+  filter = req.create_filter(True, True, True, request)
   data = domain_raw_data.get_raw_data(search_arr, filter)
 
   if config.TIME_MEASUREMENT == True:
@@ -55,6 +55,24 @@ def raw_data():
 
   return jsonify(data)
 
+###########################
+# Keywords endpoint
+###########################
+
+@app.route('/api/v1/keywords', methods=['GET'])
+def keywords():
+  if config.TIME_MEASUREMENT == True:
+    start = time.time()
+
+  filter = req.create_filter(False, False, True, request)
+  data = get_news_data(request, filter)
+
+  if config.TIME_MEASUREMENT == True:
+    end = time.time()
+    time_elapsed = end - start
+    print("API response time: ", time_elapsed)
+
+  return data
 
 ###########################
 # Articles endpoint
@@ -65,7 +83,7 @@ def articles():
   if config.TIME_MEASUREMENT == True:
     start = time.time()
 
-  filter = req.create_filter(False, False, request)
+  filter = req.create_filter(False, False, False, request)
   data = get_news_data(request, filter)
 
   if config.TIME_MEASUREMENT == True:
@@ -84,7 +102,7 @@ def entities():
   if config.TIME_MEASUREMENT == True:
     start = time.time()
 
-  filter = req.create_filter(True, False, request)
+  filter = req.create_filter(True, False, False, request)
   data = get_news_data(request, filter)
 
   if config.TIME_MEASUREMENT == True:
@@ -104,7 +122,7 @@ def sentiment_analysis():
   if config.TIME_MEASUREMENT == True:
     start = time.time()
 
-  filter = req.create_filter(False, True, request)
+  filter = req.create_filter(False, True, False, request)
   data = get_news_data(request, filter)
 
   if config.TIME_MEASUREMENT == True:

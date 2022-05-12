@@ -1,6 +1,7 @@
 import content.dblayer.dbservice as dbservice
 import content.domain.sentiment.sentiment_analysis_factory as sentiment_factory
 import content.domain.entities.entities_factory as entity_factory
+import content.domain.keywords.keywords_factory as keywords_factory
 
 """
 search = [
@@ -40,6 +41,7 @@ def get_news_data(search, filter):
 
 def get_news_data_by_single_search(s, filter):
   data = dbservice.get_news_data(s, filter)
+  keywords = {}
   articles = []
   index = 0
   sentiment = sentiment_factory.create_sentiment_domain_object()
@@ -51,6 +53,7 @@ def get_news_data_by_single_search(s, filter):
 
   for d in data:
     index += 1
+    keywords = get_keywords(keywords, d, s["search"])
     sentiment = get_sentiment_score(sentiment, d)
     sentiment_ratio = get_sentiment_score_ratio(sentiment_ratio, d)
     ner = get_named_entities(ner, d, s["search"])
@@ -62,6 +65,7 @@ def get_news_data_by_single_search(s, filter):
       articles.append(create_article(d))
 
   final_obj = {
+    "keywords": keywords_factory.keyword_dict_to_list(keywords, s["keywords"], s["search"]),
     "sentiment_analysis": {
       "compound": sentiment,
       "text_ratio": round_sentiment_score_ratio(sentiment_ratio, index)
@@ -151,6 +155,27 @@ def get_named_entities(combined, data, search_arr):
       print("Error:", str(error))
     return {}
 
+def get_keywords(combined, data, search_arr):
+  try:
+    d1 = data["description"]["keywords"]["categorized"]
+    d2 = data["title"]["keywords"]["categorized"]
+    d = combine_dictionaries(d1, d2)
+    
+    # Copy is made so we can delete elements from 'd_copy'
+    # while iteration though 'd'
+    d_copy = dict(d)
+    for i in d:
+      # Remove named entities that are already in
+      # the search string
+      if(i in search_arr):
+        del d_copy[i]
+    
+    return keywords_factory.append_keywords(combined, d_copy)
+  except Exception as error:
+    if(str(error) != "'keywords'" and str(error) != "'annotations'"):
+      print("Error:", str(error))
+    return {}
+
 def create_article(data):
   return {
     "title": data["title"]["text"],
@@ -160,3 +185,9 @@ def create_article(data):
     "publish_date": data["publish_date"],
     "link": data["link"]
   }
+  
+def combine_dictionaries(dict1, dict2):
+  merged = dict()
+  merged.update(dict1)
+  merged.update(dict2)
+  return merged

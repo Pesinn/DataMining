@@ -173,6 +173,8 @@ def create_db_filter(filter):
   filtering(filter, "source", "source", db_filter)
   filtering(filter, "keywords", "keywords", db_filter)
   filtering(filter, "sentiment_analysis", "annotations.sentiment_analysis", db_filter)
+  filtering(filter, "title_keywords", "description.keywords", db_filter)
+  filtering(filter, "description_keywords", "title.keywords", db_filter)
   filtering(filter, "named_entities", "annotations.entities.named", db_filter)
   return db_filter
 
