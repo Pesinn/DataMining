@@ -1,7 +1,5 @@
 import math
 
-from sympy import true
-
 def isIgnore(t):
   ignore_arr = [
     "DET"
