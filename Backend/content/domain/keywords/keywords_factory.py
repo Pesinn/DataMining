@@ -7,7 +7,8 @@ def isIgnore(t):
     "INTJ",
     "X",
     "CCONJ",
-    "SYM"]
+    "SYM",
+    "PRON"]
   
   if t in ignore_arr:
     return True
