@@ -3,7 +3,7 @@ import math
 def append_keywords(combined, data):
   for t in data:
     # Skip some trash that is in our database
-    if t != "DET" and t != "AUX" and t != "INTJ" and t != "X":
+    if t != "DET" and t != "AUX" and t != "INTJ" and t != "X" and t != "CCONJ":
       for a in data[t]:
         for d in a:
           origin = d
