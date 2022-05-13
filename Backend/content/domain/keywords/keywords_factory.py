@@ -2,7 +2,7 @@ import math
 
 def isIgnore(t):
   ignore_arr = [
-    "DET"
+    "DET",
     "AUX",
     "INTJ",
     "X",
