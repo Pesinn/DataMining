@@ -166,8 +166,13 @@ def get_keywords(combined, data, search_arr):
     for i in d:
       # Remove named entities that are already in
       # the search string
-      if(i in search_arr):
-        del d_copy[i]
+      for o in d[i]:
+        for w in o:
+          #accessing the lemmatized version of the word:
+          # E.g. {'power': {'l': 'power'}} and compare to
+          # the search array
+          if(o[w]["l"] in search_arr):
+            del d_copy[i]
     
     return keywords_factory.append_keywords(combined, d_copy)
   except Exception as error:
