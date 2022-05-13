@@ -27,6 +27,7 @@
             <a href="#" id="{{i.id}}" onclick="append_keyword_to_search({{i}})" class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{i.lemmatized}}</h5>
+                <small class="text-muted">{{i.type}}</small>
                 <small class="text-muted">{{i.count}}</small>
               </div>
               <div class="progress">
@@ -48,7 +49,7 @@
             <li class="page-item" onclick="keyw_pagination_first_page_ent();">
               <a class="page-link" href="#">First</a>
             </li>
-            
+
             {% for i in data.article_pages.pages %}
               {% if i.visible %}
                 <li class="page-item">
@@ -56,7 +57,7 @@
                 </li>
               {% endif %}
             {% endfor %}
-            
+
             <li class="page-item">
               <a class="page-link" href="#" onclick="keyw_pagination_last_page_ent({{ data.article_pages.pages }});">Last</a>
             </li>
