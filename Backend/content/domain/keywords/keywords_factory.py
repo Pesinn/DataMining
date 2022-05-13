@@ -1,9 +1,25 @@
 import math
 
+from sympy import true
+
+def isIgnore(t):
+  ignore_arr = [
+    "DET"
+    "AUX",
+    "INTJ",
+    "X",
+    "CCONJ",
+    "SYM"]
+  
+  if t in ignore_arr:
+    return True
+  return False
+    
+
 def append_keywords(combined, data):
   for t in data:
     # Skip some trash that is in our database
-    if t != "DET" and t != "AUX" and t != "INTJ" and t != "X" and t != "CCONJ":
+    if isIgnore(t) == False:
       for a in data[t]:
         for d in a:
           origin = d
