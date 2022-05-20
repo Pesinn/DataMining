@@ -3,7 +3,18 @@
 {% block sub_content %}
 <p hidden> {% block nav_title %}Articles{% endblock %}</p>
 
-
+<div class="container">
+  <div class="row">
+    <div class="col-sm-11 col-md-4 col-lg-4" style="margin-bottom: 10px;">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Articles</div>
+        </div>
+        <span class="badge bg-primary rounded-pill">{{ data.articles_count.total }}</span>
+      </li>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="row">
