@@ -8,7 +8,7 @@
 </div>
 
 <div id="Sentiment-infotext-percentage" class="Sentiment-infotext">
-  <p>Sentiment analysis is done using the tool Vader. To determine the compound sentiment of an article, a compound score is given for each article between -1 and 1, where -1 is very negative and 1 is very positive.</p>
+  <p>Sentiment analysis is done using the tool VADER. To determine the compound sentiment of an article, a compound score is given for each article between -1 and 1, where -1 is very negative and 1 is very positive.</p>
 </div>
 
 <div class="Sentiment-Graph">
@@ -20,7 +20,7 @@
       <li>Negative sentiment: score > -0,75 and score <= 0,05</li>
       <li>Neutral sentiment: score > -0,05 and score < 0,05</li>
       <li>Positive sentiment: score > 0,05 and score < 0,75</li>
-      <li>Very positive sentiment: score > 0,75</li>
+      <li>Very positive sentiment: score => 0,75</li>
     </ul>
   </div>
   <canvas id="normalized" width="600" height="400"></canvas>
@@ -34,7 +34,7 @@
       <li>Negative sentiment: score > -0,75 and score <= 0,05</li>
       <li>Neutral sentiment: score > -0,05 and score < 0,05</li>
       <li>Positive sentiment: score > 0,05 and score < 0,75</li>
-      <li>Very positive sentiment: score > 0,75</li>
+      <li>Very positive sentiment: score => 0,75</li>
     </ul>
   </div>
   <canvas id="frequency" width="600" height="400"></canvas>
