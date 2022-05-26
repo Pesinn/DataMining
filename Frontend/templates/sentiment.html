@@ -61,7 +61,7 @@
   {% for i in data %}
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto">
-        <div>{{i.search[0]}}</div>
+        <div>{{i.search}}</div>
       </div>
       <span class="badge bg-danger rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["lowest"]["freq"]}}</span>
       <span class="badge bg-danger rounded-pill u-marginRight">{{i.sentiment_analysis["compound"]["low"]["freq"]}}</span>
@@ -108,7 +108,7 @@ _labels = []
 
 _count_labels = []
 {% for item in data %}
-  _count_labels.push("{{ item.search[0] }}")
+  _count_labels.push("{{ item.search }}")
 {% endfor %}
 
 
@@ -152,7 +152,7 @@ function createNormalizedDataset() {
     backgroundColor: getColor(index),
     borderColor: getColor(index),
     borderWidth: 1,
-    label: "{{s.search[0]}}",
+    label: "{{s.search}}",
     data : [
       "{{s.sentiment_analysis["compound"]["lowest"]["norm"]}}",
       "{{s.sentiment_analysis["compound"]["low"]["norm"]}}",
@@ -177,7 +177,7 @@ function createFrequencyDataset() {
     backgroundColor: getColor(index),
     borderColor: getColor(index),
     borderWidth: 1,
-    label: "{{s.search[0]}}",
+    label: "{{s.search}}",
     data : [
       "{{s.sentiment_analysis["compound"]["lowest"]["freq"]}}",
       "{{s.sentiment_analysis["compound"]["low"]["freq"]}}",
