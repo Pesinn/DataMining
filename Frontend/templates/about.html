@@ -1,12 +1,47 @@
 {% extends 'navigation.html' %}
 {% block content %}
 
-<p> The application has access to over 12.5 million news articles, written in English, published by 89 news sources. Each of these articles have been visible on a landing page of their source. It is possible to search for any news topic in the whole dataset. </p>
+<p> The application has access to over 12.5 million news articles, written in English, published by 89 news sources. Each of these articles have been visible on a landing page of their source. It is possible to apply any search condition to the whole dataset. </p>
 
-<p> 100 most frequent <b>named entities</b> can be found for any topic. It can also be displayed as word cloud</p>
+<br/>
+<br/>
 
-<p> 100 most frequent <b>keywords</b> can be found for any topic.</p>
+<h1>Named Entities</h1>
+<p> 100 most frequent <b>named entities</b> can be found for any search condition. It can also be displayed as word cloud</p>
 
+<ul>
+  <li>DATE - Absolute or relative dates or periods</li>
+  <li>PERSON - People, including fictional</li>
+  <li>GPE - Countries, cities, states</li>
+  <li>LOC - Non-GPE locations, mountain ranges, bodies of water</li>
+  <li>MONEY - Monetary values, including unit</li>
+  <li>TIME - Times smaller than a day</li>
+  <li>PRODUCT - Objects, vehicles, foods, etc. (not services)</li>
+  <li>CARDINAL - Numerals that do not fall under another type</li>
+  <li>ORDINAL - "first", "second", etc.</li>
+  <li>QUANTITY - Measurements, as of weight or distance</li>
+  <li>EVENT - Named hurricanes, battles, wars, sports events, etc.</li>
+  <li>FAC - Buildings, airports, highways, bridges, etc.</li>
+  <li>LANGUAGE - Any named language</li>
+  <li>LAW - Named documents made into laws.</li>
+  <li>NORP - Nationalities or religious or political groups</li>
+  <li>PERCENT - Percentage, including "%"</li>
+  <li>WORK_OF_ART - Titles of books, songs, etc.</li>
+</ul>
+
+<small>Source: https://newscatcherapi.com/blog/named-entity-recognition-with-spacy</small>
+
+<br/>
+<br/>
+<br/>
+
+<h1>Keywords (part-of-speech tagging)</h1>
+<p> 100 most frequent <b>keywords</b> can be found for any search condition.</p>
+
+<br/>
+<br/>
+
+<h1>Sentiment analysis</h1>
 <p> <b>Sentiment analysis</b> can be displayed for any news articles topic. Also, <b>sentiment analysis</b> can be compared between many different topics. To compare <b>sentiment analysis</b> of e.g. covid and pfizer, both search keywords must be divided by | character. Example: <i>covid | pfizer</i> </p>
 
 {% endblock %}
