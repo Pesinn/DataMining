@@ -50,13 +50,13 @@ def get_news_data_by_single_search(s, filter):
   filter_count = {"languages": {}, "sources": {}, "total": 0}
   display_article_counter = 0
   filter["articles"]["range"] = set_article_count(filter["articles"]["range"], data)
-
+  fl_search_arr = flatten_search_arr(s["search"])
   for d in data:
     index += 1
-    keywords = get_keywords(keywords, d, s["search"])
+    keywords = get_keywords(keywords, d, fl_search_arr)
     sentiment = get_sentiment_score(sentiment, d)
     sentiment_ratio = get_sentiment_score_ratio(sentiment_ratio, d)
-    ner = get_named_entities(ner, d, s["search"])
+    ner = get_named_entities(ner, d, fl_search_arr)
     append_filter_count(d, filter_count)
 
     if index in range(filter["articles"]["range"]["from"],
@@ -101,6 +101,18 @@ def append_filter_count(article, filter_count):
   except:
     filter_count["sources"][article["source"]] = 1
 
+def flatten_search_arr(search_arr):
+  # Create an array from all the search keywords
+  # It is done so that we can remove named entities
+  # that are already in the search string.
+  # An element can contain many words, we dont want
+  # any of these words to be included in the results.
+  arr = []
+  for a in search_arr:
+    for s in a.split(" "):
+      arr.append(s)
+  return arr
+
 # Make sure to get correct article range
 # If article_range=last, make sure to get
 # the correct range for that case
@@ -143,8 +155,6 @@ def get_named_entities(combined, data, search_arr):
     # while iteration though 'd'
     d_copy = dict(d)
     for i in d:
-      # Remove named entities that are already in
-      # the search string
       if(i in search_arr):
         del d_copy[i]
 
