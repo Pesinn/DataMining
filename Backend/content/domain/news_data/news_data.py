@@ -171,12 +171,8 @@ def get_keywords(combined, data, search_arr):
     d2 = data["title"]["keywords"]["categorized"]
     
     d = combine_dictionaries(d1, d2)
-
-    # Copy is made so we can delete elements from 'd_copy'
-    # while iteration though 'd'
-    d_copy = dict(d)
     
-    return keywords_factory.append_keywords(combined, d_copy, search_arr)
+    return keywords_factory.append_keywords(combined, d, search_arr)
   except Exception as error:
     if(str(error) != "'keywords'" and str(error) != "'annotations'"):
       print("Error:", str(error))
