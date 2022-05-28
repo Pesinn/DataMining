@@ -15,7 +15,7 @@ def isIgnore(t):
   return False
     
 
-def append_keywords(combined, data):
+def append_keywords(combined, data, search_arr):
   for t in data:
     # Skip some trash that is in our database
     if isIgnore(t) == False:
@@ -24,26 +24,28 @@ def append_keywords(combined, data):
           origin = d
           ref = a[d]["l"] + "--" + t
           lemma = a[d]["l"]
-          try:
-            if combined[ref]:
-              combined[ref]["count"] += 1
-              combined[ref]["origin"] = origin
-              combined[ref]["type"] = t
-              combined[ref]["lemmatized"] = lemma
-            else:
+          
+          if(lemma not in search_arr):
+            try:
+              if combined[ref]:
+                combined[ref]["count"] += 1
+                combined[ref]["origin"] = origin
+                combined[ref]["type"] = t
+                combined[ref]["lemmatized"] = lemma
+              else:
+                combined[ref] = {
+                  "count": 1,
+                  "lemmatized": lemma,
+                  "type": t,
+                  "origin": origin
+                }
+            except:
               combined[ref] = {
                 "count": 1,
                 "lemmatized": lemma,
                 "type": t,
                 "origin": origin
               }
-          except:
-            combined[ref] = {
-              "count": 1,
-              "lemmatized": lemma,
-              "type": t,
-              "origin": origin
-            }
   return combined
 
 def keyword_dict_to_list(dict, limit, search_arr):
