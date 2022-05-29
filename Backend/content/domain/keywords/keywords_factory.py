@@ -1,4 +1,4 @@
-import math
+import numpy as np
 
 def isIgnore(t):
   ignore_arr = [
@@ -72,8 +72,8 @@ def keyword_dict_to_list(dict, limit, search_arr):
     limited_count = limited_count + i["count"]
 
   for i in sorted_list:
-    i["total_count_ratio"] = math.trunc((i["count"] / total_count)*100)
-    i["limited_count_ratio"] = math.trunc((i["count"] / limited_count)*100)
-    i["count_ratio_normalized"] = math.trunc((i["count"] / highest_count)*100)
+    i["total_count_ratio"] = np.round((float(i["count"]) / float(total_count))*100, 1)
+    i["limited_count_ratio"] = np.round((float(i["count"]) / float(limited_count))*100, 1)
+    i["count_ratio_normalized"] = np.round((float(i["count"]) / float(highest_count))*100, 1)
 
   return sorted_list
