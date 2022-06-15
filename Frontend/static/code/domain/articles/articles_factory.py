@@ -9,9 +9,9 @@ def get_total_articles_count(data):
   for i in data:
     v_neg += i["sentiment_analysis"]["compound"]["lowest"]["freq"]
     neg += i["sentiment_analysis"]["compound"]["low"]["freq"]
-    neu += i["sentiment_analysis"]["compound"]["low"]["freq"]
-    pos += i["sentiment_analysis"]["compound"]["low"]["freq"]
-    v_pos += i["sentiment_analysis"]["compound"]["low"]["freq"]
+    neu += i["sentiment_analysis"]["compound"]["middle"]["freq"]
+    pos += i["sentiment_analysis"]["compound"]["high"]["freq"]
+    v_pos += i["sentiment_analysis"]["compound"]["highest"]["freq"]
     total += i["articles_count"]["total"]
 
   return {
